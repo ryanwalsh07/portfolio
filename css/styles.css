@@ -1284,6 +1284,8 @@ html:not(.js) .wordmark__pen,
   /* Section scaffolding: quiet label in the margin, content to the right */
   .section__label { grid-column: 1 / span 3; margin-bottom: 0; padding-top: 0.55rem; }
   .section__intro { grid-column: 4 / span 8; }
+  /* A short intro that reads as one quiet line on desktop. */
+  .section__intro--line { grid-column: 4 / -1; max-width: none; font-size: var(--text-md); }
 
   /* Work: staggered, deliberately unequal */
   .project--feature { grid-column: 1 / span 8; }
@@ -1333,6 +1335,8 @@ html:not(.js) .wordmark__pen,
 }
 
 @media (min-width: 1120px) {
+  .section__intro--line { white-space: nowrap; }
+
   .cs-layout {
     display: grid;
     grid-template-columns: 200px minmax(0, 1fr);

@@ -251,7 +251,14 @@ button { font: inherit; }
   text-decoration: none;
   white-space: nowrap;
 }
-.wordmark__mark { flex: none; width: 32px; height: 32px; }
+.wordmark__mark { flex: none; width: auto; height: 26px; overflow: visible; }
+/* Letters follow the text colour (white on the gradient and on navy). Pink
+   #ff2fad is only 2:1 on the violet gradient, so the underline starts as a
+   lighter pink (3.6:1) and switches once the navy header appears (5.2:1). */
+.wordmark__pen { stroke: #ffa3d8; transition: stroke 0.3s; }
+.site-header.is-scrolled .wordmark__pen,
+html:not(.js) .wordmark__pen,
+.nav-open .wordmark__pen { stroke: var(--pen); }
 
 .nav__list {
   display: flex;

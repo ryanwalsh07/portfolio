@@ -383,6 +383,8 @@ html:not(.js) .wordmark__pen,
   isolation: isolate;
 }
 .media--lime { background: var(--tapsos-lime); }
+/* Soft violet-to-pink wash from the site palette, for real mockup images. */
+.media--brand { background: linear-gradient(135deg, #e6e4ff 0%, #f1ecff 48%, #ffe1f2 100%); }
 .media--night { background: var(--night); }
 .media--paper { background: var(--tint); }
 
@@ -399,6 +401,9 @@ html:not(.js) .wordmark__pen,
   object-fit: cover;
 }
 .media__img--contain { object-fit: contain; }
+.media__img--inset { padding: 6% 5%; }
+/* A real image replaces the HTML placeholder art (which returns if the image fails). */
+.media:has(> .media__img) > .media__art { visibility: hidden; }
 
 .caption {
   margin-top: 14px;

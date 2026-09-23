@@ -291,7 +291,6 @@ html:not(.js) .wordmark__pen,
 .nav__link[aria-current] { color: var(--paper); }
 .nav__link[aria-current]::after { transform: scaleX(1); background: var(--accent); }
 
-.nav__cta { min-height: 40px; padding: 0 1em; }
 
 .nav-toggle {
   display: none;
@@ -334,7 +333,6 @@ html:not(.js) .wordmark__pen,
     line-height: 1.25;
   }
   .js .nav__link::after { display: none; }
-  .js .nav__cta { margin-top: 20px; }
 }
 
 /* ---------- Pen marks (hand-drawn annotations) ---------- */

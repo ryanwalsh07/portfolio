@@ -9,13 +9,13 @@ Export from Figma: select the frame > Export (bottom right) > PNG at 2x.
 Keep each file under about 1 MB (tinypng.com shrinks them for free).
 
 HOME PAGE
-  tapsos-cover.png         TapSOS thumbnail. 16:11 ratio, e.g. 1600 x 1100.
-                           Transparent background works well on the lime.
+  tapsos-mockups.webp      TapSOS three-phone mockup, used on BOTH the home page
+                           card and the case study hero. Transparent background:
+                           it sits on the site's violet-to-pink wash.
   nightcommute-cover.png   NightCommute thumbnail. 4:5 ratio, e.g. 1200 x 1500.
   portrait.jpg             Your photo. 4:5 ratio, e.g. 1000 x 1250.
 
 TAPSOS CASE STUDY
-  tapsos-hero.png          The three-phone hero. 16:10 ratio, e.g. 2400 x 1500.
   tapsos-competitors.png   Competitor analysis board.
   tapsos-affinity.png      Affinity map from FigJam.
   tapsos-fidelity.png      Lo-fi to high-fidelity progression.

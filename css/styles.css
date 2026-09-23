@@ -1192,7 +1192,8 @@ button { font: inherit; }
   .hero__hello { grid-column: 1 / -1; }
   .hero__title { grid-column: 1 / span 11; }
   .hero__meta { grid-column: 1 / span 4; grid-row: 3; align-self: end; margin-top: 0; }
-  .hero__aside { grid-column: 7 / span 6; grid-row: 3; }
+  .hero__aside { grid-column: 6 / span 5; grid-row: 3; }
+  .hero__intro { max-width: none; }
 
   /* Section scaffolding: quiet label in the margin, content to the right */
   .section__label { grid-column: 1 / span 3; margin-bottom: 0; padding-top: 0.55rem; }

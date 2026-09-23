@@ -36,6 +36,8 @@ CNAME           Custom domain for GitHub Pages
 
 Edit a file here on GitHub (open it, then the pencil icon) or upload a replacement with **Add file → Upload files**. Changes go live on ryanwalsh.uk within a minute or two.
 
+Browsers keep `css/styles.css` and `js/main.js` for up to 10 minutes. When you change either file, bump the `?v=` number where the pages link to them (`index.html`, `tapsos.html`, `404.html`), e.g. `styles.css?v=20260923` to today's date, so visitors get the new file straight away.
+
 ---
 
 © Ryan Walsh. All rights reserved.

@@ -402,6 +402,14 @@ html:not(.js) .wordmark__pen,
 }
 .media__img--contain { object-fit: contain; }
 .media__img--inset { padding: 6% 5%; }
+/* Mockups ease up in size on hover (the card link on home, the figure on the
+   case study); the background stays put because only the img scales. */
+.media--brand .media__img {
+  transition: transform 0.7s var(--ease-out);
+}
+.project__link:hover .media--brand .media__img,
+.project__link:focus-visible .media--brand .media__img,
+.cs-hero-media .media--brand:hover .media__img { transform: scale(1.06); }
 /* A real image replaces the HTML placeholder art (which returns if the image fails). */
 .media:has(> .media__img) > .media__art { visibility: hidden; }
 
@@ -915,6 +923,7 @@ html:not(.js) .wordmark__pen,
 .facts dt { color: var(--paper-faint); font-size: var(--text-sm); }
 .facts dd { font-weight: 500; }
 
+.cs-hero-media { margin-top: clamp(32px, 5vw, 72px); }
 .cs-hero-media .media { aspect-ratio: 4 / 5; }
 .art-trio {
   display: flex;
@@ -1374,4 +1383,5 @@ html:not(.js) .wordmark__pen,
     transition-delay: 0s !important;
   }
   .js .pen[data-draw] path { stroke-dashoffset: 0; }
+  .media--brand .media__img { transform: none !important; }
 }

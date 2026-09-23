@@ -698,12 +698,14 @@ html:not(.js) .wordmark__pen,
   padding-block: clamp(88px, 11vw, 168px);
   border-top: 1px solid var(--line);
 }
+/* Section markers: big enough to stop the eye while scrolling. */
 .section__label {
   margin-bottom: 1.25rem;
   color: var(--accent);
-  font-size: var(--text-sm);
+  font-size: var(--text-md);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 .section__intro {
   max-width: 30ch;
@@ -793,7 +795,7 @@ html:not(.js) .wordmark__pen,
   row-gap: 20px;
   margin-top: clamp(72px, 9vw, 128px);
 }
-.about__subhead { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 500; }
+.about__subhead { color: var(--paper); font-size: 1.25rem; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
 
 .skills { display: grid; gap: 28px var(--col-gap); padding-top: 20px; border-top: 1px solid var(--line); }
 .skills dt { margin-bottom: 4px; font-weight: 600; }
@@ -975,9 +977,11 @@ html:not(.js) .wordmark__pen,
   display: flex;
   gap: 14px;
   margin-bottom: clamp(20px, 2.5vw, 32px);
-  color: var(--paper-faint);
-  font-size: var(--text-sm);
-  font-weight: 500;
+  color: var(--paper);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 .cs-section__tag span { color: var(--accent); font-variant-numeric: tabular-nums; }
 .cs-h2 {
@@ -989,7 +993,7 @@ html:not(.js) .wordmark__pen,
   text-wrap: balance;
 }
 .cs-sub { margin-top: 14px; color: var(--paper-soft); font-size: var(--text-md); }
-.cs-h3 { margin-bottom: 12px; color: var(--paper-faint); font-size: var(--text-sm); font-weight: 500; }
+.cs-h3 { margin-bottom: 12px; color: var(--paper); font-size: 1.125rem; font-weight: 600; }
 
 .prose { max-width: 62ch; color: var(--paper-soft); }
 .prose > * + * { margin-top: 1em; }
@@ -1304,7 +1308,7 @@ html:not(.js) .wordmark__pen,
   .hero__intro { max-width: none; font-size: var(--text-md); }
 
   /* Section scaffolding: quiet label in the margin, content to the right */
-  .section__label { grid-column: 1 / span 3; margin-bottom: 0; padding-top: 0.55rem; }
+  .section__label { grid-column: 1 / span 3; margin-bottom: 0; padding-top: 0.2rem; }
   .section__intro { grid-column: 4 / span 8; }
   /* A short intro that reads as one quiet line on desktop. */
   .section__intro--line { grid-column: 4 / -1; max-width: none; font-size: var(--text-md); }
@@ -1318,7 +1322,7 @@ html:not(.js) .wordmark__pen,
   .about__body { grid-column: 4 / span 5; }
   .about__portrait { grid-column: 10 / span 3; }
   .about__block { grid-column: 1 / -1; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-columns: subgrid; }
-  .about__subhead { grid-column: 1 / span 3; padding-top: 20px; }
+  .about__subhead { grid-column: 1 / span 3; padding-top: 18px; }
   .skills,
   .history,
   .about__cv { grid-column: 4 / span 9; }

@@ -68,43 +68,6 @@
     setInterval(tick, 20000);
   }
 
-  /* Copy email address */
-  var copyStatus = document.querySelector("[data-copy-status]");
-  document.querySelectorAll("[data-copy]").forEach(function (button) {
-    var label = button.querySelector("[data-copy-label]");
-    var original = label ? label.textContent : "";
-    var timer;
-    button.addEventListener("click", function () {
-      var text = button.getAttribute("data-copy");
-      var done = function () {
-        if (label) label.textContent = "Email copied";
-        if (copyStatus) copyStatus.textContent = "Email address copied to clipboard";
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          if (label) label.textContent = original;
-          if (copyStatus) copyStatus.textContent = "";
-        }, 2400);
-      };
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(done, fallback);
-      } else {
-        fallback();
-      }
-      function fallback() {
-        var field = document.createElement("textarea");
-        field.value = text;
-        field.setAttribute("readonly", "");
-        field.style.position = "absolute";
-        field.style.left = "-9999px";
-        document.body.appendChild(field);
-        field.select();
-        try { document.execCommand("copy"); } catch (e) { /* ignore */ }
-        document.body.removeChild(field);
-        done();
-      }
-    });
-  });
-
   /* Keep pen strokes a consistent on-screen thickness at any size */
   function sizePens() {
     document.querySelectorAll(".pen").forEach(function (pen) {

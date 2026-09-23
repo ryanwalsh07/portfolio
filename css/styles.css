@@ -1,22 +1,33 @@
 /* ==========================================================================
    Ryan Walsh — Portfolio
-   Shell colours. The pink "pen" and the lime/teal
-   come from Ryan's own TapSOS work, and only appear as annotations or inside
-   project imagery — never as interface chrome.
+   Light pages with a navy/violet gradient hero, after aphex.co. Violet is the
+   interface accent; the pink "pen" marks the hand-drawn annotations. The
+   lime/teal come from Ryan's own TapSOS work and only appear inside project
+   imagery. --paper is the text colour and --ground the background: .on-dark
+   swaps them for navy sections.
    ========================================================================== */
 
 /* ---------- Tokens ---------- */
 :root {
-  --ground: #131313;
-  --ground-raised: #1a1a19;
-  --surface: #1c1c1b;
-  --paper: #f3f1ea;
-  --paper-soft: #b9b8b0;
-  --paper-faint: #8a8983; /* nudged up from #767570 so small text passes WCAG AA */
-  --line: rgba(243, 241, 234, 0.14);
-  --line-strong: rgba(243, 241, 234, 0.3);
+  /* Contrast ratios are against white (light) and navy (.on-dark). */
+  --navy: #0d173f;
+  --violet: #5d51ff; /* 5.1:1 on white, fine for text */
+  --tint: #f4f5f8;
 
-  --pen: #f748aa;
+  --ground: #ffffff;
+  --ground-raised: var(--tint);
+  --surface: var(--tint);
+  --paper: var(--navy); /* 17.3:1 */
+  --paper-soft: #475472; /* 7.6:1 */
+  --paper-faint: #5a6785; /* 5.7:1, still AA on --tint */
+  --line: rgba(13, 23, 63, 0.12);
+  --line-strong: rgba(13, 23, 63, 0.28);
+
+  --accent: var(--violet);
+  --pen: #ff2fad; /* 3.4:1: strokes and focus rings only, never small text */
+  --focus: var(--pen);
+  --button-hover: var(--violet);
+  --button-hover-text: #ffffff;
 
   --tapsos-lime: #d7fa89;
   --tapsos-teal: #16758a; /* swap for the exact token from your TapSOS file */
@@ -49,7 +60,7 @@
 *::after { box-sizing: border-box; }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 16px);
@@ -74,10 +85,10 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; }
 button { font: inherit; }
 
-::selection { background: var(--pen); color: var(--ground); }
+::selection { background: var(--pen); color: var(--navy); }
 
 :focus-visible {
-  outline: 2px solid var(--pen);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -153,7 +164,7 @@ button { font: inherit; }
   border-color: var(--paper);
   color: var(--ground);
 }
-.button--solid:hover { background: #ffffff; border-color: #ffffff; }
+.button--solid:hover { background: var(--button-hover); border-color: var(--button-hover); color: var(--button-hover-text); }
 
 .text-link {
   color: var(--paper);
@@ -164,13 +175,45 @@ button { font: inherit; }
   text-underline-offset: 0.3em;
   transition: text-decoration-color 0.2s;
 }
-.text-link:hover { text-decoration-color: var(--paper); }
+.text-link:hover { text-decoration-color: var(--accent); }
+
+/* ---------- Dark sections ----------
+   Navy sections re-point the tokens, so everything inside just works.
+   Lighter text values were checked against the brightest gradient stop.
+   Navy media panels (.media--surface) get the same light text. */
+.on-dark,
+.media--surface {
+  --ground: var(--navy);
+  --paper: #ffffff;
+  --paper-soft: #dcdff0; /* 5.0:1 on the violet wash, 13:1 on navy */
+  --paper-faint: #dcdff0;
+  --line: rgba(255, 255, 255, 0.16);
+  --line-strong: rgba(255, 255, 255, 0.36);
+  --accent: var(--pen); /* 5.2:1 on navy */
+  --focus: #ffffff;
+  --button-hover: var(--pen);
+  --button-hover-text: var(--navy);
+  color-scheme: dark;
+  background-color: var(--navy);
+  color: var(--paper);
+}
+
+/* Same layers as the aphex.co hero, with Ryan's pink in the corner. */
+.hero-band {
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
+  background:
+    linear-gradient(117deg, rgba(13, 23, 63, 0) 64%, rgba(255, 47, 173, 0.6)),
+    linear-gradient(100deg, rgba(93, 81, 255, 0.8), rgba(13, 23, 63, 0.8) 88%),
+    var(--navy);
+}
 
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
+  background-color: transparent; /* the ::before layer paints it */
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
 }
@@ -181,10 +224,13 @@ button { font: inherit; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(19, 19, 19, 0.86);
+  background: rgba(13, 23, 63, 0.86);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+  transition: opacity 0.3s;
 }
+/* Sit clear on the gradient until the page scrolls. */
+.js:not(.nav-open) .site-header:not(.is-scrolled)::before { opacity: 0; }
 .site-header.is-scrolled { border-bottom-color: var(--line); }
 
 .site-header__inner {
@@ -232,7 +278,7 @@ button { font: inherit; }
 }
 .nav__link:hover,
 .nav__link[aria-current] { color: var(--paper); }
-.nav__link[aria-current]::after { transform: scaleX(1); }
+.nav__link[aria-current]::after { transform: scaleX(1); background: var(--accent); }
 
 .nav__cta { min-height: 40px; padding: 0 1em; }
 
@@ -327,8 +373,7 @@ button { font: inherit; }
 }
 .media--lime { background: var(--tapsos-lime); }
 .media--night { background: var(--night); }
-.media--surface { background: var(--surface); }
-.media--paper { background: var(--paper); }
+.media--paper { background: var(--tint); }
 
 .media__art { position: absolute; inset: 0; }
 .media__art--flow { position: relative; inset: auto; }
@@ -633,7 +678,7 @@ button { font: inherit; }
 }
 .section__label {
   margin-bottom: 1.25rem;
-  color: var(--paper);
+  color: var(--accent);
   font-size: var(--text-sm);
   font-weight: 600;
   line-height: 1.5;
@@ -670,7 +715,7 @@ button { font: inherit; }
   font-weight: 600;
   transition: border-color 0.2s;
 }
-.project__link:hover .project__cta { border-color: var(--paper); }
+.project__link:hover .project__cta { border-color: var(--accent); }
 .project__cta--pending { border-bottom-style: dashed; color: var(--paper-faint); }
 
 .art-cover {
@@ -759,9 +804,16 @@ button { font: inherit; }
 }
 .rec__name { font-weight: 600; }
 .rec__role { color: var(--paper-faint); }
+#recommendations { background: linear-gradient(var(--tint) 20%, var(--ground)); }
 
 /* ---------- Contact ---------- */
-.section--contact { padding-bottom: clamp(104px, 13vw, 184px); }
+.section--contact {
+  padding-bottom: clamp(104px, 13vw, 184px);
+  background:
+    radial-gradient(circle at 24% 0, rgba(93, 81, 255, 0.7), rgba(93, 81, 255, 0) 42%),
+    radial-gradient(circle at 85% 0, rgba(255, 47, 173, 0.6), rgba(255, 47, 173, 0) 28%),
+    var(--navy);
+}
 .contact__title {
   max-width: 17ch;
   font-size: var(--text-2xl);
@@ -782,7 +834,7 @@ button { font: inherit; }
   border-bottom: 1px solid var(--line-strong);
   transition: border-color 0.2s;
 }
-.contact__email:hover { border-color: var(--paper); }
+.contact__email:hover { border-color: var(--accent); }
 .pen--arrow { display: none; }
 .contact__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
@@ -805,7 +857,7 @@ button { font: inherit; }
   z-index: 60;
   width: 100%;
   height: 2px;
-  background: var(--paper);
+  background: var(--pen);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -889,7 +941,7 @@ button { font: inherit; }
   font-size: var(--text-sm);
   font-weight: 500;
 }
-.cs-section__tag span { color: var(--paper); font-variant-numeric: tabular-nums; }
+.cs-section__tag span { color: var(--accent); font-variant-numeric: tabular-nums; }
 .cs-h2 {
   max-width: 21ch;
   font-size: var(--text-xl);
@@ -937,6 +989,7 @@ button { font: inherit; }
   margin-top: clamp(40px, 5vw, 72px);
 }
 .stat__num {
+  color: var(--accent);
   font-size: clamp(3.25rem, 1.6rem + 5.2vw, 6.75rem);
   font-weight: 200;
   line-height: 0.9;
@@ -1289,7 +1342,7 @@ button { font: inherit; }
     left: -22px;
     width: 14px;
     height: 1px;
-    background: var(--paper);
+    background: var(--accent);
   }
 }
 

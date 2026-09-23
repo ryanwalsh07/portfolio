@@ -728,7 +728,7 @@ html:not(.js) .wordmark__pen,
   line-height: 1.15;
   letter-spacing: -0.025em;
 }
-.project__desc { max-width: 46ch; margin-top: 10px; color: var(--paper-soft); }
+.project__desc { margin-top: 10px; color: var(--paper-soft); } /* runs the full width of its image */
 .project__meta { margin-top: 10px; color: var(--paper-faint); font-size: var(--text-sm); }
 .project__cta {
   display: inline-block;
@@ -739,7 +739,22 @@ html:not(.js) .wordmark__pen,
   font-weight: 600;
   transition: border-color 0.2s;
 }
+.project__arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.4em;
+  vertical-align: -0.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s var(--ease-out);
+}
 .project__link:hover .project__cta { border-color: var(--accent); }
+.project__link:hover .project__arrow,
+.project__link:focus-visible .project__arrow { transform: translateX(4px); }
 .project__cta--pending { border-bottom-style: dashed; color: var(--paper-faint); }
 
 .art-cover {

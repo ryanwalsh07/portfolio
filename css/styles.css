@@ -1245,6 +1245,15 @@ html:not(.js) .wordmark__pen,
 
 .outcomes { display: grid; margin-top: clamp(36px, 4.5vw, 64px); column-gap: var(--col-gap); }
 .outcomes li { padding-block: 22px; border-top: 1px solid var(--line); }
+.outcomes .outcomes__num {
+  max-width: none;
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: clamp(2.5rem, 1.6rem + 3vw, 4rem);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
 .outcomes h3 { font-size: var(--text-md); font-weight: 500; letter-spacing: -0.015em; }
 .outcomes p { max-width: 40ch; margin-top: 6px; color: var(--paper-soft); }
 

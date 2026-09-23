@@ -26,7 +26,7 @@ tapsos-new.html Old link, redirects to tapsos.html
 404.html        Page-not-found
 favicon.svg     Browser tab icon
 css/            Styles (colour and type tokens at the top)
-js/             Menu, Belfast clock, copy email, scroll details
+js/             Menu, Belfast clock, scroll details
 cv/             CV download
 images/         Project images (see HOW-TO-ADD-IMAGES.txt)
 CNAME           Custom domain for GitHub Pages

@@ -801,6 +801,22 @@ html:not(.js) .wordmark__pen,
 .skills dt { margin-bottom: 4px; font-weight: 600; }
 .skills dd { max-width: 40ch; color: var(--paper-soft); }
 
+.tools { margin-top: 36px; }
+.tools__label { margin-bottom: 14px; font-weight: 600; }
+.tools__list { display: flex; flex-wrap: wrap; gap: 10px; }
+.tools__list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 99px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.tools__list svg { flex: none; width: 18px; height: 18px; fill: currentColor; }
+
 .history__item {
   display: grid;
   gap: 4px var(--col-gap);
@@ -1324,6 +1340,7 @@ html:not(.js) .wordmark__pen,
   .about__block { grid-column: 1 / -1; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-columns: subgrid; }
   .about__subhead { grid-column: 1 / span 3; padding-top: 18px; }
   .skills,
+  .tools,
   .history,
   .about__cv { grid-column: 4 / span 9; }
   .history + .about__subhead { margin-top: 0; }

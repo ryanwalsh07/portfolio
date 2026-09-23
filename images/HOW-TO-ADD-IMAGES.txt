@@ -1,0 +1,26 @@
+HOW TO ADD YOUR OWN IMAGES
+==========================
+
+Every image on the site has a built-in placeholder. To replace one, save your
+image into THIS folder using the exact file name below. It appears automatically,
+no code changes needed. If a file is missing, the placeholder shows instead.
+
+Export from Figma: select the frame > Export (bottom right) > PNG at 2x.
+Keep each file under about 1 MB (tinypng.com shrinks them for free).
+
+HOME PAGE
+  tapsos-cover.png         TapSOS thumbnail. 16:11 ratio, e.g. 1600 x 1100.
+                           Transparent background works well on the lime.
+  nightcommute-cover.png   NightCommute thumbnail. 4:5 ratio, e.g. 1200 x 1500.
+  portrait.jpg             Your photo. 4:5 ratio, e.g. 1000 x 1250.
+
+TAPSOS CASE STUDY
+  tapsos-hero.png          The three-phone hero. 16:10 ratio, e.g. 2400 x 1500.
+  tapsos-competitors.png   Competitor analysis board.
+  tapsos-affinity.png      Affinity map from FigJam.
+  tapsos-fidelity.png      Lo-fi to high-fidelity progression.
+
+SHARING PREVIEW (the card shown when your link is pasted into LinkedIn, Slack etc.)
+  share-card.png           1200 x 630.
+
+Tip: names are case sensitive. "Portrait.JPG" will not work; "portrait.jpg" will.

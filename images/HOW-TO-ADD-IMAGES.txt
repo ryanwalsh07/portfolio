@@ -12,7 +12,6 @@ HOME PAGE
   tapsos-mockups.webp      TapSOS three-phone mockup, used on BOTH the home page
                            card and the case study hero. Transparent background:
                            it sits on the site's violet-to-pink wash.
-  portrait.jpg             Your photo. 4:5 ratio, e.g. 1000 x 1250.
 
 TAPSOS CASE STUDY
   tapsos-competitors.png   Competitor analysis board.
@@ -34,4 +33,4 @@ NIGHTCOMMUTE CASE STUDY (each slot shows a grey label until its image is added)
 SHARING PREVIEW (the card shown when your link is pasted into LinkedIn, Slack etc.)
   share-card.png           1200 x 630.
 
-Tip: names are case sensitive. "Portrait.JPG" will not work; "portrait.jpg" will.
+Tip: names are case sensitive. "Share-Card.PNG" will not work; "share-card.png" will.

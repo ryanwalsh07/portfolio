@@ -1041,6 +1041,7 @@ html:not(.js) .wordmark__pen,
 .brief__label { color: var(--paper-faint); font-size: var(--text-sm); }
 .brief__text { margin-top: 4px; font-size: var(--text-md); line-height: 1.45; }
 
+.criteria__lead { margin-bottom: 4px; color: var(--paper-soft); }
 .criteria li {
   display: flex;
   align-items: flex-start;
@@ -1239,6 +1240,7 @@ html:not(.js) .wordmark__pen,
 .fid-col figcaption { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
 .media--surface .fid-col figcaption { color: var(--paper-soft); }
 
+.pull__cite { display: block; margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); font-weight: 500; letter-spacing: 0; }
 .pull {
   max-width: 34ch;
   margin-top: clamp(40px, 5vw, 64px);

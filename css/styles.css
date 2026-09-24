@@ -797,7 +797,21 @@ html:not(.js) .wordmark__pen,
 .about__principles-title { margin-bottom: 12px; font-size: 1.125rem; font-weight: 600; }
 .beliefs li { display: flex; align-items: flex-start; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
 .beliefs li:last-child { border-bottom: 1px solid var(--line); }
-.beliefs .pen--tick { position: static; flex: none; width: 26px; height: 22px; margin-top: 0.1em; }
+.beliefs .pen--dot { position: static; flex: none; width: 16px; height: 16px; margin-top: 0.3em; }
+
+/* Pink bullet: the dot pops in, then a single ripple fades out. */
+.pen--dot .pen__dot { fill: var(--pen); stroke: none; transform-box: fill-box; transform-origin: center; }
+.pen--dot .pen__ring { fill: none; stroke: var(--pen); stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.js .pen--dot[data-draw] .pen__dot { transform: scale(0); }
+.js .pen--dot[data-draw].is-drawn .pen__dot {
+  transform: scale(1);
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay, 0s);
+}
+.js .pen--dot[data-draw].is-drawn .pen__ring { animation: dot-ripple 0.9s var(--ease-out) calc(var(--delay, 0s) + 0.2s) both; }
+@keyframes dot-ripple {
+  from { opacity: 0.7; transform: scale(0.5); }
+  to { opacity: 0; transform: scale(1.7); }
+}
 .beliefs p { color: var(--paper-soft); font-size: 0.9375rem; line-height: 1.5; }
 .beliefs strong { display: block; margin-bottom: 2px; color: var(--paper); font-size: var(--text-base); font-weight: 600; }
 

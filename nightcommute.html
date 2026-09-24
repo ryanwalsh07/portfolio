@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20260924a">
-  <script src="js/main.js?v=20260924a" defer></script>
+  <link rel="stylesheet" href="css/styles.css?v=20260924b">
+  <script src="js/main.js?v=20260924b" defer></script>
 </head>
 <body id="top">
 
@@ -63,8 +63,9 @@
       <dl class="facts">
         <div><dt>Role</dt><dd>End-to-end UX and UI</dd></div>
         <div><dt>Company</dt><dd>Inclutech</dd></div>
-        <div><dt>Year</dt><dd>2025</dd></div>
+        <div><dt>Year</dt><dd>2025–26</dd></div>
         <div><dt>Platform</dt><dd>Mobile app and web portal</dd></div>
+        <div><dt>Piloted in</dt><dd>Belfast, April 2026</dd></div>
       </dl>
     </div>
   </header>
@@ -105,8 +106,8 @@
         <p class="agenda__desc">Research, a two-sided reporting process and ideation.</p>
       </a>
       <a class="agenda__item" href="#design">
-        <p class="agenda__title">Design and reflection</p>
-        <p class="agenda__desc">Visual design, usability testing and what I learned.</p>
+        <p class="agenda__title">Design, pilot and reflection</p>
+        <p class="agenda__desc">Visual design, a real-world pilot in Belfast and what I learned.</p>
       </a>
     </nav>
   </div>
@@ -127,9 +128,10 @@
         <a href="#ideation"><span>05</span>Ideation</a>
       </div>
       <div class="cs-index__group">
-        <p class="cs-index__heading">Design and reflection</p>
+        <p class="cs-index__heading">Design, pilot and reflection</p>
         <a href="#design"><span>06</span>Design and styling</a>
-        <a href="#reflection"><span>07</span>Reflection</a>
+        <a href="#pilot"><span>07</span>Pilot findings</a>
+        <a href="#reflection"><span>08</span>Reflection</a>
       </div>
     </aside>
 
@@ -140,7 +142,7 @@
         <p class="cs-section__tag"><span>01</span>Overview</p>
         <h2 class="cs-h2" id="overview-title">Confidence from departure to arrival</h2>
         <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
-          <p>NightCommute is a mobile concept designed to help people feel more confident when travelling alone at night. Rather than waiting until an emergency occurs, the experience focuses on prevention: helping users plan safer routes, stay connected with trusted contacts, and feel reassured throughout their journey.</p>
+          <p>NightCommute is a mobile app designed to help people feel more confident when travelling alone at night. Rather than waiting until an emergency occurs, the experience focuses on prevention: helping users plan safer routes, stay connected with trusted contacts, and feel reassured throughout their journey.</p>
           <p>The project explores how thoughtful interaction design can reduce anxiety without overwhelming users with unnecessary complexity, creating an experience that supports confidence from departure through to arrival.</p>
         </div>
       </section>
@@ -167,11 +169,12 @@
 
           <div>
             <h3 class="cs-h3">Success criteria</h3>
+            <p class="criteria__lead">Can a user, without help:</p>
             <ul class="criteria">
-              <li><svg class="pen pen--tick" data-draw style="--delay: 0s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 5 8.5 9C15 14 21 7 30 2"/></svg>Enable users to contact emergency services without relying on speech</li>
-              <li><svg class="pen pen--tick" data-draw style="--delay: 0.15s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 13c3 3 5 6 8 10 4-9 10-15 19-21"/></svg>Reduce cognitive load during high-pressure situations</li>
-              <li><svg class="pen pen--tick" data-draw style="--delay: 0.3s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 15c2 2 5 5 7 8 5-10 11-16 18-20"/></svg>Improve accessibility across a wide range of communication needs</li>
-              <li><svg class="pen pen--tick" data-draw style="--delay: 0.45s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 6 8 9 3-8 10-15 19-20"/></svg>Create a scalable design system capable of supporting future product growth</li>
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 5 8.5 9C15 14 21 7 30 2"/></svg>Create a journey and share it with a trusted contact</li>
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0.15s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 13c3 3 5 6 8 10 4-9 10-15 19-21"/></svg>Check in at a venue</li>
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0.3s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 15c2 2 5 5 7 8 5-10 11-16 18-20"/></svg>Rate a venue’s safety</li>
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0.45s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 6 8 9 3-8 10-15 19-20"/></svg>Request support from venue staff</li>
             </ul>
           </div>
         </div>
@@ -328,12 +331,43 @@
       </section>
 
       <!-- 07 -->
+      <section class="cs-section" id="pilot" aria-labelledby="pilot-title">
+        <p class="cs-section__tag"><span>07</span>Pilot findings</p>
+        <h2 class="cs-h2" id="pilot-title">Putting NightCommute on Belfast’s streets</h2>
+        <p class="cs-sub">A real-world pilot in Belfast, April 2026, combining post-pilot questionnaires with product analytics.</p>
+        <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
+          <p>To test the app beyond the studio, NightCommute was piloted in Belfast with a small group of participants who used it while out in the city. I ran the analysis myself, reading the questionnaire responses alongside funnels, session replays and error data, then turned the findings into design recommendations for the next release.</p>
+        </div>
+
+        <h3 class="cs-h3" style="margin-top: clamp(40px, 5vw, 64px)">What people told us</h3>
+        <ul class="outcomes">
+          <li><p class="outcomes__num">9 in 10</p><h3>Safer in the city centre</h3><p>said they would feel safe in Belfast city centre at night using the app, far more than feel safe there today.</p></li>
+          <li><p class="outcomes__num">100%</p><h3>Safer anywhere at night</h3><p>said they would feel safe when out and about at night if they were using the app.</p></li>
+          <li><p class="outcomes__num">100%</p><h3>Would use it and recommend it</h3><p>said they were likely to use the live app, and to recommend it to a female friend or family member.</p></li>
+          <li><p class="outcomes__num">#1</p><h3>Journey sharing led the way</h3><p>Creating and sharing a journey with a trusted contact was the feature participants valued most for their safety.</p></li>
+        </ul>
+
+        <p class="pull">“I think the features have been carefully curated with what women and girls want.” <span class="pull__cite">Pilot participant</span></p>
+
+        <h3 class="cs-h3" style="margin-top: clamp(48px, 6vw, 80px)">Where people got stuck, and what I recommended</h3>
+        <div class="prose">
+          <p>The analytics told a more honest story than the questionnaires alone. People valued the idea, but many didn’t find their way through core tasks, like creating a journey or asking venue staff for support, without help. I grouped what I found into three themes, each with a design response.</p>
+        </div>
+        <dl class="principles">
+          <div><dt>Clear onboarding</dt><dd>People were unsure how to start a journey, check in or share their location. A “take a tour”, tooltips and step-by-step guidance for first use.</dd></div>
+          <div><dt>Shorter flows</dt><dd>Too few people completed the key journeys. Every core flow cut to two or three steps, with fewer inputs and a progress indicator.</dd></div>
+          <div><dt>Clearer structure</dt><dd>Features felt scattered and “awkward”. Related features grouped together so the app flows the way people think.</dd></div>
+        </dl>
+      </section>
+
+      <!-- 08 -->
       <section class="cs-section cs-reflection" id="reflection" aria-labelledby="reflection-title">
-        <p class="cs-section__tag"><span>07</span>Reflection</p>
+        <p class="cs-section__tag"><span>08</span>Reflection</p>
         <h2 class="cs-h2" id="reflection-title">Balancing reassurance with simplicity shaped every decision.</h2>
         <div class="prose">
-          <p>NightCommute demonstrates how proactive safety features can be integrated into a calm, approachable mobile experience. By shifting the focus from emergency response to everyday reassurance, the concept explores how digital products can help users feel more confident travelling alone.</p>
+          <p>NightCommute demonstrates how proactive safety features can be integrated into a calm, approachable mobile experience. By shifting the focus from emergency response to everyday reassurance, the project explores how digital products can help users feel more confident travelling alone.</p>
           <p>This project challenged me to design beyond individual screens and think about the emotional experience of travelling alone. Balancing reassurance with simplicity became a recurring design consideration throughout the project, influencing everything from navigation to visual hierarchy.</p>
+          <p>The pilot was the most valuable part. Seeing people who believed in the product still struggle to complete a journey showed me that confidence comes from clarity, and that analytics and conversations are strongest together.</p>
         </div>
       </section>
 

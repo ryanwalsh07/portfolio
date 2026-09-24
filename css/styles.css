@@ -793,6 +793,13 @@ html:not(.js) .wordmark__pen,
   text-wrap: balance;
 }
 .about__body { margin-top: clamp(36px, 5vw, 64px); color: var(--paper-soft); max-width: 58ch; }
+.about__principles { margin-top: clamp(40px, 5vw, 64px); }
+.about__principles-title { margin-bottom: 12px; font-size: 1.125rem; font-weight: 600; }
+.beliefs li { display: flex; align-items: flex-start; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.beliefs li:last-child { border-bottom: 1px solid var(--line); }
+.beliefs .pen--tick { position: static; flex: none; width: 26px; height: 22px; margin-top: 0.1em; }
+.beliefs p { color: var(--paper-soft); font-size: 0.9375rem; line-height: 1.5; }
+.beliefs strong { display: block; margin-bottom: 2px; color: var(--paper); font-size: var(--text-base); font-weight: 600; }
 
 .about__block {
   display: grid;
@@ -1359,7 +1366,8 @@ html:not(.js) .wordmark__pen,
 
   /* About */
   .about__statement { grid-column: 4 / span 9; }
-  .about__body { grid-column: 4 / span 7; }
+  .about__body { grid-column: 4 / span 5; }
+  .about__principles { grid-column: 10 / span 3; margin-top: clamp(36px, 5vw, 64px); }
   .about__block { grid-column: 1 / -1; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-columns: subgrid; }
   .about__subhead { grid-column: 1 / span 3; padding-top: 18px; }
   .skills,

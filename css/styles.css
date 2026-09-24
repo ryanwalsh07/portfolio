@@ -412,14 +412,16 @@ html:not(.js) .wordmark__pen,
 }
 .media__img--contain { object-fit: contain; }
 .media__img--inset { padding: 6% 5%; }
+/* Landscape screens in a portrait card: fill the height and run off the right edge. */
+.media__img--peek { object-fit: cover; object-position: 0% 50%; padding: 14% 0 14% 9%; }
 /* Mockups ease up in size on hover (the card link on home, the figure on the
    case study); the background stays put because only the img scales. */
-.media--brand .media__img {
+.media--zoom .media__img {
   transition: transform 0.7s var(--ease-out);
 }
-.project__link:hover .media--brand .media__img,
-.project__link:focus-visible .media--brand .media__img,
-.cs-hero-media .media--brand:hover .media__img { transform: scale(1.06); }
+.project__link:hover .media--zoom .media__img,
+.project__link:focus-visible .media--zoom .media__img,
+.cs-hero-media .media--zoom:hover .media__img { transform: scale(1.06); }
 /* A real image replaces the HTML placeholder art (which returns if the image fails). */
 .media:has(> .media__img) > .media__art { visibility: hidden; }
 
@@ -1465,5 +1467,5 @@ html:not(.js) .wordmark__pen,
     transition-delay: 0s !important;
   }
   .js .pen[data-draw] path { stroke-dashoffset: 0; }
-  .media--brand .media__img { transform: none !important; }
+  .media--zoom .media__img { transform: none !important; }
 }

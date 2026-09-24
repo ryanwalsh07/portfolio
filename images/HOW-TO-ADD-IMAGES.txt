@@ -12,7 +12,6 @@ HOME PAGE
   tapsos-mockups.webp      TapSOS three-phone mockup, used on BOTH the home page
                            card and the case study hero. Transparent background:
                            it sits on the site's violet-to-pink wash.
-  nightcommute-cover.png   NightCommute thumbnail. 4:5 ratio, e.g. 1200 x 1500.
   portrait.jpg             Your photo. 4:5 ratio, e.g. 1000 x 1250.
 
 TAPSOS CASE STUDY
@@ -21,7 +20,8 @@ TAPSOS CASE STUDY
   tapsos-fidelity.png      Lo-fi to high-fidelity progression.
 
 NIGHTCOMMUTE CASE STUDY (each slot shows a grey label until its image is added)
-  nightcommute-dashboard.png    Staff dashboard hero. Transparent background.
+  nightcommute-dashboard.webp   Staff dashboard, used on BOTH the home page card and
+                                the case study hero, on navy. Transparent background.
   nightcommute-competitors.png  Competitor analysis. 16:9.
   nightcommute-affinity.png     Affinity mapping. 4:3.
   nightcommute-sitemap.png      Site map. 4:3.

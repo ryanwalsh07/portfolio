@@ -385,6 +385,18 @@ html:not(.js) .wordmark__pen,
 .media--brand { background: linear-gradient(135deg, #e6e4ff 0%, #f1ecff 48%, #ffe1f2 100%); }
 .media--night { background: var(--night); }
 .media--paper { background: var(--tint); }
+.media--tint { background: var(--tint); }
+/* Label shown in an image slot until the real image is added. */
+.media__ph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--paper-faint);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
 
 .media__art { position: absolute; inset: 0; }
 .media__art--flow { position: relative; inset: auto; }
@@ -1072,6 +1084,22 @@ html:not(.js) .wordmark__pen,
 .activities dd { margin-top: 4px; max-width: 40ch; color: var(--paper-soft); }
 
 .figure-pair { display: grid; gap: 28px var(--col-gap); margin-top: clamp(48px, 6vw, 88px); align-items: end; }
+.figure-stack { display: grid; gap: clamp(40px, 5vw, 64px); margin-top: clamp(48px, 6vw, 88px); }
+.figure-stack > .figure-pair { margin-top: 0; }
+
+/* A process shown as big steps joined by arrows. */
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: clamp(48px, 6vw, 80px);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.flow-steps li { display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
+.flow-steps li:not(:last-child)::after { content: "\2193"; color: var(--accent); font-weight: 400; }
 
 .board {
   display: grid;
@@ -1375,6 +1403,11 @@ html:not(.js) .wordmark__pen,
   .stat:nth-child(2) { margin-top: 3.5rem; }
   .stat:nth-child(3) { margin-top: 7rem; }
   .figure-pair { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .figure-pair--even { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .stats--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats--pair .stat:nth-child(2) { margin-top: 3.5rem; }
+  .flow-steps { flex-direction: row; flex-wrap: wrap; column-gap: 0.5em; }
+  .flow-steps li:not(:last-child)::after { content: "\2192"; }
 }
 
 @media (min-width: 1120px) {

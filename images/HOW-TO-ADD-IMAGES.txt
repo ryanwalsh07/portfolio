@@ -20,6 +20,17 @@ TAPSOS CASE STUDY
   tapsos-affinity.png      Affinity map from FigJam.
   tapsos-fidelity.png      Lo-fi to high-fidelity progression.
 
+NIGHTCOMMUTE CASE STUDY (each slot shows a grey label until its image is added)
+  nightcommute-dashboard.png    Staff dashboard hero. Transparent background.
+  nightcommute-competitors.png  Competitor analysis. 16:9.
+  nightcommute-affinity.png     Affinity mapping. 4:3.
+  nightcommute-sitemap.png      Site map. 4:3.
+  nightcommute-storyboard.png   Storyboard sketches. 16:9.
+  nightcommute-lofi.png         Lo-fi wireframes. 16:9.
+  nightcommute-midfi.png        Mid-fidelity flows. 16:9.
+  nightcommute-hifi.png         High-fidelity designs. 16:9.
+  nightcommute-usability.png    Usability test review. 16:9.
+
 SHARING PREVIEW (the card shown when your link is pasted into LinkedIn, Slack etc.)
   share-card.png           1200 x 630.
 

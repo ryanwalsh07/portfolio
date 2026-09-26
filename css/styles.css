@@ -1538,14 +1538,3 @@ html:not(.js) .wordmark__pen,
   .project--third { grid-column: 1 / span 4; }
 }
 .media--slide { aspect-ratio: 16 / 9; }
-.outcomes__flag {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 2px 8px;
-  border: 1px dashed var(--pen);
-  border-radius: 999px;
-  color: var(--paper-soft);
-  font-size: 0.75rem;
-  font-weight: 600;
-  vertical-align: 0.1em;
-}

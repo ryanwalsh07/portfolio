@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20260926a">
+  <link rel="stylesheet" href="css/styles.css?v=20260926b">
   <script src="js/main.js?v=20260925a" defer></script>
 </head>
 <body id="top">
@@ -89,7 +89,29 @@
       <h2 class="section__label" id="work-title">Case studies</h2>
       <p class="section__intro section__intro--line">A closer look at some of my work, each one shaped around the people who use it.</p>
 
-      <article class="project project--feature project--off">
+      <article class="project project--feature">
+        <a class="project__link" href="orbit.html">
+          <div class="media media--orbit media--zoom project__media">
+            <div class="media__art art-orbit" aria-hidden="true">
+            <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+              <g fill="none" stroke="#fff" stroke-opacity="0.09" stroke-width="1.5"><circle cx="200" cy="250" r="90"/><circle cx="200" cy="250" r="150"/><circle cx="200" cy="250" r="210"/></g>
+              <path d="M200 160a90 90 0 1 1-78 45" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="butt"/>
+              <circle cx="122" cy="205" r="9" fill="#fff"/>
+            </svg>
+          </div>
+            <!-- orbit hero (remove the img to fall back to the artwork) -->
+            <img class="media__img media__img--contain media__img--inset" src="images/orbit-hero.webp" alt="" onerror="this.remove()">
+          </div>
+          <div class="project__text">
+            <h3 class="project__title">orbit</h3>
+            <p class="project__desc">A heads-up display app that puts directions in a driver’s peripheral view, designed around the needs of neurodiverse drivers.</p>
+            <p class="project__meta">Final-year university project, 2022 to 2023. Research, UX and UI.</p>
+            <span class="project__cta">View case study<svg class="project__arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+          </div>
+        </a>
+      </article>
+
+      <article class="project project--second project--off">
         <div class="project__link">
           <div class="media media--brand project__media pending" role="img" aria-label="TapSOS case study not available, under construction">
             <span class="pending__mark" aria-hidden="true"></span>
@@ -102,7 +124,7 @@
         </div>
       </article>
 
-      <article class="project project--second project--off">
+      <article class="project project--third project--off">
         <div class="project__link">
           <div class="media media--night project__media pending" role="img" aria-label="NightCommute case study not available, under construction">
             <span class="pending__mark" aria-hidden="true"></span>

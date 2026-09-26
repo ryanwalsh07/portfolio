@@ -1525,3 +1525,15 @@ html:not(.js) .wordmark__pen,
 @media (prefers-reduced-motion: reduce) {
   .pending__track { animation: none; }
 }
+
+/* ---------- orbit ---------- */
+.media--orbit { background: #0b0b0f; }
+.media--orbit .media__art svg { width: 100%; height: 100%; }
+.cs-hero-media .media--orbit { aspect-ratio: 16 / 10; }
+.project--feature .media--orbit { aspect-ratio: 16 / 11; }
+.activities dt a { text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px; }
+.activities dt a:hover { color: var(--accent); }
+@media (min-width: 900px) {
+  .project--second { grid-column: 9 / span 4; margin-top: clamp(220px, 24vw, 360px); }
+  .project--third { grid-column: 1 / span 4; }
+}

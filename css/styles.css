@@ -1584,3 +1584,6 @@ html:not(.js) .wordmark__pen,
 .pending__icon { position: absolute; top: 50%; left: 50%; width: 58%; transform: translate(-50%, -50%); }
 .media--together .pending__band { background: #4c5fd9; border-color: #fff; }
 .media--together .pending__set span::after { color: #fff; }
+
+/* orbit card on the home page: the ring mark, sized to match one Together circle */
+.orbit__mark { position: absolute; top: 50%; left: 50%; width: 30%; height: auto; transform: translate(-50%, -50%); }

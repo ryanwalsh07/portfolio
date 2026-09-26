@@ -1577,3 +1577,10 @@ html:not(.js) .wordmark__pen,
   .cs-hero__eyebrow { grid-column: 1 / -1; }
   .cs-hero__intro { grid-column: 1 / span 6; }
 }
+
+/* ---------- Together placeholder: branded indigo mark behind the banner ---------- */
+.media--together { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }
+.media--together .pending__mark { display: none; }
+.pending__icon { position: absolute; top: 50%; left: 50%; width: 58%; transform: translate(-50%, -50%); }
+.media--together .pending__band { background: #4c5fd9; border-color: #fff; }
+.media--together .pending__set span::after { color: #fff; }

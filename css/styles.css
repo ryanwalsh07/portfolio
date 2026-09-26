@@ -1375,9 +1375,12 @@ html:not(.js) .wordmark__pen,
   .section__intro--line { grid-column: 4 / -1; max-width: none; font-size: var(--text-md); }
 
   /* Work: staggered, deliberately unequal */
+  /* Two columns, staggered: every second card sits lower than its neighbour. */
+  .grid { --gap-y: clamp(40px, 5vw, 72px); --stagger: clamp(72px, 9vw, 144px); }
   .project--feature,
   .project--second,
-  .project--third { grid-column: span 6; margin-top: clamp(40px, 5vw, 72px); }
+  .project--third { grid-column: span 6; margin-top: var(--gap-y); }
+  .project:nth-of-type(even) { margin-top: calc(var(--gap-y) + var(--stagger)); }
 
   /* About */
   .about__statement { grid-column: 4 / span 9; }

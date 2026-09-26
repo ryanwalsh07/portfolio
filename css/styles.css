@@ -1482,3 +1482,46 @@ html:not(.js) .wordmark__pen,
   .js .pen[data-draw] path { stroke-dashoffset: 0; }
   .media--zoom .media__img { transform: none !important; }
 }
+
+/* ---------- Case studies on hold ("not available" cards) ---------- */
+.project--off .project__link { cursor: default; }
+.pending { display: grid; place-items: center; overflow: hidden; }
+.pending__mark {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-45deg, rgba(13, 23, 63, 0.05) 0 12px, transparent 12px 24px);
+}
+.media--night .pending__mark {
+  background: repeating-linear-gradient(-45deg, rgba(243, 241, 234, 0.05) 0 12px, transparent 12px 24px);
+}
+.pending__band {
+  position: relative;
+  z-index: 2;
+  width: 130%;
+  transform: rotate(-6deg);
+  background: var(--navy);
+  border-block: 3px solid var(--pen);
+  padding: 14px 0;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(13, 23, 63, 0.25);
+}
+.media--night .pending__band { background: var(--night-light); border-color: var(--navy); }
+.pending__track { display: flex; width: max-content; animation: pending-scroll 22s linear infinite; }
+.pending__set { display: flex; flex: none; }
+.pending__set span {
+  flex: none;
+  padding-inline: 1.4em;
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pending__set span::after { content: "\2022"; margin-left: 2.8em; color: var(--pen); }
+.media--night .pending__set span { color: var(--navy); }
+.media--night .pending__set span::after { color: var(--navy); }
+@keyframes pending-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .pending__track { animation: none; }
+}

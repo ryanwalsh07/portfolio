@@ -1585,3 +1585,9 @@ html:not(.js) .wordmark__pen,
 .media--together .pending__band { background: #4c5fd9; border-color: #fff; }
 .media--together .pending__set span::after { color: #fff; }
 
+
+/* orbit hero and card: the Together placeholder wash with a tinge of pink */
+.media--orbit-hero { background: linear-gradient(135deg, #eef0fc 0%, #e4e7fb 55%, #fbe3f1 100%); }
+.project__link:hover .media--orbit-hero .media__img,
+.project__link:focus-visible .media--orbit-hero .media__img,
+.cs-hero-media .media--orbit-hero:hover .media__img { transform: scale(1.09); }

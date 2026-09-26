@@ -734,7 +734,7 @@ html:not(.js) .wordmark__pen,
 .project { margin-top: clamp(56px, 7vw, 104px); }
 .project__link { display: block; text-decoration: none; }
 .project__media { aspect-ratio: 16 / 11; }
-.project--second .project__media { aspect-ratio: 4 / 5; }
+
 .project__text { margin-top: 22px; }
 .project__title {
   font-size: var(--text-lg);
@@ -1375,8 +1375,9 @@ html:not(.js) .wordmark__pen,
   .section__intro--line { grid-column: 4 / -1; max-width: none; font-size: var(--text-md); }
 
   /* Work: staggered, deliberately unequal */
-  .project--feature { grid-column: 1 / span 8; }
-  .project--second { grid-column: 9 / span 4; margin-top: clamp(220px, 24vw, 360px); }
+  .project--feature,
+  .project--second,
+  .project--third { grid-column: span 6; margin-top: clamp(40px, 5vw, 72px); }
 
   /* About */
   .about__statement { grid-column: 4 / span 9; }
@@ -1533,10 +1534,6 @@ html:not(.js) .wordmark__pen,
 .project--feature .media--orbit { aspect-ratio: 16 / 11; }
 .activities dt a { text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px; }
 .activities dt a:hover { color: var(--accent); }
-@media (min-width: 900px) {
-  .project--second { grid-column: 9 / span 4; margin-top: clamp(220px, 24vw, 360px); }
-  .project--third { grid-column: 1 / span 4; }
-}
 .media--slide { aspect-ratio: 16 / 9; }
 
 /* ---------- Project cards: eyebrow and skill tags ---------- */

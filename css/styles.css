@@ -1538,3 +1538,42 @@ html:not(.js) .wordmark__pen,
   .project--third { grid-column: 1 / span 4; }
 }
 .media--slide { aspect-ratio: 16 / 9; }
+
+/* ---------- Project cards: eyebrow and skill tags ---------- */
+.project__eyebrow,
+.cs-hero__eyebrow {
+  color: var(--paper-faint);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.project__eyebrow { margin-bottom: 8px; }
+.cs-hero__eyebrow { margin-top: clamp(28px, 4vw, 48px); }
+.cs-hero__eyebrow + .cs-hero__heading { margin-top: 12px; }
+.on-dark .cs-hero__eyebrow { color: rgba(255, 255, 255, 0.72); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tags li {
+  padding: 4px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--paper-soft);
+  font-size: var(--text-sm);
+}
+.tags--hero { margin-top: 24px; }
+.on-dark .tags li { border-color: rgba(255, 255, 255, 0.35); color: rgba(255, 255, 255, 0.85); }
+.tags + .project__cta { margin-top: 18px; }
+
+/* ---------- "More selected work" at the end of a case study ---------- */
+.more-work {
+  display: grid;
+  gap: 8px;
+  padding-block: clamp(72px, 9vw, 128px);
+  border-top: 1px solid var(--line);
+}
+.more-work__card { max-width: 520px; margin-top: 32px; }
+.more-work .button { justify-self: start; margin-top: 32px; }
+@media (min-width: 900px) {
+  .cs-hero__eyebrow { grid-column: 1 / -1; }
+  .cs-hero__intro { grid-column: 1 / span 6; }
+}

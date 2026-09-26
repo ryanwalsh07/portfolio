@@ -1591,3 +1591,8 @@ html:not(.js) .wordmark__pen,
 .project__link:hover .media--orbit-hero .media__img,
 .project__link:focus-visible .media--orbit-hero .media__img,
 .cs-hero-media .media--orbit-hero:hover .media__img { transform: scale(1.09); }
+
+/* Research figures: full-width, on white with a hairline so they sit in the page like cards. */
+.media--plain { min-height: 200px; border: 1px solid var(--line); background: #fff; }
+.media--plain .media__img { position: static; display: block; height: auto; }
+.media--plain:has(> .media__img) > .media__ph { display: none; }

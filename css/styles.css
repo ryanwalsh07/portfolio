@@ -1596,3 +1596,8 @@ html:not(.js) .wordmark__pen,
 .media--plain { min-height: 200px; border: 1px solid var(--line); background: #fff; }
 .media--plain .media__img { position: static; display: block; height: auto; }
 .media--plain:has(> .media__img) > .media__ph { display: none; }
+
+/* A lone phone screen: no box, sits directly on the page. */
+.phone-figure { display: grid; justify-items: center; align-content: start; }
+.phone-figure img { width: min(100%, 405px); height: auto; }
+.phone-figure .caption { justify-self: stretch; text-align: center; }

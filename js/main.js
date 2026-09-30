@@ -54,22 +54,6 @@
     });
   }
 
-  /* Local time in Belfast */
-  var clock = document.querySelector("[data-belfast-time]");
-  if (clock) {
-    var format = new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Europe/London",
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true
-    });
-    var tick = function () {
-      clock.textContent = format.format(new Date()).replace(/\s+/g, "").toLowerCase();
-    };
-    tick();
-    setInterval(tick, 20000);
-  }
-
   /* Keep pen strokes a consistent on-screen thickness at any size */
   function sizePens() {
     document.querySelectorAll(".pen").forEach(function (pen) {

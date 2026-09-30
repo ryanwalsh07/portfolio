@@ -251,14 +251,17 @@ button { font: inherit; }
   text-decoration: none;
   white-space: nowrap;
 }
-.wordmark__mark { flex: none; width: auto; height: 26px; overflow: visible; }
-/* Letters follow the text colour (white on the gradient and on navy). Pink
-   #ff2fad is only 2:1 on the violet gradient, so the underline starts as a
+/* The mark is "RW" in braille: R (dots 1 2 3 5) and W (dots 2 4 5 6), with the
+   empty positions drawn faintly so each cell still reads as a cell. */
+.wordmark__mark { flex: none; width: auto; height: 22px; overflow: visible; }
+.wordmark__blank { opacity: 0.3; }
+/* Dots follow the text colour (white on the gradient and on navy). Pink
+   #ff2fad is only 2:1 on the violet gradient, so the last dot starts as a
    lighter pink (3.6:1) and switches once the navy header appears (5.2:1). */
-.wordmark__pen { stroke: #ffa3d8; transition: stroke 0.3s; }
+.wordmark__pen { fill: #ffa3d8; transition: fill 0.3s; }
 .site-header.is-scrolled .wordmark__pen,
 html:not(.js) .wordmark__pen,
-.nav-open .wordmark__pen { stroke: var(--pen); }
+.nav-open .wordmark__pen { fill: var(--pen); }
 
 .nav__list {
   display: flex;
@@ -689,7 +692,7 @@ html:not(.js) .wordmark__pen,
   pointer-events: none;
 }
 .site-header--light::before { background: rgba(243, 243, 242, 0.86); }
-.site-header--light .wordmark__pen { stroke: var(--pen); }
+.site-header--light .wordmark__pen { fill: var(--pen); }
 
 .hero {
   padding-top: clamp(70px, 29px + 10.9vw, 186px);

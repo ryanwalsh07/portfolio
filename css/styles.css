@@ -671,6 +671,8 @@ html:not(.js) .wordmark__pen,
    18px intro line, and a flat #f3f3f2 ground. */
 /* The grey eases into the white page below, alongside the grid's own fade. */
 .hero-band--light { position: relative; isolation: isolate; background: linear-gradient(to bottom, #f3f3f2 65%, var(--ground)); }
+/* Fill the first screen so the case studies start below the fold. */
+.hero-band--light { min-height: 100vh; min-height: 100svh; }
 .hero-band--light + .section { border-top: 0; }
 /* The reference's 40px graph-paper grid, easing out toward the bottom edge. */
 .hero-band--light::before {

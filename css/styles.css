@@ -422,8 +422,10 @@ html:not(.js) .wordmark__pen,
 .project__link:hover .media--zoom .media__img,
 .project__link:focus-visible .media--zoom .media__img,
 .cs-hero-media .media--zoom:hover .media__img { transform: scale(1.06); }
-/* A real image replaces the HTML placeholder art (which returns if the image fails). */
+/* A real image replaces the HTML placeholder art and the "coming soon" label
+   (both return if the image fails to load, via the img's onerror). */
 .media:has(> .media__img) > .media__art { visibility: hidden; }
+.media:has(> .media__img) > .media__ph { display: none; }
 
 .caption {
   margin-top: 14px;
@@ -1595,7 +1597,6 @@ html:not(.js) .wordmark__pen,
 /* Research figures: full-width, on white with a hairline so they sit in the page like cards. */
 .media--plain { min-height: 200px; border: 1px solid var(--line); background: #fff; }
 .media--plain .media__img { position: static; display: block; height: auto; }
-.media--plain:has(> .media__img) > .media__ph { display: none; }
 
 /* A lone phone screen: no box, sits directly on the page. */
 .phone-figure { display: grid; justify-items: center; align-content: start; }

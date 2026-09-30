@@ -733,7 +733,7 @@ html:not(.js) .wordmark__pen,
 }
 
 /* ---------- Home: work ---------- */
-.project { margin-top: clamp(56px, 7vw, 104px); }
+.project { margin-top: clamp(40px, 5vw, 64px); }
 .project__link { display: block; text-decoration: none; }
 .project__media { aspect-ratio: 16 / 11; }
 
@@ -1376,13 +1376,10 @@ html:not(.js) .wordmark__pen,
   /* A short intro that reads as one quiet line on desktop. */
   .section__intro--line { grid-column: 4 / -1; max-width: none; font-size: var(--text-md); }
 
-  /* Work: staggered, deliberately unequal */
-  /* Two columns, staggered: every second card sits lower than its neighbour. */
-  .grid { --gap-y: clamp(40px, 5vw, 72px); --stagger: clamp(72px, 9vw, 144px); }
+  /* Work: an even, aligned grid — every card the same size, in tidy rows. */
   .project--feature,
   .project--second,
-  .project--third { grid-column: span 6; margin-top: var(--gap-y); }
-  .project:nth-of-type(even) { margin-top: calc(var(--gap-y) + var(--stagger)); }
+  .project--third { grid-column: span 6; }
 
   /* About */
   .about__statement { grid-column: 4 / span 9; }
@@ -1541,8 +1538,7 @@ html:not(.js) .wordmark__pen,
 .activities dt a:hover { color: var(--accent); }
 .media--slide { aspect-ratio: 16 / 9; }
 
-/* ---------- Project cards: eyebrow and skill tags ---------- */
-.project__eyebrow,
+/* ---------- Project cards: skill tags ---------- */
 .cs-hero__eyebrow {
   color: var(--paper-faint);
   font-size: var(--text-sm);
@@ -1550,7 +1546,6 @@ html:not(.js) .wordmark__pen,
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.project__eyebrow { margin-bottom: 8px; }
 .cs-hero__eyebrow { margin-top: clamp(28px, 4vw, 48px); }
 .cs-hero__eyebrow + .cs-hero__heading { margin-top: 12px; }
 .on-dark .cs-hero__eyebrow { color: rgba(255, 255, 255, 0.72); }
@@ -1637,18 +1632,6 @@ html:not(.js) .wordmark__pen,
 .gate__input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .gate__row .button { flex: none; }
 .gate__error { margin-top: 12px; color: #ffb4de; font-size: var(--text-sm); }
-
-.project__eyebrow .eyebrow__lock,
-.eyebrow__lock {
-  width: 11px;
-  height: 11px;
-  margin: 0 2px -1px 0;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 
 /* ---------- Generic "image withheld" placeholder (no product-specific art) ---------- */
 .media-locked {

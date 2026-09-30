@@ -1380,7 +1380,9 @@ html:not(.js) .wordmark__pen,
   .project--feature { grid-column: 1 / -1; }
   .project--second,
   .project--third { grid-column: span 6; }
-  .project--feature .project__media { aspect-ratio: 16 / 9; }
+  /* Exactly double the base 16/11: at double the width (full row vs. half),
+     this keeps orbit's card the same height as Together and TapSOS below it. */
+  .project--feature .project__media { aspect-ratio: 32 / 11; }
   .project--feature .project__text { max-width: 640px; }
 
   /* About */

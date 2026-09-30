@@ -665,22 +665,39 @@ html:not(.js) .wordmark__pen,
   text-align: center;
 }
 
-/* ---------- Home: hero ---------- */
+/* ---------- Home: hero ----------
+   Type sizes, weights and spacing match the uxfol.io reference like for like:
+   32px / 40px / 56px heading at its 768px and 1024px breakpoints, a light
+   18px intro line, and a flat #f3f3f2 ground. */
+.hero-band--light { background: #f3f3f2; }
+.site-header--light::before { background: rgba(243, 243, 242, 0.86); }
+.site-header--light .wordmark__pen { stroke: var(--pen); }
+
 .hero {
-  padding-top: clamp(56px, 11vh, 132px);
-  padding-bottom: clamp(88px, 13vh, 160px);
+  padding-top: clamp(70px, 29px + 10.9vw, 186px);
+  padding-bottom: clamp(64px, 40px + 6.9vw, 139px);
 }
 .hero__hello {
-  margin-bottom: 0.9em;
-  color: var(--paper-soft);
-  font-size: var(--text-md);
+  margin-bottom: 30px;
+  color: var(--paper-faint); /* the reference's #929294 is only 2.9:1 here */
+  font-size: 16.8px;
+  font-weight: 300;
+  line-height: 1.45;
 }
 .hero__title {
-  font-size: var(--text-display);
-  font-weight: 300;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: normal;
   text-wrap: balance;
+}
+@media (min-width: 769px) {
+  .hero__hello { font-size: 17.2px; line-height: 1.5; }
+  .hero__title { max-width: min(776px, 66%); font-size: 40px; line-height: 1.17; }
+}
+@media (min-width: 1025px) {
+  .hero__hello { font-size: 18px; line-height: 1.44; }
+  .hero__title { font-size: 56px; line-height: 1.07; }
 }
 .hero__aside { margin-top: clamp(60px, 6vw, 80px); }
 .hero__intro { max-width: 46ch; color: var(--paper-soft); }
@@ -1365,7 +1382,7 @@ html:not(.js) .wordmark__pen,
 
   /* Hero */
   .hero__hello { grid-column: 1 / -1; }
-  .hero__title { grid-column: 1 / span 11; }
+  .hero__title { grid-column: 1 / -1; }
   .hero__meta { grid-column: 1 / span 4; grid-row: 4; margin-top: 48px; }
   .hero__aside { grid-column: 1 / span 10; grid-row: 3; }
   .hero__intro { max-width: none; font-size: var(--text-md); }

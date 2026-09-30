@@ -1672,18 +1672,3 @@ html:not(.js) .wordmark__pen,
 }
 .media-locked__icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .media-locked__text { max-width: 22ch; font-size: var(--text-sm); font-weight: 500; }
-
-/* ---------- Section-label rule: a thin line that draws in on scroll ---------- */
-.rule {
-  grid-column: 1 / -1;
-  width: 64px;
-  height: 2px;
-  margin-top: -0.4rem;
-  background: var(--accent);
-  transform-origin: left;
-}
-.js .rule[data-draw] { transform: scaleX(0); }
-.js .rule[data-draw].is-drawn {
-  transform: scaleX(1);
-  transition: transform 0.8s var(--ease-out);
-}

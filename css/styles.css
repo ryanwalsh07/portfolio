@@ -1587,11 +1587,12 @@ html:not(.js) .wordmark__pen,
 .media--together .pending__set span::after { color: #fff; }
 
 
-/* orbit hero and card: the Together placeholder wash with a tinge of pink */
+/* orbit case study hero: the Together placeholder wash with a tinge of pink */
 .media--orbit-hero { background: linear-gradient(135deg, #eef0fc 0%, #e4e7fb 55%, #fbe3f1 100%); }
-.project__link:hover .media--orbit-hero .media__img,
-.project__link:focus-visible .media--orbit-hero .media__img,
 .cs-hero-media .media--orbit-hero:hover .media__img { transform: scale(1.09); }
+
+/* orbit home card: same wash as the Together placeholder, no hover animation */
+.media--orbit-card { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }
 
 /* Research figures: full-width, on white with a hairline so they sit in the page like cards. */
 .media--plain { min-height: 200px; border: 1px solid var(--line); background: #fff; }

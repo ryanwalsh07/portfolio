@@ -1672,3 +1672,15 @@ html:not(.js) .wordmark__pen,
 }
 .media-locked__icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .media-locked__text { max-width: 22ch; font-size: var(--text-sm); font-weight: 500; }
+
+/* ---------- "Case studies" down arrow (replaces the old intro line) ---------- */
+.work-arrow { margin-top: -6px; }
+.pen--down {
+  position: static;
+  width: 34px;
+  height: 108px;
+}
+@media (min-width: 900px) {
+  .work-arrow { grid-column: 4 / span 1; margin-top: -10px; }
+  .pen--down { width: 40px; height: 128px; }
+}

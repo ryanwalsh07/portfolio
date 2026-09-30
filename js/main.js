@@ -84,26 +84,27 @@
   window.addEventListener("resize", sizePens);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizePens);
 
-  /* Pen marks: drawn once, when they come into view */
-  var pens = document.querySelectorAll(".pen[data-draw]");
+  /* Pen marks and other "draws once in view" bits (e.g. the .rule under a
+     section label): anything with [data-draw], not just .pen elements. */
+  var reveals = document.querySelectorAll("[data-draw]");
   if (reduceMotion || !("IntersectionObserver" in window)) {
-    pens.forEach(function (pen) { pen.classList.add("is-drawn"); });
+    reveals.forEach(function (el) { el.classList.add("is-drawn"); });
   } else {
-    var penObserver = new IntersectionObserver(function (entries) {
+    var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-drawn");
-          penObserver.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.8 });
 
-    pens.forEach(function (pen) {
-      if (pen.getAttribute("data-draw") === "load") {
+    reveals.forEach(function (el) {
+      if (el.getAttribute("data-draw") === "load") {
         // Wait for the first paint so the stroke animates rather than appearing drawn.
-        setTimeout(function () { pen.classList.add("is-drawn"); }, 120);
+        setTimeout(function () { el.classList.add("is-drawn"); }, 120);
       } else {
-        penObserver.observe(pen);
+        revealObserver.observe(el);
       }
     });
   }

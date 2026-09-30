@@ -669,7 +669,9 @@ html:not(.js) .wordmark__pen,
    Type sizes, weights and spacing match the uxfol.io reference like for like:
    32px / 40px / 56px heading at its 768px and 1024px breakpoints, a light
    18px intro line, and a flat #f3f3f2 ground. */
-.hero-band--light { position: relative; isolation: isolate; background: #f3f3f2; }
+/* The grey eases into the white page below, alongside the grid's own fade. */
+.hero-band--light { position: relative; isolation: isolate; background: linear-gradient(to bottom, #f3f3f2 65%, var(--ground)); }
+.hero-band--light + .section { border-top: 0; }
 /* The reference's 40px graph-paper grid, easing out toward the bottom edge. */
 .hero-band--light::before {
   content: "";

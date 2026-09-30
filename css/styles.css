@@ -1672,19 +1672,3 @@ html:not(.js) .wordmark__pen,
 }
 .media-locked__icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .media-locked__text { max-width: 22ch; font-size: var(--text-sm); font-weight: 500; }
-
-/* ---------- "Case studies" down arrow (replaces the old intro line) ---------- */
-/* The zigzag pen comes out of the heading text itself, so the label needs a
-   sizing context to anchor it to rather than spanning the full grid column. */
-.section__label:has(.label-anchor) { display: block; }
-.label-anchor { position: relative; display: inline-block; }
-.pen--down {
-  position: absolute;
-  left: calc(100% - 6px);
-  top: 0.5em;
-  width: 46px;
-  height: auto;
-}
-@media (min-width: 900px) {
-  .pen--down { width: 56px; }
-}

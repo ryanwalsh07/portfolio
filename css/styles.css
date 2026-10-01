@@ -1689,9 +1689,12 @@ html:not(.js) .wordmark__pen,
 .gate__error { margin-top: 12px; color: #ffb4de; font-size: var(--text-sm); }
 
 /* ---------- Generic "image withheld" placeholder (no product-specific art) ---------- */
+/* Sits over the abstract placeholder wall (images/tapsos-card.webp), which uses
+   TapSOS colours but no real screens while the work is under review. */
 .media-locked {
   position: absolute;
   inset: 0;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1708,6 +1711,13 @@ html:not(.js) .wordmark__pen,
   height: 44px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
+  background: var(--navy);
 }
 .media-locked__icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.media-locked__text { max-width: 22ch; font-size: var(--text-sm); font-weight: 500; }
+.media-locked__text {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(13, 23, 63, 0.9);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}

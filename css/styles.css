@@ -1717,6 +1717,12 @@ html:not(.js) .wordmark__pen,
 /* orbit case study hero: the Together placeholder wash with a tinge of pink */
 .media--orbit-hero { background: linear-gradient(135deg, #eef0fc 0%, #e4e7fb 55%, #fbe3f1 100%); }
 .cs-hero-media .media--orbit-hero:hover .media__img { transform: scale(1.09); }
+/* Same shape as the orbit card on the home page: 16:11, then 32:11 once the
+   home grid goes wide, at the same full content width. */
+.cs-hero-media .media--orbit-hero { aspect-ratio: 16 / 11; }
+@media (min-width: 900px) {
+  .cs-hero-media .media--orbit-hero { aspect-ratio: 32 / 11; }
+}
 
 /* orbit home card: same wash as the Together placeholder, no hover animation */
 .media--orbit-card { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }

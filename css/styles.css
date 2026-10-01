@@ -878,9 +878,22 @@ html:not(.js) .wordmark__pen,
 }
 .about__subhead { color: var(--paper); font-size: 1.25rem; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
 
-.skills { display: grid; gap: 28px var(--col-gap); padding-top: 20px; border-top: 1px solid var(--line); }
-.skills dt { margin-bottom: 4px; font-weight: 600; }
-.skills dd { max-width: 40ch; color: var(--paper-soft); }
+/* Skills as soft grey cards, the same ground as the home hero. */
+.skills { display: grid; gap: 12px; }
+.skills > div { padding: 24px; border-radius: var(--radius-media); background: #f3f3f2; }
+.skills dt { margin-bottom: 6px; font-weight: 600; }
+.skills dd { max-width: 40ch; color: var(--paper-soft); font-size: 0.9375rem; line-height: 1.55; }
+.skills__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 18px;
+  border-radius: var(--radius-control);
+  background: #ffffff;
+  color: var(--violet);
+}
+.skills__icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
 .tools { margin-top: 36px; }
 .tools__label { margin-bottom: 14px; font-weight: 600; }
@@ -1486,6 +1499,7 @@ html:not(.js) .wordmark__pen,
 
 @media (min-width: 1120px) {
   .section__intro--line { white-space: nowrap; }
+  .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
   .cs-layout {
     display: grid;

@@ -839,6 +839,16 @@ html:not(.js) .wordmark__pen,
 .project__link:hover .project__badge,
 .project__link:focus-visible .project__badge { opacity: 0; }
 .project__badge { transition: opacity 0.2s; }
+
+/* No hover on phones and touch tablets, so the one line and link sit under
+   each image there instead. */
+.project__caption { display: none; }
+@media (max-width: 899px), (hover: none) {
+  .project__caption { display: block; margin-top: 14px; }
+  .project__caption-desc { color: var(--paper-soft); }
+  .project__caption .project__cta { margin-top: 8px; }
+  .project + .project { margin-top: 36px; }
+}
 .project__link { display: block; text-decoration: none; }
 .project__media { aspect-ratio: 16 / 11; }
 

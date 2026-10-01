@@ -804,10 +804,41 @@ html:not(.js) .wordmark__pen,
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.4;
-  transition: background-color 0.2s, color 0.2s;
 }
-a.project__link:hover .project__badge,
-a.project__link:focus-visible .project__badge { background: var(--violet); color: #ffffff; }
+/* Hover / keyboard focus: the image blurs under a navy tint (dark enough for
+   white text at AA on the lightest card) and the project details appear. */
+.project__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  background: rgba(13, 23, 63, 0.6);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: #ffffff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+}
+.project__overlay-title { font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+.project__overlay-desc { max-width: 56ch; color: rgba(255, 255, 255, 0.88); font-size: var(--text-base); line-height: 1.5; }
+.project__overlay-cta {
+  margin-top: 10px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.project__link:hover .project__overlay,
+.project__link:focus-visible .project__overlay { opacity: 1; }
+.project__link:hover .project__badge,
+.project__link:focus-visible .project__badge { opacity: 0; }
+.project__badge { transition: opacity 0.2s; }
 .project__link { display: block; text-decoration: none; }
 .project__media { aspect-ratio: 16 / 11; }
 

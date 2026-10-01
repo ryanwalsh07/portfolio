@@ -1643,10 +1643,10 @@ html:not(.js) .wordmark__pen,
 
 /* orbit home card: same wash as the Together placeholder, no hover animation */
 .media--orbit-card { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }
-/* Below the wide 32:11 layout the card is 16:11, so frame the three phones on
-   the image's left half instead of cropping from the centre. */
+/* Below the wide 32:11 layout the card is 16:11, so show the image's left half,
+   where the two phones are centred, instead of cropping from the middle. */
 @media (max-width: 899px) {
-  .media--orbit-card .media__img { padding: 5%; object-position: 0% 50%; }
+  .media--orbit-card .media__img { object-position: 0% 50%; }
 }
 
 /* Research figures: full-width, on white with a hairline so they sit in the page like cards. */

@@ -1070,13 +1070,19 @@ html:not(.js) .wordmark__pen,
     radial-gradient(circle at 85% 0, rgba(255, 47, 173, 0.6), rgba(255, 47, 173, 0) 28%),
     var(--navy);
 }
+/* Same type as the home hero heading: 32 / 40 / 56px, regular weight. */
 .contact__title {
-  max-width: 17ch;
-  font-size: var(--text-2xl);
-  font-weight: 300;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: normal;
   text-wrap: balance;
+}
+@media (min-width: 769px) {
+  .contact__title { max-width: min(776px, 66%); font-size: 40px; line-height: 1.17; }
+}
+@media (min-width: 1025px) {
+  .contact__title { font-size: 56px; line-height: 1.07; }
 }
 .contact__body { margin-top: clamp(44px, 6vw, 88px); }
 .contact__lead { color: var(--paper-soft); }
@@ -1573,7 +1579,7 @@ html:not(.js) .wordmark__pen,
   .rec--b { grid-column: 7 / span 6; }
 
   /* Contact */
-  .contact__title { grid-column: 1 / span 11; }
+  .contact__title { grid-column: 1 / -1; }
   .contact__body { grid-column: 4 / span 9; }
   .pen--arrow {
     display: block;

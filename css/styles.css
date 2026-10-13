@@ -691,7 +691,7 @@ html:not(.js) .wordmark__pen,
   mask-image: linear-gradient(to bottom, #000 65%, transparent);
   pointer-events: none;
 }
-.site-header--light::before { background: rgba(243, 243, 242, 0.86); }
+.site-header--light::before { background: rgba(243, 243, 242, 0.96); } /* near-solid so dark sections can't wash out the links */
 .site-header--light .wordmark__pen { fill: var(--pen); }
 
 .hero {

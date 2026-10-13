@@ -997,28 +997,68 @@ html:not(.js) .wordmark__pen,
   line-height: 1.3;
   text-indent: -0.42em;
 }
-/* Two quotes side by side at the same size; each can run to a few paragraphs,
-   with the opening mark hanging on the first. */
+/* Two quotes as white cards on the tinted section, equal height side by side,
+   each opening with a large violet quote mark and ending with who said it. */
 .rec--a,
-.rec--b { margin-top: clamp(28px, 3.5vw, 48px); }
+.rec--b {
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(28px, 3.5vw, 48px);
+  padding: clamp(28px, 3vw, 44px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(13, 23, 63, 0.04), 0 18px 40px -18px rgba(13, 23, 63, 0.18);
+}
+.rec--a::before,
+.rec--b::before {
+  content: "\201C";
+  display: block;
+  height: 0.5em;
+  margin-bottom: 20px;
+  color: var(--violet);
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
 .rec--a blockquote p,
-.rec--b blockquote p { font-size: var(--text-md); line-height: 1.5; }
-.rec blockquote p:first-child { text-indent: -0.4em; }
-.rec blockquote p + p { margin-top: 0.75em; }
+.rec--b blockquote p { color: var(--paper); font-size: 1.125rem; font-weight: 400; line-height: 1.6; letter-spacing: 0; }
+.rec blockquote p + p { margin-top: 0.85em; }
 .rec figcaption {
   display: flex;
   flex-direction: column;
   margin-top: 22px;
   font-size: var(--text-sm);
 }
-.rec figcaption::before {
+.rec--lead figcaption::before {
   content: "";
   width: 28px;
   height: 1px;
   margin-bottom: 14px;
   background: var(--line-strong);
 }
-.rec__name { font-weight: 600; }
+.rec--a figcaption,
+.rec--b figcaption {
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 28px;
+}
+.rec__avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #eceafe;
+  color: var(--violet);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.rec__who { display: flex; flex-direction: column; }
+.rec__name { color: var(--paper); font-size: var(--text-base); font-weight: 600; }
 .rec__role { color: var(--paper-faint); }
 #recommendations { background: linear-gradient(var(--tint) 20%, var(--ground)); }
 
@@ -1529,8 +1569,8 @@ html:not(.js) .wordmark__pen,
 
   /* Recommendations */
   .rec--lead { grid-column: 4 / span 8; }
-  .rec--a { grid-column: 1 / span 6; padding-right: clamp(0px, 2vw, 32px); }
-  .rec--b { grid-column: 7 / span 6; padding-left: clamp(0px, 2vw, 32px); }
+  .rec--a { grid-column: 1 / span 6; }
+  .rec--b { grid-column: 7 / span 6; }
 
   /* Contact */
   .contact__title { grid-column: 1 / span 11; }

@@ -1822,8 +1822,7 @@ html:not(.js) .wordmark__pen,
 .gate__error { margin-top: 12px; color: #ffb4de; font-size: var(--text-sm); }
 
 /* ---------- Generic "image withheld" placeholder (no product-specific art) ---------- */
-/* Sits over the abstract placeholder wall (images/tapsos-card.webp), which uses
-   TapSOS colours but no real screens while the work is under review. */
+/* Not used at the moment; kept for any future case study under review. */
 .media-locked {
   position: absolute;
   inset: 0;
@@ -1854,3 +1853,14 @@ html:not(.js) .wordmark__pen,
   font-size: var(--text-sm);
   font-weight: 500;
 }
+
+/* ---------- TapSOS home card: three screens from the approved portfolio pack ---------- */
+.media-trio {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4cqw;
+  padding: 7cqw 6cqw 0;
+}
+.media-trio img { width: 24cqw; height: auto; }
+.media-trio img:nth-child(2) { margin-top: 5cqw; }

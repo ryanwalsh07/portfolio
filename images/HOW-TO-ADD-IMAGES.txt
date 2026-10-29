@@ -8,18 +8,10 @@ no code changes needed. If a file is missing, the placeholder shows instead.
 Export from Figma: select the frame > Export (bottom right) > PNG at 2x.
 Keep each file under about 1 MB (tinypng.com shrinks them for free).
 
-HOME PAGE
-  tapsos-mockups.webp      TapSOS three-phone mockup, used on BOTH the home page
-                           card and the case study hero. Transparent background:
-                           it sits on the site's violet-to-pink wash.
-
-TAPSOS CASE STUDY
-  tapsos-competitors.png   Competitor analysis board.
-  tapsos-affinity.png      Affinity map from FigJam.
-  tapsos-fidelity.png      Lo-fi to high-fidelity progression.
-
-TapSOS is password protected while it's under review (see js/tapsos-gate.js).
-Its images sit outside that lock, in this folder, same as any other image.
+TAPSOS (home page card and case study)
+  tapsos/                  Screens and icons from the approved TapSOS 2.0
+                           Portfolio Pack. Only add files from that pack.
+                           No MyJourney / NightCommute images on this site.
 
 NightCommute has been retired: its case study and images are gone for good.
 

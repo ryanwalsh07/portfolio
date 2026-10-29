@@ -6,7 +6,7 @@ I’m a product designer in Belfast. I design complex digital products end to en
 
 ## Case studies
 
-**TapSOS** is password protected while it's under review before going public again. The page and its images still ship in this repo, but the case study text only exists encrypted (AES-256-GCM, key derived from the password with PBKDF2) inside `tapsos.html` — see `js/tapsos-gate.js`. Change the password by re-running the encryption step with a new one; there's no separate plaintext copy to edit.
+**TapSOS** is public, built only from the approved TapSOS 2.0 Portfolio Pack from Inclutech. Its screens and icons live in `images/tapsos/`. The page is still marked `noindex` while it's being worked on. MyJourney (formerly NightCommute) material must not go on this site: Inclutech allows it in private interview presentations only.
 
 **NightCommute** has been retired. Its case study and images are gone for good; the URL now 404s.
 
@@ -26,14 +26,12 @@ Hand-written HTML, CSS and a small amount of JavaScript. No frameworks and no bu
 ```
 index.html        Home: work, about, recommendations, contact
 orbit.html         orbit case study
-tapsos.html         TapSOS case study, password protected
+tapsos.html       TapSOS case study
 tapsos-new.html   Old link, redirects to tapsos.html
 404.html          Page-not-found
 favicon.svg       Browser tab icon
 css/              Styles (colour and type tokens at the top)
-js/               Menu, Belfast clock, scroll details, main.js exposes
-                  window.RW_initPage so tapsos-gate.js can re-run it once
-                  the password-protected content is added to the page
+js/               Menu, Belfast clock, scroll details
 cv/               CV download
 images/           Site images (see HOW-TO-ADD-IMAGES.txt)
 CNAME             Custom domain for GitHub Pages

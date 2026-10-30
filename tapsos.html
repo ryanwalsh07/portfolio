@@ -155,17 +155,17 @@
     </figure>
 
     <nav class="agenda" aria-label="Case study parts">
-      <a class="agenda__item" href="#problem">
-        <p class="agenda__title">The problem</p>
-        <p class="agenda__desc">Why a voice call shuts millions of people out of 999.</p>
+      <a class="agenda__item" href="#background">
+        <p class="agenda__title">What I did</p>
+        <p class="agenda__desc">Why TapSOS 2.0 was needed, the problem, and who it was for.</p>
       </a>
-      <a class="agenda__item" href="#barriers">
-        <p class="agenda__title">The solution</p>
-        <p class="agenda__desc">Each barrier to a silent 999 call, and the design that answers it.</p>
+      <a class="agenda__item" href="#discovery">
+        <p class="agenda__title">How I worked</p>
+        <p class="agenda__desc">Research, an accessibility-first process, and the design system.</p>
       </a>
-      <a class="agenda__item" href="#impact">
-        <p class="agenda__title">The impact</p>
-        <p class="agenda__desc">What TapSOS achieved for the people it was built for.</p>
+      <a class="agenda__item" href="#testing">
+        <p class="agenda__title">Impact and outcomes</p>
+        <p class="agenda__desc">Testing with Deaf participants, results, and what I learned.</p>
       </a>
     </nav>
   </div>
@@ -175,40 +175,81 @@
 
     <aside class="cs-index" aria-label="On this page">
       <div class="cs-index__group">
-        <p class="cs-index__heading">The problem</p>
-        <a href="#problem"><span>01</span>A voice-first 999</a>
-        <a href="#scale"><span>02</span>Who it leaves out</a>
+        <p class="cs-index__heading">What I did</p>
+        <a href="#background"><span>01</span>Background</a>
+        <a href="#problem"><span>02</span>The problem</a>
+        <a href="#scale"><span>03</span>Who it leaves out</a>
       </div>
       <div class="cs-index__group">
-        <p class="cs-index__heading">The solution</p>
-        <a href="#answer"><span>03</span>The answer</a>
-        <a href="#barriers"><span>04</span>Barrier by barrier</a>
-        <a href="#pictograms"><span>05</span>A visual vocabulary</a>
+        <p class="cs-index__heading">How I worked</p>
+        <a href="#discovery"><span>04</span>Discovery</a>
+        <a href="#accessibility"><span>05</span>Accessibility first</a>
+        <a href="#system"><span>06</span>Sketch to system</a>
+        <a href="#answer"><span>07</span>The answer</a>
+        <a href="#barriers"><span>08</span>Barrier by barrier</a>
+        <a href="#pictograms"><span>09</span>A visual vocabulary</a>
       </div>
       <div class="cs-index__group">
-        <p class="cs-index__heading">The impact</p>
-        <a href="#impact"><span>06</span>What it achieved</a>
+        <p class="cs-index__heading">Impact</p>
+        <a href="#testing"><span>10</span>Testing</a>
+        <a href="#impact"><span>11</span>What it achieved</a>
+        <a href="#reflection"><span>12</span>Reflection</a>
       </div>
     </aside>
 
     <div class="cs-story">
 
       <!-- 01 -->
-      <section class="cs-section" id="problem" aria-labelledby="problem-title">
-        <p class="cs-section__tag"><span>01</span>The problem</p>
-        <h2 class="cs-h2" id="problem-title">999 is built around a voice call.</h2>
+      <section class="cs-section" id="background" aria-labelledby="background-title">
+        <p class="cs-section__tag"><span>01</span>Background</p>
+        <h2 class="cs-h2" id="background-title">TapSOS 1.0 sent the alert. Then it went quiet.</h2>
 
-        <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
-          <p>Calling 999 usually means talking to a call handler: saying which service you need, where you are and what has happened. For people who are Deaf, have hearing loss or can’t speak, that first step is the barrier.</p>
-          <p>It is also a barrier for anyone in a situation where speaking out loud isn’t safe.</p>
+        <div class="split">
+          <div class="prose">
+            <p>The first version of TapSOS already let people send a 999 alert without speaking. But once it was sent, people were left with questions. Where did the alert go? Is anyone dealing with it? Is there an idea of when help will arrive?</p>
+            <p>Without answers, people couldn’t be confident that help was actually on the way, which is the one thing they need to know in an emergency. TapSOS 2.0 set out to guide people through every step and reassure them that their alert had been received and was being handled.</p>
+          </div>
+          <div class="brief">
+            <p class="brief__label">The brief</p>
+            <p class="brief__text">A fast, safe, accessible alternative to a voice call that reduces stress while giving responders accurate information.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section class="cs-section" id="problem" aria-labelledby="problem-title">
+        <p class="cs-section__tag"><span>02</span>The problem</p>
+        <h2 class="cs-h2" id="problem-title">Emergency services still assume you can speak.</h2>
+
+        <div class="split">
+          <div>
+            <div class="prose">
+              <p>Calling 999 usually means talking to a call handler: saying which service you need, where you are and what has happened. For people who are Deaf, have hearing loss or can’t speak, that first step is the barrier.</p>
+              <p>It is also a barrier during a medical event, or anywhere that speaking out loud isn’t safe.</p>
+            </div>
+            <div class="brief">
+              <p class="brief__label">What success meant</p>
+              <p class="brief__text">Every person gets the service they need, without overcomplicating the steps to get there.</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="cs-h3">What it needed to do</h3>
+            <ul class="criteria">
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0.0s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 5 8.5 9C15 14 21 7 30 2"/></svg>Let people contact help without speech</li>
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0.15s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 13c3 3 5 6 8 10 4-9 10-15 19-21"/></svg>Cut cognitive load for people under pressure</li>
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0.3s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 15c2 2 5 5 7 8 5-10 11-16 18-20"/></svg>Meet a range of communication needs</li>
+              <li><svg class="pen pen--tick" data-draw style="--delay: 0.45s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 5 8.5 9C15 14 21 7 30 2"/></svg>Scale through a growth-ready design system</li>
+            </ul>
+          </div>
         </div>
 
         <p class="statement">The question behind TapSOS: how do you get the same information to a 999 handler without saying a word?</p>
       </section>
 
-      <!-- 02 -->
+      <!-- 03 -->
       <section class="cs-section" id="scale" aria-labelledby="scale-title">
-        <p class="cs-section__tag"><span>02</span>Who it leaves out</p>
+        <p class="cs-section__tag"><span>03</span>Who it leaves out</p>
         <h2 class="cs-h2" id="scale-title">This isn’t an edge case.</h2>
 
         <div class="stats stats--pair">
@@ -233,9 +274,63 @@
         <p class="sources">Sources: 1. RNID. 2. DWP, Family Resources Survey 2021 to 2022. 3. British Deaf Association. 4. ONS, Crime Survey for England and Wales, year ending March 2024.</p>
       </section>
 
-      <!-- 03 -->
+      <!-- 04 -->
+      <section class="cs-section" id="discovery" aria-labelledby="discovery-title">
+        <p class="cs-section__tag"><span>04</span>Discovery</p>
+        <h2 class="cs-h2" id="discovery-title">Evidence-based decisions, not assumptions.</h2>
+        <p class="cs-sub">Starting with where things actually went wrong for people, day to day.</p>
+
+        <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
+          <p>Research began by finding where the real problems were: what people ran into in everyday life, and the obstacles they faced when they needed help. One came up again and again: there was little guidance on how to ask for help without using your voice.</p>
+        </div>
+
+        <dl class="activities">
+          <div><dt>User research and journey mapping</dt><dd>Understanding real moments of crisis, and where a voice call fails people.</dd></div>
+          <div><dt>Competitor analysis</dt><dd>Direct and indirect, mapping what exists and where the gaps are.</dd></div>
+          <div><dt>Affinity mapping</dt><dd>Clustering findings into the themes that shaped priorities.</dd></div>
+          <div><dt>Site maps and storyboards</dt><dd>Sketching structure and scenarios before opening Figma.</dd></div>
+          <div><dt>Collaborative teamwork</dt><dd>Bringing the wider team into the problem to align early.</dd></div>
+          <div><dt>Defined success criteria</dt><dd>Clear measures, so design choices could be judged rather than debated.</dd></div>
+        </dl>
+      </section>
+
+      <!-- 05 -->
+      <section class="cs-section" id="accessibility" aria-labelledby="accessibility-title">
+        <p class="cs-section__tag"><span>05</span>Accessibility first</p>
+        <h2 class="cs-h2" id="accessibility-title">Accessibility was not an afterthought.</h2>
+
+        <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
+          <p>Accessibility was treated as a core design priority rather than a final check. Every decision was made to reduce barriers and help people act quickly and confidently when it mattered most.</p>
+        </div>
+        <dl class="principles" style="margin-top: 32px">
+          <div><dt>Colour contrast</dt><dd>Legible for people with visual impairments, checked against WCAG with Stark.</dd></div>
+          <div><dt>Type</dt><dd>Sized and spaced to scan quickly under stress.</dd></div>
+          <div><dt>Touch targets</dt><dd>Generous, for people with limited dexterity.</dd></div>
+          <div><dt>Simple choices</dt><dd>Each screen stripped back to as few decisions as possible.</dd></div>
+          <div><dt>Status indicators</dt><dd>Reassurance that an action actually completed, the gap TapSOS 1.0 left open.</dd></div>
+        </dl>
+      </section>
+
+      <!-- 06 -->
+      <section class="cs-section" id="system" aria-labelledby="system-title">
+        <p class="cs-section__tag"><span>06</span>Sketch to system</p>
+        <h2 class="cs-h2" id="system-title">From lo-fi wireframes to a scalable design system.</h2>
+
+        <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
+          <p>I moved from lo-fi wireframes through mid-fidelity flows to interactive prototypes, simplifying the interactions and the hierarchy with each pass.</p>
+          <p>Colours, type, spacing, components and interaction patterns were defined early, so the product stayed consistent, accessible and ready to grow.</p>
+        </div>
+
+        <h3 class="cs-h3" style="margin-top: 32px">System foundations</h3>
+        <ul class="chips">
+          <li>Type scale</li><li>Spacing</li><li>Colour tokens</li><li>Navigation</li>
+          <li>Buttons</li><li>Input fields</li><li>Status states</li><li>Avatars</li>
+        </ul>
+      </section>
+
+      <!-- 07 -->
       <section class="cs-section" id="answer" aria-labelledby="answer-title">
-        <p class="cs-section__tag"><span>03</span>The answer</p>
+        <p class="cs-section__tag"><span>07</span>The answer</p>
         <h2 class="cs-h2" id="answer-title">Replace the conversation with pictures and short questions.</h2>
 
         <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
@@ -250,9 +345,9 @@
         </dl>
       </section>
 
-      <!-- 04 -->
+      <!-- 08 -->
       <section class="cs-section" id="barriers" aria-labelledby="barriers-title">
-        <p class="cs-section__tag"><span>04</span>Barrier by barrier</p>
+        <p class="cs-section__tag"><span>08</span>Barrier by barrier</p>
         <h2 class="cs-h2" id="barriers-title">Everything a call handler would ask, answered without speaking.</h2>
         <p class="cs-sub">Each step of a 999 call becomes a screen, in the order a handler would need it.</p>
 
@@ -380,9 +475,9 @@
         </div>
       </section>
 
-      <!-- 05 -->
+      <!-- 09 -->
       <section class="cs-section" id="pictograms" aria-labelledby="pictograms-title">
-        <p class="cs-section__tag"><span>05</span>A visual vocabulary</p>
+        <p class="cs-section__tag"><span>09</span>A visual vocabulary</p>
         <h2 class="cs-h2" id="pictograms-title">59 pictures that do the talking.</h2>
 
         <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
@@ -482,9 +577,21 @@
         </div>
       </section>
 
-      <!-- 06 -->
+      <!-- 10 -->
+      <section class="cs-section" id="testing" aria-labelledby="testing-title">
+        <p class="cs-section__tag"><span>10</span>Testing</p>
+        <h2 class="cs-h2" id="testing-title">Testing with the people it’s for.</h2>
+
+        <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
+          <p>High-fidelity designs were validated in usability testing with members of the Deaf community and people with a range of communication needs, working alongside interpreters. Their feedback drove multiple rounds of iteration.</p>
+        </div>
+
+        <p class="pull">An emergency app for Deaf and disabled people only works if it’s shaped by them, so each round of testing changed the design.</p>
+      </section>
+
+      <!-- 11 -->
       <section class="cs-section" id="impact" aria-labelledby="impact-title">
-        <p class="cs-section__tag"><span>06</span>What it achieved</p>
+        <p class="cs-section__tag"><span>11</span>What it achieved</p>
         <h2 class="cs-h2" id="impact-title">A silent route to every UK 999 service.</h2>
 
         <ul class="outcomes">
@@ -494,8 +601,25 @@
           <li><p class="outcomes__num">Free</p><h3>For everyone who needs it</h3><p>TapSOS is a free app, live on the App Store and Google Play.</p></li>
         </ul>
 
-        <p class="tx-credit">TapSOS is a product of Inclutech Ltd (<a href="https://inclutech.co" target="_blank" rel="noopener">inclutech.co</a>). Assets shown with permission. Screens are rebuilt from the production TapSOS 2.0 app, with fictional people and places and illustrative maps.</p>
+        <h3 class="cs-h3" style="margin-top: clamp(48px, 6vw, 72px)">What the design work changed</h3>
+        <dl class="principles">
+          <div><dt>A clearer emergency journey</dt><dd>Testing and iteration removed ambiguity around the key actions.</dd></div>
+          <div><dt>More accessible interaction</dt><dd>Accessibility requirements shaped the hierarchy, interaction states and navigation.</dd></div>
+          <div><dt>Validated with the people it’s for</dt><dd>The experience was tested with members of the Deaf community.</dd></div>
+          <div><dt>A scalable foundation</dt><dd>Reusable patterns kept the product consistent as it grew.</dd></div>
+        </dl>
+      </section>
 
+      <!-- 12 -->
+      <section class="cs-section cs-reflection" id="reflection" aria-labelledby="reflection-title">
+        <p class="cs-section__tag"><span>12</span>Reflection</p>
+        <h2 class="cs-h2" id="reflection-title">Designing beyond the interface, and letting evidence lead.</h2>
+        <div class="prose">
+          <p>TapSOS strengthened my understanding of accessibility, collaborative product development and evidence-based design. It showed the value of validating decisions through continuous feedback from the people who rely on the product, rather than relying on assumptions.</p>
+          <p>The biggest lesson came from TapSOS 1.0 itself: sending the alert is only half the job. In an emergency, people need to know their message arrived and that help is on the way.</p>
+        </div>
+
+        <p class="tx-credit">TapSOS is a product of Inclutech Ltd (<a href="https://inclutech.co" target="_blank" rel="noopener">inclutech.co</a>). Assets shown with permission. Screens are rebuilt from the production TapSOS 2.0 app, with fictional people and places and illustrative maps.</p>
       </section>
 
 

@@ -57,6 +57,10 @@
     .tx-steps { display: grid; gap: clamp(56px, 7vw, 104px); margin-top: clamp(48px, 6vw, 88px); }
     .tx-step { display: grid; gap: 28px var(--col-gap); align-items: center; }
     .tx-step__media img { display: block; width: 100%; max-width: 240px; height: auto; }
+    /* The screen PNGs are solid rectangles with light corners outside the rounded
+       phone frame and a thin light strip along the bottom. Clip just inside the
+       frame's curve (same clip as the tilted wall) so none of it shows. */
+    .tx-step__media img { clip-path: inset(0.5% 0.6% 0.6% 0.6% round 13.6% / 6.9%); }
     .tx-step__num { color: var(--accent); font-size: var(--text-sm); font-weight: 600; font-variant-numeric: tabular-nums; }
     .tx-step h3 { margin-top: 8px; font-size: var(--text-lg); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; }
     .tx-step dl { display: grid; gap: 18px; margin-top: 24px; }

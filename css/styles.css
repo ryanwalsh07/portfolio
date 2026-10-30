@@ -1552,12 +1552,12 @@ html:not(.js) .wordmark__pen,
   /* A short intro that reads as one quiet line on desktop. */
   .section__intro--line { grid-column: 4 / -1; max-width: none; font-size: var(--text-md); }
 
-  /* Work: orbit runs the full width, Together and TapSOS share the row below. */
+  /* Work: TapSOS runs the full width, orbit and Together share the row below. */
   .project--feature { grid-column: 1 / -1; }
   .project--second,
   .project--third { grid-column: span 6; }
   /* Exactly double the base 16/11: at double the width (full row vs. half),
-     this keeps orbit's card the same height as Together and TapSOS below it. */
+     this keeps the lead card the same height as the two cards below it. */
   .project--feature .project__media { aspect-ratio: 32 / 11; }
   .project--feature .project__text { max-width: 640px; }
 
@@ -1864,3 +1864,10 @@ html:not(.js) .wordmark__pen,
 }
 .media-trio img { width: 24cqw; height: auto; }
 .media-trio img:nth-child(2) { margin-top: 5cqw; }
+/* Full-width lead card (desktop) is half as tall relative to its width, so the
+   phones shrink to keep most of each screen in view. */
+@media (min-width: 900px) {
+  .project--feature .media-trio { gap: 6cqw; padding-top: 4cqw; }
+  .project--feature .media-trio img { width: 17cqw; }
+  .project--feature .media-trio img:nth-child(2) { margin-top: 3cqw; }
+}

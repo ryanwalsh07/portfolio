@@ -1911,3 +1911,10 @@ html:not(.js) .wordmark__pen,
 @media (min-width: 900px) {
   .project--feature .tapsos-wall { --wall-w: 150cqw; }
 }
+/* The TapSOS case study hero reuses the home card's wall, in the same shape
+   as the orbit hero: 16:11, then 32:11 once the layout goes wide. */
+.cs-hero-media .media--tapsos { aspect-ratio: 16 / 11; }
+@media (min-width: 900px) {
+  .cs-hero-media .media--tapsos { aspect-ratio: 32 / 11; }
+  .cs-hero-media .tapsos-wall { --wall-w: 150cqw; }
+}

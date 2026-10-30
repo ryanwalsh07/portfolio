@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20261030e">
+  <link rel="stylesheet" href="css/styles.css?v=20261030f">
   <script src="js/main.js?v=20261029a" defer></script>
 
   <!-- Pieces only this case study uses. -->
@@ -27,18 +27,12 @@
     /* The exact TapSOS teal from the portfolio pack (the site used a close guess). */
     :root { --tapsos-teal: #0e7490; }
 
-    /* Hero: three real screens side by side */
-    .cs-hero-media .tx-trio {
-      aspect-ratio: auto;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: clamp(10px, 3cqw, 40px);
-      padding: clamp(28px, 6cqw, 72px) clamp(14px, 5cqw, 64px);
-    }
-    .tx-trio img { width: min(30%, 280px); height: auto; }
-    .tx-trio img:nth-child(2) { margin-top: clamp(16px, 5cqw, 56px); }
 
+    /* Intro sits on two lines on desktop: the full column width, with the size
+       easing from 20px down to 18px as the column narrows. */
+    @media (min-width: 900px) {
+      .cs-hero__lead { max-width: none; font-size: clamp(18px, calc(1.5vw - 1.8px), 20px); }
+    }
     /* Barrier → answer steps, each with its screen */
     .tx-steps { display: grid; gap: clamp(56px, 7vw, 104px); margin-top: clamp(48px, 6vw, 88px); }
     .tx-step { display: grid; gap: 28px var(--col-gap); align-items: center; }
@@ -127,12 +121,37 @@
 
   <div class="wrap cs-hero-media">
     <figure>
-      <div class="media media--brand tx-trio">
-        <img src="images/tapsos/screens/999-alert-03-who-do-you-need.png" alt="The Who do you need? screen: Police, Ambulance, Fire &amp; Rescue and Coastguard as four large pictured buttons" width="948" height="1875">
-        <img src="images/tapsos/screens/999-alert-04-what-is-the-emergency.png" alt="The What is the emergency? screen: a list of emergencies, each with a pictogram, starting with Abdominal pain" width="948" height="1875">
-        <img src="images/tapsos/screens/999-alert-07-review-and-send.png" alt="The Review &amp; Send screen: one summary card with location, service and emergency, and a Send Alert Now button" width="948" height="1875">
+      <div class="media media--tapsos media--zoom" role="img" aria-label="A tilted wall of TapSOS screens covering every step of a silent 999 alert, from sharing your location to the alert being sent">
+        <div class="media__img tapsos-wall" aria-hidden="true">
+          <div class="tapsos-wall__inner">
+            <img src="images/tapsos/card/02-where-are-you.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/05-check-the-choice.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/08-alert-complete.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/03-who-do-you-need.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/06-triage-questions.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/09-practice-mode.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/04-what-is-the-emergency.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/07-review-and-send.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/07-review-and-send.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/02-where-are-you.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/05-check-the-choice.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/08-alert-complete.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/03-who-do-you-need.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/06-triage-questions.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/09-practice-mode.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/04-what-is-the-emergency.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/04-what-is-the-emergency.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/07-review-and-send.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/02-where-are-you.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/05-check-the-choice.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/08-alert-complete.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/03-who-do-you-need.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/06-triage-questions.jpg" alt="" width="480" height="949">
+            <img src="images/tapsos/card/09-practice-mode.jpg" alt="" width="480" height="949">
+          </div>
+        </div>
       </div>
-      <figcaption class="caption">Choosing a service, showing what is happening, then checking the alert before it is sent. Screens rebuilt from the TapSOS 2.0 release, with fictional people and places.</figcaption>
+      <figcaption class="caption">Every step of a silent 999 alert, from sharing your location to the alert being sent. Screens rebuilt from the TapSOS 2.0 release, with fictional people and places.</figcaption>
     </figure>
 
     <nav class="agenda" aria-label="Case study parts">

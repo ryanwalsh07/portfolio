@@ -12,6 +12,9 @@ TAPSOS (home page card and case study)
   tapsos/                  Screens and icons from the approved TapSOS 2.0
                            Portfolio Pack. Only add files from that pack.
                            No MyJourney / NightCommute images on this site.
+  tapsos/card/             Smaller JPEG copies of tapsos/screens (480px wide)
+                           for the home page card's tilted wall. If a screen
+                           changes, re-export its copy here too.
 
 NightCommute has been retired: its case study and images are gone for good.
 

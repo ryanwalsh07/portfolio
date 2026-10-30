@@ -1854,20 +1854,31 @@ html:not(.js) .wordmark__pen,
   font-weight: 500;
 }
 
-/* ---------- TapSOS home card: three screens from the approved portfolio pack ---------- */
-.media-trio {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 4cqw;
-  padding: 7cqw 6cqw 0;
+/* ---------- TapSOS home card: tilted wall of app screens ---------- */
+.media--tapsos { background: linear-gradient(135deg, #0f3b4a 0%, #0e7490 100%); }
+/* --wall-w sets the wall's width; gaps and the column stagger scale with it.
+   Wide on phones so each screen stays big enough to read as a phone. */
+.tapsos-wall { --wall-w: 230cqw; }
+.tapsos-wall__inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--wall-w);
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: calc(var(--wall-w) * 0.016);
+  transform: translate(-50%, -50%) rotate(-14deg);
 }
-.media-trio img { width: 24cqw; height: auto; }
-.media-trio img:nth-child(2) { margin-top: 5cqw; }
-/* Full-width lead card (desktop) is half as tall relative to its width, so the
-   phones shrink to keep most of each screen in view. */
+.tapsos-wall__inner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* The screen images are solid rectangles with light corners outside the
+     rounded phone frame (and a thin light strip along the bottom). Clip just
+     inside the frame's own curve so none of that shows. */
+  clip-path: inset(0.5% 0.6% 0.6% 0.6% round 13.6% / 6.9%);
+}
+.tapsos-wall__inner img:nth-child(even) { margin-top: calc(var(--wall-w) * 0.06); }
 @media (min-width: 900px) {
-  .project--feature .media-trio { gap: 6cqw; padding-top: 4cqw; }
-  .project--feature .media-trio img { width: 17cqw; }
-  .project--feature .media-trio img:nth-child(2) { margin-top: 3cqw; }
+  .project--feature .tapsos-wall { --wall-w: 150cqw; }
 }

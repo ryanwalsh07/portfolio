@@ -691,9 +691,10 @@ html:not(.js) .wordmark__pen,
   mask-image: linear-gradient(to bottom, #000 65%, transparent);
   pointer-events: none;
 }
-/* Case study heroes use the same light ground and grid, but end with their
-   content instead of filling the first screen. */
+/* Case study heroes use the same light ground, kept plain (no grid), and end
+   with their content instead of filling the first screen. */
 .hero-band--cs { min-height: 0; }
+.hero-band--cs::before { content: none; }
 .site-header--light::before { background: rgba(243, 243, 242, 0.96); } /* near-solid so dark sections can't wash out the links */
 .site-header--light .wordmark__pen { fill: var(--pen); }
 

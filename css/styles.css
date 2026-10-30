@@ -1774,8 +1774,19 @@ html:not(.js) .wordmark__pen,
   .cs-hero-media .media--orbit-hero { aspect-ratio: 32 / 11; }
 }
 
-/* orbit home card: same wash as the Together placeholder, no hover animation */
-.media--orbit-card { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }
+/* orbit home card: the colourblind onboarding screen, tilted, on the exact
+   green of its own illustration's sky so the two read as one. The phone runs
+   off the bottom of the card on purpose. */
+.media--orbit-phone { background: #6ebda7; }
+.orbit-phone img {
+  position: absolute;
+  left: 50%;
+  top: 9cqw;
+  width: 34cqw;
+  height: auto;
+  transform: translateX(-50%) rotate(-6deg);
+  filter: drop-shadow(0 2cqw 3cqw rgba(13, 40, 30, 0.25));
+}
 
 /* Research figures: full-width, on white with a hairline so they sit in the page like cards. */
 .media--plain { min-height: 200px; border: 1px solid var(--line); background: #fff; }

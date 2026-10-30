@@ -691,6 +691,9 @@ html:not(.js) .wordmark__pen,
   mask-image: linear-gradient(to bottom, #000 65%, transparent);
   pointer-events: none;
 }
+/* Case study heroes use the same light ground and grid, but end with their
+   content instead of filling the first screen. */
+.hero-band--cs { min-height: 0; }
 .site-header--light::before { background: rgba(243, 243, 242, 0.96); } /* near-solid so dark sections can't wash out the links */
 .site-header--light .wordmark__pen { fill: var(--pen); }
 
@@ -719,6 +722,20 @@ html:not(.js) .wordmark__pen,
 @media (min-width: 1025px) {
   .hero__hello { font-size: 18px; line-height: 1.44; }
   .hero__title { font-size: 56px; line-height: 1.07; }
+}
+/* Case study titles share the home hero's type: regular weight, same steps. */
+.hero-band--cs .cs-hero__title {
+  max-width: 776px;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+@media (min-width: 769px) {
+  .hero-band--cs .cs-hero__title { font-size: 40px; line-height: 1.17; }
+}
+@media (min-width: 1025px) {
+  .hero-band--cs .cs-hero__title { font-size: 56px; line-height: 1.07; }
 }
 .hero__aside { margin-top: clamp(40px, 4vw, 56px); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }

@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20261030f">
+  <link rel="stylesheet" href="css/styles.css?v=20261030g">
   <script src="js/main.js?v=20261029a" defer></script>
 
   <!-- Pieces only this case study uses. -->
@@ -32,6 +32,26 @@
        easing from 20px down to 18px as the column narrows. */
     @media (min-width: 900px) {
       .cs-hero__lead { max-width: none; font-size: clamp(18px, calc(1.5vw - 1.8px), 20px); }
+    }
+    /* The three core features, each set out as the answer to a problem people ran into. */
+    .tx-answers { display: grid; gap: 16px; margin-top: clamp(40px, 5vw, 64px); }
+    .tx-answer {
+      display: flex;
+      flex-direction: column;
+      padding: clamp(22px, 2.4vw, 32px);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--tapsos-teal);
+      border-radius: var(--radius-media);
+      background: #ffffff;
+    }
+    .tx-answer__label { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 600; }
+    .tx-answer__problem { margin-top: 6px; color: var(--paper-soft); line-height: 1.5; }
+    .tx-answer__label--answer { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--tapsos-teal); }
+    .tx-answer__title { margin-top: 6px; font-size: var(--text-lg); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; }
+    .tx-answer__text { margin-top: 8px; color: var(--paper-soft); line-height: 1.5; }
+    @media (min-width: 900px) {
+      .tx-answers { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .tx-answer__problem { min-height: 3em; }
     }
     /* Barrier → answer steps, each with its screen */
     .tx-steps { display: grid; gap: clamp(56px, 7vw, 104px); margin-top: clamp(48px, 6vw, 88px); }
@@ -243,8 +263,6 @@
             </ul>
           </div>
         </div>
-
-        <p class="statement">The question behind TapSOS: how do you get the same information to a 999 handler without saying a word?</p>
       </section>
 
       <!-- 03 -->
@@ -331,18 +349,35 @@
       <!-- 07 -->
       <section class="cs-section" id="answer" aria-labelledby="answer-title">
         <p class="cs-section__tag"><span>07</span>The answer</p>
-        <h2 class="cs-h2" id="answer-title">Replace the conversation with pictures and short questions.</h2>
+        <h2 class="cs-h2" id="answer-title">Replace the call with pictures and short questions.</h2>
 
         <div class="prose" style="margin-top: clamp(28px, 3.5vw, 48px)">
           <p>Users choose the service they need, confirm their location and describe the emergency with pictures and short questions. The alert reaches a BT 999 handler through the emergencySMS service.</p>
-          <p>TapSOS was designed with Deaf and disabled people.</p>
         </div>
 
-        <dl class="activities">
-          <div><dt>Alerting flow</dt><dd>Location, service, then what is happening, told with pictograms and yes/no questions.</dd></div>
-          <div><dt>Medical profile</dt><dd>Blood group, conditions, medication and allergies sent with each alert.</dd></div>
-          <div><dt>Practice mode</dt><dd>Rehearse an alert without contacting 999.</dd></div>
-        </dl>
+        <ul class="tx-answers">
+          <li class="tx-answer">
+            <p class="tx-answer__label">The problem</p>
+            <p class="tx-answer__problem">You can’t tell a call handler where you are or what’s happening.</p>
+            <p class="tx-answer__label tx-answer__label--answer">The answer</p>
+            <h3 class="tx-answer__title">Alerting flow</h3>
+            <p class="tx-answer__text">Location, service, then what is happening, told with pictograms and yes/no questions.</p>
+          </li>
+          <li class="tx-answer">
+            <p class="tx-answer__label">The problem</p>
+            <p class="tx-answer__problem">You can’t explain your conditions, medication or allergies.</p>
+            <p class="tx-answer__label tx-answer__label--answer">The answer</p>
+            <h3 class="tx-answer__title">Medical profile</h3>
+            <p class="tx-answer__text">Blood group, conditions, medication and allergies are sent with each alert.</p>
+          </li>
+          <li class="tx-answer">
+            <p class="tx-answer__label">The problem</p>
+            <p class="tx-answer__problem">An emergency is the worst time to use an app for the first time.</p>
+            <p class="tx-answer__label tx-answer__label--answer">The answer</p>
+            <h3 class="tx-answer__title">Practice mode</h3>
+            <p class="tx-answer__text">Rehearse a full alert without contacting 999.</p>
+          </li>
+        </ul>
       </section>
 
       <!-- 08 -->
@@ -499,7 +534,7 @@
             <li><img src="images/tapsos/pictograms/burns.svg" alt="" width="42" height="42" loading="lazy"><span>Burns</span></li>
             <li><img src="images/tapsos/pictograms/choking.svg" alt="" width="42" height="42" loading="lazy"><span>Choking</span></li>
             <li><img src="images/tapsos/pictograms/damage_to_property.svg" alt="" width="42" height="42" loading="lazy"><span>Damage to property</span></li>
-            <li><img src="images/tapsos/pictograms/dog_rescue_at_sea.svg" alt="" width="42" height="42" loading="lazy"><span>Dog rescue at sea</span></li>
+            <li><img src="images/tapsos/pictograms/dog_rescue_at_sea.svg?v=2" alt="" width="42" height="42" loading="lazy"><span>Dog rescue at sea</span></li>
             <li><img src="images/tapsos/pictograms/domestic_abuse.svg" alt="" width="42" height="42" loading="lazy"><span>Domestic abuse</span></li>
             <li><img src="images/tapsos/pictograms/dropping_litter.svg" alt="" width="42" height="42" loading="lazy"><span>Dropping litter</span></li>
             <li><img src="images/tapsos/pictograms/drowning.svg" alt="" width="42" height="42" loading="lazy"><span>Drowning</span></li>
@@ -527,7 +562,7 @@
             <li><img src="images/tapsos/pictograms/person_attempting_suicide.svg" alt="" width="42" height="42" loading="lazy"><span>Person attempting suicide</span></li>
             <li><img src="images/tapsos/pictograms/person_in_trouble_on_coast.svg" alt="" width="42" height="42" loading="lazy"><span>Person in trouble on the coast</span></li>
             <li><img src="images/tapsos/pictograms/person_in_water.svg" alt="" width="42" height="42" loading="lazy"><span>Person in water</span></li>
-            <li><img src="images/tapsos/pictograms/person_walking.svg" alt="" width="42" height="42" loading="lazy"><span>Person walking</span></li>
+            <li><img src="images/tapsos/pictograms/person_walking.svg?v=2" alt="" width="42" height="42" loading="lazy"><span>Person walking</span></li>
             <li><img src="images/tapsos/pictograms/physical_assault.svg" alt="" width="42" height="42" loading="lazy"><span>Physical assault</span></li>
             <li><img src="images/tapsos/pictograms/pregnancy.svg" alt="" width="42" height="42" loading="lazy"><span>Pregnancy</span></li>
             <li><img src="images/tapsos/pictograms/sand_hole_collapse.svg" alt="" width="42" height="42" loading="lazy"><span>Sand hole collapse</span></li>

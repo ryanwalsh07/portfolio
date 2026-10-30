@@ -1281,6 +1281,8 @@ html:not(.js) .wordmark__pen,
 }
 .stat__text { max-width: 26ch; margin-top: 14px; color: var(--paper-soft); }
 .stat__text sup { color: var(--paper-faint); font-size: 0.7em; }
+/* Each figure in the 2x2 grid sits under a hairline, like the page's other lists. */
+.stats--pair .stat { padding-top: 24px; border-top: 1px solid var(--line); }
 .statement {
   max-width: 30ch;
   margin-top: clamp(56px, 7vw, 104px);
@@ -1622,8 +1624,9 @@ html:not(.js) .wordmark__pen,
   .stat:nth-child(3) { margin-top: 7rem; }
   .figure-pair { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
   .figure-pair--even { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-  .stats--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .stats--pair .stat:nth-child(2) { margin-top: 3.5rem; }
+  /* A level 2x2 grid: no stagger, the same gap between rows and columns. */
+  .stats--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(40px, 4.5vw, 64px); }
+  .stats--pair .stat { margin-top: 0; }
   .flow-steps { flex-direction: row; flex-wrap: wrap; column-gap: 0.5em; }
   .flow-steps li:not(:last-child)::after { content: "\2192"; }
 }

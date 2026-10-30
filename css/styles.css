@@ -1180,6 +1180,8 @@ html:not(.js) .wordmark__pen,
 .facts dd { font-weight: 500; }
 
 .cs-hero-media { margin-top: clamp(32px, 5vw, 72px); }
+/* Hero captions run the full width of the image above them. */
+.cs-hero-media .caption { max-width: none; }
 .cs-hero-media .media { aspect-ratio: 4 / 5; }
 .art-trio {
   display: flex;

@@ -81,8 +81,6 @@
     .sp__list > li:last-child { border-bottom: 1px solid var(--line); }
     .sp__list > li::before { content: ""; position: absolute; left: 4px; top: 1.45em; width: 8px; height: 8px; border-radius: 50%; background: var(--pen); }
     .sp__list strong { color: var(--paper); font-weight: 600; }
-    .sp__list ol { margin-top: 8px; padding-left: 1.2em; list-style: lower-alpha; }
-    .sp__list ol li + li { margin-top: 4px; }
     .sp__steps { margin-top: 20px; counter-reset: step; }
     .sp__steps > li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 2px 12px; padding-block: 16px; border-top: 1px solid var(--line); counter-increment: step; color: var(--paper-soft); line-height: 1.65; }
     .sp__steps > li:last-child { border-bottom: 1px solid var(--line); }
@@ -237,18 +235,6 @@
           <p>To find those portfolios, I used Claude Research to search for examples online and compare how other product designers structure their homepages and case studies. <mark class="ph">[Add which portfolios or patterns stood out, and what you took from them]</mark></p>
           <p>That shaped a single-page homepage with dedicated case study pages:</p>
         </div>
-        <ol class="sp__list">
-          <li><strong>Home</strong> — headline and availability status, with two calls to action: See my work, Get in touch
-            <ol>
-              <li><strong>Selected projects</strong> — TapSOS, orbit, this portfolio, Together (in progress), unreleased Inclutech work (available on request)</li>
-              <li><strong>About me</strong> — how I work, what I bring, experience, education</li>
-              <li><strong>Recommendations</strong> — quotes from colleagues</li>
-              <li><strong>Contact</strong> — email, LinkedIn, CV</li>
-            </ol>
-          </li>
-          <li><strong>Case study pages</strong> — TapSOS, orbit, and this one</li>
-          <li><strong>CV</strong> — downloadable PDF, linked from the main navigation</li>
-        </ol>
         <figure class="sp__figure">
           <div class="sp__frame" style="aspect-ratio: 2000 / 900">
             <img class="media__img" src="images/portfolio-site/sitemap.webp" width="2000" height="900" alt="Sitemap of ryanwalsh.uk from Miro. The homepage branches to five sections: Selected projects, About me, Recommendations, Contact and the CV PDF. Selected projects leads to the TapSOS, orbit and The makings of my portfolio case studies; Contact leads to email and LinkedIn." loading="lazy">

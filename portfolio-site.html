@@ -388,13 +388,10 @@
           <li><strong>Tested with</strong> <mark class="ph">[VoiceOver on iOS and macOS, keyboard-only navigation, Stark, Lighthouse or axe — add your scores]</mark>.</li>
         </ul>
         <figure class="sp__figure">
-          <div class="sp__frame sp__frame--draft">
-            <p class="media__ph">Placeholder: keyboard navigation recording</p>
-            <!-- Swap in the recording, for example:
-            <video class="media__img" src="images/portfolio-site/keyboard-navigation.mp4" controls muted playsinline aria-label="[Placeholder alt text: tabbing through ryanwalsh.uk with the keyboard only, from the skip link to a case study]"></video>
-            -->
+          <div class="sp__frame" style="aspect-ratio: 1280 / 688">
+            <video class="media__img" src="images/portfolio-site/keyboard-navigation.mp4" poster="images/portfolio-site/keyboard-navigation-poster.jpg" width="1280" height="688" controls muted loop playsinline preload="metadata" data-autoplay aria-label="Keyboard navigation recording, no sound" aria-describedby="keyboard-caption"></video>
           </div>
-          <figcaption>Keyboard-only navigation, from the skip link to a case study.</figcaption>
+          <figcaption id="keyboard-caption">Keyboard only, no mouse: tabbing from the homepage buttons through the project cards and the About section, then pressing Return to open the TapSOS case study. Each key press shows in the bottom-left corner.</figcaption>
         </figure>
       </section>
 
@@ -446,5 +443,28 @@
   </div>
 </footer>
 
+<script>
+  // Play the keyboard recording while it's on screen, muted and looping.
+  // Skipped for reduced motion; once someone pauses it, it stays paused.
+  (function () {
+    var video = document.querySelector("video[data-autoplay]");
+    if (!video || !("IntersectionObserver" in window)) return;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var ours = false, userPaused = false;
+    // The pause event arrives after pause() returns, so clear the flag here.
+    video.addEventListener("pause", function () {
+      if (ours) { ours = false; return; }
+      userPaused = true;
+    });
+    new IntersectionObserver(function (entries) {
+      if (reduce.matches || userPaused) return;
+      if (entries[0].isIntersecting) {
+        video.play().catch(function () {});
+      } else if (!video.paused) {
+        ours = true; video.pause();
+      }
+    }, { threshold: 0.5 }).observe(video);
+  })();
+</script>
 </body>
 </html>

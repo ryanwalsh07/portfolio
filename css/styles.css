@@ -1568,6 +1568,10 @@ button { font: inherit; }
   .project--feature { grid-column: 1 / -1; }
   .project--second,
   .project--third { grid-column: span 6; }
+  /* The locked card closes the grid at full width, in the lead card's wide
+     shape, so it matches the height of the pair above it. */
+  .project--fourth { grid-column: 1 / -1; }
+  .project--fourth .project__media { aspect-ratio: 32 / 11; }
   /* Exactly double the base 16/11: at double the width (full row vs. half),
      this keeps the lead card the same height as the two cards below it. */
   .project--feature .project__media { aspect-ratio: 32 / 11; }
@@ -1771,6 +1775,30 @@ button { font: inherit; }
 
 /* ---------- Together placeholder: branded indigo mark behind the banner ---------- */
 .media--together { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }
+
+/* ---------- Locked card: work shown on request, no imagery ---------- */
+/* A muted, flat ground with a single padlock, so it reads as private rather
+   than unfinished. It's a real link (an email), so it keeps the hover overlay. */
+.media--locked {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: #eef0f4;
+}
+.locked__icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--navy);
+}
+/* The light ground lets the usual overlay tint through, so it's darkened here
+   to keep the overlay text above 4.5:1. */
+.project--locked .project__overlay { background: rgba(13, 23, 63, 0.74); }
+.locked__icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .media--together .pending__mark { display: none; }
 .pending__icon { position: absolute; top: 50%; left: 50%; width: 58%; transform: translate(-50%, -50%); }
 .media--together .pending__band { background: #4c5fd9; border-color: #fff; }

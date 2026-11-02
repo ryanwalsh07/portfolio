@@ -244,24 +244,15 @@ button { font: inherit; }
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   text-decoration: none;
   white-space: nowrap;
 }
-/* The mark is "RW" in braille: R (dots 1 2 3 5) and W (dots 2 4 5 6), with the
-   empty positions drawn faintly so each cell still reads as a cell. */
-.wordmark__mark { flex: none; width: auto; height: 22px; overflow: visible; }
-.wordmark__blank { opacity: 0.3; }
-/* Dots follow the text colour (white on the gradient and on navy). Pink
-   #ff2fad is only 2:1 on the violet gradient, so the last dot starts as a
-   lighter pink (3.6:1) and switches once the navy header appears (5.2:1). */
-.wordmark__pen { fill: #ffa3d8; transition: fill 0.3s; }
-.site-header.is-scrolled .wordmark__pen,
-html:not(.js) .wordmark__pen,
-.nav-open .wordmark__pen { fill: var(--pen); }
+/* "Ryan Walsh." The full stop is the pink pen dot used across the site, a quiet
+   signature. It's decorative, so screen readers just hear "Ryan Walsh". */
+.wordmark__stop { color: var(--pen); }
 
 .nav__list {
   display: flex;
@@ -696,7 +687,6 @@ html:not(.js) .wordmark__pen,
 .hero-band--cs { min-height: 0; }
 .hero-band--cs::before { content: none; }
 .site-header--light::before { background: rgba(243, 243, 242, 0.96); } /* near-solid so dark sections can't wash out the links */
-.site-header--light .wordmark__pen { fill: var(--pen); }
 
 .hero {
   padding-top: clamp(70px, 29px + 10.9vw, 186px);

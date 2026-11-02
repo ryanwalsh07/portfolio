@@ -119,8 +119,6 @@
     /* Before and after: two screenshots side by side */
     .sp__ba { display: grid; gap: 14px; }
     @media (min-width: 640px) { .sp__ba { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    .sp__ba-label { display: inline-block; margin-bottom: 10px; padding: 4px 12px; border-radius: 999px; background: var(--navy); color: #ffffff; font-size: var(--text-sm); font-weight: 600; }
-    .sp__ba-label--now { background: var(--violet); }
 
     /* Mock-ups drawn in HTML. Everything is sized in container units, so each
        one scales like an image. Swap for a real screenshot when there is one. */
@@ -208,20 +206,14 @@
 
       <figure class="sp__figure">
         <div class="sp__ba">
-          <div>
-            <p class="sp__ba-label">Before</p>
-            <div class="sp__frame sp__frame--16-10">
-              <img class="media__img" src="images/portfolio-site/before.jpg" width="800" height="500" alt="The homepage’s Selected projects on 26 October 2026: orbit leads, with Together and a locked TapSOS card below, and a braille-style RW wordmark." loading="lazy">
-            </div>
+          <div class="sp__frame sp__frame--16-10">
+            <img class="media__img" src="images/portfolio-site/before.jpg" width="800" height="500" alt="My previous portfolio, rynwlsh, on a dark Framer template: a large gradient “Ryan Walsh” title, the line “UX Designer specialising in intuitive, user-focused products”, a lime View More button and a scrolling row of project logos." loading="lazy">
           </div>
-          <div>
-            <p class="sp__ba-label sp__ba-label--now">Now</p>
-            <div class="sp__frame sp__frame--16-10">
-              <img class="media__img" src="images/portfolio-site/after.jpg" width="800" height="500" alt="The homepage’s Selected projects now: TapSOS leads with a wall of its screens, with orbit and this portfolio below, and the Ryan Walsh wordmark with a pink full stop." loading="lazy">
-            </div>
+          <div class="sp__frame sp__frame--16-10">
+            <img class="media__img" src="images/portfolio-site/after.jpg" width="800" height="500" alt="ryanwalsh.uk now: a light grid-paper homepage with the headline “I’m a product designer focused on accessible digital products, built for everyone”, the word everyone circled in pink, See my work and Get in touch buttons, and the Ryan Walsh wordmark with a pink full stop." loading="lazy">
           </div>
         </div>
-        <figcaption>Selected projects on the homepage, on 26 October 2026 and now. <mark class="ph">[Swap “Before” for an older version if you have one]</mark></figcaption>
+        <figcaption>My previous portfolio, built on a Framer template, and ryanwalsh.uk as it is now.</figcaption>
       </figure>
 
       <!-- The challenge -->

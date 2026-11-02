@@ -22,12 +22,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
   <link rel="stylesheet" href="css/styles.css?v=20261102e">
   <script src="js/main.js?v=20261029a" defer></script>
-  <script src="js/case-study-gate.js?v=20261102a" defer></script>
   <!-- Side-project case study layout: one calm reading column, a TL;DR of
        cards up top, pastel callouts and highlighted key lines. Scoped to .sp. -->
   <style>
-    /* Password gate on the light hero: the shared error pink is only readable on dark. */
-    .hero-band--light .gate__error { color: #b4235a; }
     .sp {
       --sp-col: 1032px;
       --sp-read: 720px;
@@ -181,25 +178,265 @@
 
 <main id="main">
 
-  <!-- ============ Password gate (draft) ============ -->
-  <div class="hero-band hero-band--light hero-band--cs" id="cs-gate">
-    <section class="cs-gate wrap" aria-labelledby="gate-title">
-      <p class="crumbs"><a href="index.html#work">Selected projects</a><span aria-hidden="true">/</span><span>ryanwalsh.uk</span></p>
-      <div class="gate__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div>
-      <h1 class="gate__title" id="gate-title">This case study is password protected</h1>
-      <p class="gate__lead">It’s still a work in progress. If you have the password, enter it below.</p>
-      <form class="gate__form" id="gate-form" autocomplete="off">
-        <label class="gate__label" for="gate-password">Password</label>
-        <div class="gate__row">
-          <input class="gate__input" id="gate-password" name="password" type="password" required autocomplete="current-password" aria-describedby="gate-error" spellcheck="false">
-          <button class="button button--solid" type="submit">Unlock</button>
-        </div>
-        <p class="gate__error" id="gate-error" role="alert" hidden>That password isn’t right. Try again.</p>
-      </form>
-    </section>
-  </div>
+  <!-- ============ Hero ============ -->
+  <article class="sp">
+    <div class="sp__wrap">
 
-  <div id="cs-content" hidden></div>
+      <header>
+        <a class="sp__back" href="index.html#work"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 8H3M7 4 3 8l4 4"/></svg>Back to work</a>
+        <ul class="sp__tags" aria-label="Skills"><li>UX Design</li><li>Web</li><li>Accessibility</li><li>AI</li></ul>
+        <h1 class="sp__title">The makings of my portfolio</h1>
+      </header>
+
+      <section class="sp__tldr" aria-labelledby="tldr-title">
+        <h2 class="sp__label" id="tldr-title">TL;DR</h2>
+        <div class="sp__bento">
+          <p class="sp__card sp__card--lead">I designed and built ryanwalsh.uk end to end: research, structure, visual design in Figma, and a hand-built responsive site using Claude Code. The goal was a fast, accessible portfolio that gets a hiring manager from landing to case study in one click.</p>
+          <dl class="sp__card sp__card--wide"><dt>Role</dt><dd>Sole designer and builder</dd></dl>
+          <dl class="sp__card sp__card--third sp__card--lilac"><dt>Tools</dt><dd>Figma, Claude Code, VS Code, HTML/CSS, GitHub Pages</dd></dl>
+          <dl class="sp__card sp__card--third sp__card--blush"><dt>Timeline</dt><dd><mark class="ph">[e.g. 3 weeks, Sept–Oct 2026]</mark></dd></dl>
+          <dl class="sp__card sp__card--third"><dt>Standard</dt><dd>WCAG 2.2 AA <mark class="ph">[confirm]</mark></dd></dl>
+        </div>
+      </section>
+
+      <figure class="sp__figure">
+        <div class="sp__frame sp__frame--draft">
+          <p class="media__ph">Placeholder: before and after (old site vs new)</p>
+          <!-- images/portfolio-site/before-after.webp -->
+          <img class="media__img" src="images/portfolio-site/before-after.webp" alt="[Placeholder alt text: the old portfolio homepage beside the new ryanwalsh.uk homepage]" onerror="this.remove()">
+        </div>
+        <figcaption>Before and after: the old site and the new ryanwalsh.uk.</figcaption>
+      </figure>
+
+      <!-- The challenge -->
+      <section class="sp__section" aria-labelledby="challenge-title">
+        <h2 class="sp__h2" id="challenge-title">The challenge</h2>
+        <div class="sp__body sp__read">
+          <p>Hiring managers spend minutes, not hours, on a portfolio. My old site <mark class="ph">[describe: e.g. was built on a template, buried case studies, wasn't fully accessible]</mark>. <span class="sp__hl">I needed a site that showed my work quickly and practised the accessibility I talk about.</span></p>
+        </div>
+        <div class="sp__callout sp__read">
+          <p class="sp__callout-title">I treated myself as the client and wrote a short brief:</p>
+          <dl class="sp__facts">
+            <div><dt>Audience</dt><dd>Hiring managers, design leads and recruiters, often scanning on a phone between meetings.</dd></div>
+            <div><dt>Goal</dt><dd>Get them from the homepage to a case study, my CV or my email in one step.</dd></div>
+            <div><dt>Constraint</dt><dd>Only approved materials from previous employers could be shown, so the structure had to work with limited visuals for some projects.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Research and structure -->
+      <section class="sp__section" aria-labelledby="research-title">
+        <h2 class="sp__h2" id="research-title">Research and structure</h2>
+        <div class="sp__body sp__read">
+          <p>I started with a UX audit of my old site and a competitor review of <mark class="ph">[number]</mark> product designer portfolios. The audit found <mark class="ph">[e.g. case studies three clicks deep, no visible CV link, low-contrast text]</mark>. <span class="sp__hl">The review showed the strongest portfolios lead with work, not biography.</span></p>
+          <p>To find those portfolios, I used Claude Research to search for examples online and compare how other product designers structure their homepages and case studies. <mark class="ph">[Add which portfolios or patterns stood out, and what you took from them]</mark></p>
+          <p>That shaped a single-page homepage with dedicated case study pages:</p>
+        </div>
+        <ol class="sp__list sp__read">
+          <li><strong>Home</strong> — headline and availability status, with two calls to action: See my work, Get in touch
+            <ol>
+              <li><strong>Selected projects</strong> — TapSOS, orbit, this portfolio, Together (in progress), unreleased Inclutech work (available on request)</li>
+              <li><strong>About me</strong> — how I work, what I bring, experience, education</li>
+              <li><strong>Recommendations</strong> — quotes from colleagues</li>
+              <li><strong>Contact</strong> — email, LinkedIn, CV</li>
+            </ol>
+          </li>
+          <li><strong>Case study pages</strong> — TapSOS, orbit, and this one</li>
+          <li><strong>CV</strong> — downloadable PDF, linked from the main navigation</li>
+        </ol>
+        <figure class="sp__figure">
+          <div class="sp__frame sp__frame--draft">
+            <p class="media__ph">Placeholder: sitemap diagram</p>
+            <!-- images/portfolio-site/sitemap.webp -->
+            <img class="media__img" src="images/portfolio-site/sitemap.webp" alt="[Placeholder alt text: sitemap of ryanwalsh.uk, from the homepage sections to the case study pages and CV]" onerror="this.remove()">
+          </div>
+          <figcaption>The site structure as a diagram.</figcaption>
+        </figure>
+        <div class="sp__body sp__read">
+          <p>The CV sits in the top navigation because recruiters often want it first. Every section is reachable from the menu in one tap.</p>
+        </div>
+      </section>
+
+      <!-- Building with AI -->
+      <section class="sp__section" aria-labelledby="ai-title">
+        <h2 class="sp__h2" id="ai-title">Building with AI</h2>
+        <div class="sp__body sp__read">
+          <p>I built the site myself with Claude Code, <span class="sp__hl">treating the AI as a fast pair-programmer while I owned every design and accessibility decision.</span></p>
+          <p>AI ran through the whole project, not just the code: Claude Research for the portfolio review, Claude Code for the build and the design reviews, and my own GitHub repository to ship and track every change.</p>
+        </div>
+
+        <h3 class="sp__h3 sp__read">My own GitHub repository</h3>
+        <div class="sp__body sp__read">
+          <p>I set up a GitHub repository for the site and publish it through GitHub Pages on my own domain. Claude Code works against that repository, and every change goes through a pull request, so <span class="sp__hl">each design decision has a clear, reviewable history.</span></p>
+        </div>
+        <figure class="sp__figure">
+          <div class="sp__frame sp__frame--16-10 sp__frame--draft">
+            <p class="media__ph">Placeholder: the site’s pull requests on GitHub</p>
+            <!-- images/portfolio-site/github-pull-requests.webp -->
+            <img class="media__img" src="images/portfolio-site/github-pull-requests.webp" alt="[Placeholder alt text: the list of merged pull requests for ryanwalsh.uk on GitHub]" onerror="this.remove()">
+          </div>
+          <figcaption>Every change ships as a pull request.</figcaption>
+        </figure>
+
+        <h3 class="sp__h3 sp__read">Working with Claude Code</h3>
+        <ol class="sp__steps sp__read">
+          <li><div><strong>Design first.</strong> Final layouts, components and tokens were set in Figma before any code was written.</div></li>
+          <li><div><strong>Brief the AI like a developer.</strong> I keep a project file (CLAUDE.md) setting out the design tokens, component rules and accessibility requirements, so output stays on-system.</div></li>
+          <li><div><strong>Build component by component.</strong> Navigation, project cards, the experience timeline and so on, each checked against the Figma design before moving on.</div></li>
+          <li><div><strong>Review and correct.</strong> I checked every build in the browser and with assistive tech, and corrected the AI where it drifted, for example square white corners showing behind the rounded phone frames on my TapSOS screens, which I spotted in review and had clipped just inside each frame.</div></li>
+          <li><div><strong>Ship and iterate.</strong> Changes, such as adding the private project card, take minutes rather than days.</div></li>
+        </ol>
+        <figure class="sp__figure">
+          <div class="sp__frame sp__frame--16-10 sp__frame--draft">
+            <p class="media__ph">Placeholder: Claude Code session screenshot</p>
+            <!-- images/portfolio-site/claude-code-session.webp -->
+            <img class="media__img" src="images/portfolio-site/claude-code-session.webp" alt="[Placeholder alt text: a Claude Code session building a component for ryanwalsh.uk]" onerror="this.remove()">
+          </div>
+          <figcaption>A Claude Code session during the build.</figcaption>
+        </figure>
+
+        <h3 class="sp__h3 sp__read">Rounds of iteration on colour and type</h3>
+        <div class="sp__body sp__read">
+          <p>Very little landed first time. Colours and typography went through several rounds, and <span class="sp__hl">every round was checked for accessibility before it shipped.</span></p>
+        </div>
+        <ol class="sp__rounds">
+          <li class="sp__round">
+            <p class="sp__round-num">Round 1</p>
+            <h4 class="sp__round-title">Case study headers</h4>
+            <p>Moved from a dark violet gradient to the homepage’s light, grid-paper ground, then dropped the grid altogether for a plainer, calmer read.</p>
+          </li>
+          <li class="sp__round sp__round--lilac">
+            <p class="sp__round-num">Round 2</p>
+            <h4 class="sp__round-title">Typography</h4>
+            <p>Case study titles moved onto the homepage’s type scale (32, 40 and 56px at regular weight), and intro text was resized to sit on two lines without dropping below 18px.</p>
+          </li>
+          <li class="sp__round sp__round--blush">
+            <p class="sp__round-num">Round 3</p>
+            <h4 class="sp__round-title">Wordmark</h4>
+            <p>A braille “RW” mark gave way to “Ryan Walsh.” with a pink full stop: printed braille can’t be read by touch on a screen, so the mark was decorative rather than inclusive.</p>
+          </li>
+          <li class="sp__round">
+            <p class="sp__round-num">Round 4</p>
+            <h4 class="sp__round-title">Colour and contrast</h4>
+            <p>Every new colour was measured before it shipped: the TapSOS teal at 5.36:1, the problem and answer cards at 5.36:1 to 6.31:1, and a darker overlay that lifts text on light cards to 7.99:1.</p>
+          </li>
+          <li class="sp__round sp__round--lilac">
+            <p class="sp__round-num">Round 5</p>
+            <h4 class="sp__round-title">Design review</h4>
+            <p>I ran an AI-assisted design critique against Nielsen’s usability heuristics, and used its findings to decide what to change next.</p>
+          </li>
+        </ol>
+
+        <div class="sp__body sp__read">
+          <p>This gave me a working understanding of how my components map to HTML and CSS. That makes me a better partner to developers at handoff.</p>
+        </div>
+      </section>
+
+      <!-- Design decisions -->
+      <section class="sp__section" aria-labelledby="design-title">
+        <h2 class="sp__h2" id="design-title">Design decisions</h2>
+        <div class="sp__body sp__read">
+          <p>I designed the site in Figma as a small design system first, then built pages from it.</p>
+        </div>
+        <ul class="sp__list sp__read">
+          <li><strong>Light, high-contrast palette.</strong> A pale grey and white base with navy text lets project imagery stand out, with violet and a pink accent used sparingly. I checked every text and accent pairing with Stark against AA.</li>
+          <li><strong>Type scale.</strong> Manrope on a <mark class="ph">[ratio]</mark> scale, with large headings so the page can be scanned in seconds.</li>
+          <li><strong>Components.</strong> Project cards, tags, buttons and recommendation cards built with auto layout and variables, so light and dark tokens and spacing stay consistent.</li>
+          <li><strong>Project card states.</strong> Live case study, in progress, and private (available on request). Each state has its own visual treatment, so status is clear without reading the small print.</li>
+          <li><strong>Microinteractions.</strong> <mark class="ph">[Describe hover and focus states and the scrolling "Coming soon" marquee, plus reduced-motion handling if you added it.]</mark></li>
+        </ul>
+        <figure class="sp__figure">
+          <div class="sp__frame sp__frame--draft">
+            <p class="media__ph">Placeholder: Figma components and tokens</p>
+            <!-- images/portfolio-site/figma-components.webp -->
+            <img class="media__img" src="images/portfolio-site/figma-components.webp" alt="[Placeholder alt text: Figma components for the site, including project cards, tags and buttons, with colour and spacing tokens]" onerror="this.remove()">
+          </div>
+          <figcaption>Components and tokens in Figma.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Accessibility -->
+      <section class="sp__section" aria-labelledby="accessibility-title">
+        <h2 class="sp__h2" id="accessibility-title">Accessibility</h2>
+        <div class="sp__body sp__read">
+          <p>I built to WCAG 2.2 AA from the first wireframe, <span class="sp__hl">because a portfolio about accessible design has to be accessible itself.</span></p>
+        </div>
+        <ul class="sp__list sp__read">
+          <li><strong>Skip to content link</strong> as the first focusable element, so keyboard and screen reader users can bypass the navigation.</li>
+          <li><strong>Semantic structure:</strong> one H1, a logical heading order, and ordered lists for experience and education.</li>
+          <li><strong>Visible focus states</strong> on every link and button, sized to meet the 2.2 focus appearance guidance <mark class="ph">[confirm]</mark>.</li>
+          <li><strong>Target size:</strong> tap targets of at least 24×24 px (WCAG 2.2, 2.5.8) <mark class="ph">[confirm actual size]</mark>.</li>
+          <li><strong>Descriptive links:</strong> project cards announce the project name and “View case study”, not just “Read more”.</li>
+          <li><strong>Tested with</strong> <mark class="ph">[VoiceOver on iOS and macOS, keyboard-only navigation, Stark, Lighthouse or axe — add your scores]</mark>.</li>
+        </ul>
+        <figure class="sp__figure">
+          <div class="sp__frame sp__frame--draft">
+            <p class="media__ph">Placeholder: keyboard navigation recording</p>
+            <!-- Swap in the recording, for example:
+            <video class="media__img" src="images/portfolio-site/keyboard-navigation.mp4" controls muted playsinline aria-label="[Placeholder alt text: tabbing through ryanwalsh.uk with the keyboard only, from the skip link to a case study]"></video>
+            -->
+          </div>
+          <figcaption>Keyboard-only navigation, from the skip link to a case study.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Responsive design -->
+      <section class="sp__section" aria-labelledby="responsive-title">
+        <h2 class="sp__h2" id="responsive-title">Responsive design</h2>
+        <div class="sp__body sp__read">
+          <p>I designed mobile-first, since many recruiters first open a portfolio from a LinkedIn message on their phone.</p>
+        </div>
+        <div class="sp__table-wrap sp__read" role="region" aria-label="Breakpoints table" tabindex="0">
+          <table class="sp__table">
+            <caption>Breakpoints and what changes at each</caption>
+            <thead>
+              <tr><th scope="col">Breakpoint</th><th scope="col">Width</th><th scope="col">Key changes</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Mobile</th><td>Under 640 px</td><td>Menu collapses behind a toggle; project cards stack in one column</td></tr>
+              <tr><th scope="row">Tablet</th><td>640–899 px</td><td>Project details, lists and timelines move into two columns; the menu stays behind a toggle until 860 px</td></tr>
+              <tr><th scope="row">Desktop</th><td>900 px and up</td><td>Full navigation bar, a 12-column grid with the lead project full width and the rest in pairs, and a case study index from 1120 px</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="sp__figure">
+          <div class="sp__frame sp__frame--wide sp__frame--draft">
+            <p class="media__ph">Placeholder: mobile, tablet and desktop mock-ups side by side</p>
+            <!-- images/portfolio-site/responsive-mockups.webp -->
+            <img class="media__img" src="images/portfolio-site/responsive-mockups.webp" alt="[Placeholder alt text: the ryanwalsh.uk homepage on a phone, a tablet and a desktop, side by side]" onerror="this.remove()">
+          </div>
+          <figcaption>The homepage on mobile, tablet and desktop.</figcaption>
+        </figure>
+        <div class="sp__body sp__read">
+          <p>The layout respects phone safe areas, so content isn’t hidden under notches or home indicators. Share cards and meta descriptions are set, so links look clean when pasted into LinkedIn, Slack or email.</p>
+        </div>
+      </section>
+
+      <!-- Outcome and what's next -->
+      <section class="sp__section" aria-labelledby="outcome-title">
+        <h2 class="sp__h2" id="outcome-title">Outcome and what’s next</h2>
+        <div class="sp__body sp__read">
+          <p>The site is live at <a href="https://ryanwalsh.uk/">ryanwalsh.uk</a> and has become my main tool for applications. <mark class="ph">[Add real results if you have them: Lighthouse accessibility score, page load time, interviews or recruiter messages since launch.]</mark></p>
+        </div>
+        <div class="sp__callout sp__read">
+          <p class="sp__callout-title">What I learned</p>
+          <p>Designing and building it myself made me faster at spotting where a design will be hard to build, and more precise in my specs.</p>
+        </div>
+        <div class="sp__body sp__read">
+          <p>Next, I plan to add the Together case study and <mark class="ph">[e.g. run a quick usability test with two or three hiring managers]</mark>.</p>
+        </div>
+      </section>
+
+      <nav class="sp__next" aria-label="Next case study">
+        <div>
+          <p class="sp__next-kicker">Next case study</p>
+          <p class="sp__next-title">TapSOS: designing a silent way to reach emergency services</p>
+        </div>
+        <a class="sp__pill" href="tapsos.html">View project<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4"/></svg><span class="visually-hidden">: TapSOS case study</span></a>
+      </nav>
+
+    </div>
+  </article>
 
   <!-- ============ Contact ============ -->
   <section class="section section--contact on-dark" id="contact" aria-labelledby="contact-title">
@@ -226,6 +463,5 @@
   </div>
 </footer>
 
-<script type="application/json" id="cs-payload" data-key="cs-portfolio-site-key-v1">{"v":1,"kdf":"PBKDF2-SHA256","iterations":210000,"salt":"Z3zSlzEdfp0LBh53U1JMZg==","iv":"n2ED4nG/AQ08aYwq","cipher":"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"}</script>
 </body>
 </html>

@@ -22,12 +22,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
   <link rel="stylesheet" href="css/styles.css?v=20261102e">
   <script src="js/main.js?v=20261029a" defer></script>
-  <!-- Side-project case study layout: one calm reading column, a TL;DR of
-       cards up top, pastel callouts and highlighted key lines. Scoped to .sp. -->
+  <!-- Side-project case study layout: one full-width column, a bento of key
+       facts up top, pastel callouts and highlighted key lines. Scoped to .sp. -->
   <style>
     .sp {
       --sp-col: 1032px;
-      --sp-read: 720px;
       --sp-lavender: #eef0fc;
       --sp-lilac: #e6e3ff;
       --sp-blush: #ffe4f2;
@@ -36,21 +35,15 @@
     }
     /* Clear of the notch in landscape, like the site's own .wrap. */
     .sp__wrap { width: min(100% - 2 * max(20px, env(safe-area-inset-left), env(safe-area-inset-right)), var(--sp-col)); margin-inline: auto; }
-    .sp__read { max-width: var(--sp-read); }
 
-    /* Top: back link, tags, headline */
-    .sp__back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--paper-soft); font-size: var(--text-sm); font-weight: 500; text-decoration: none; }
-    .sp__back:hover { color: var(--paper); }
-    .sp__back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    /* Top: breadcrumb, tags, headline */
     .sp__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(24px, 4vw, 40px); }
     .sp__tags li { padding: 8px 18px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--paper); font-size: var(--text-sm); }
-    .sp__title { max-width: 18ch; margin-top: 24px; font-size: clamp(2.125rem, 1.5rem + 2.6vw, 3.25rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
+    /* One line at every width: the size follows the viewport, capped at the homepage's 56px. */
+    .sp__title { margin-top: 24px; font-size: min(7vw, 3.5rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; white-space: nowrap; }
 
-    /* TL;DR: a small bento of the key facts */
-    .sp__tldr { margin-top: clamp(40px, 6vw, 72px); }
-    .sp__label { display: flex; align-items: center; gap: 16px; color: var(--paper); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-    .sp__label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-    .sp__bento { display: grid; gap: 14px; margin-top: 20px; }
+    /* A small bento of the key facts */
+    .sp__bento { display: grid; gap: 14px; margin-top: clamp(40px, 6vw, 72px); }
     .sp__card { padding: clamp(24px, 3vw, 34px); border-radius: var(--sp-radius); background: var(--sp-lavender); color: var(--paper); line-height: 1.55; }
     .sp__card dt { color: var(--paper-soft); font-size: var(--text-sm); font-weight: 600; }
     .sp__card dd { margin-top: 6px; font-size: 1.0625rem; }
@@ -66,7 +59,7 @@
 
     /* Story sections */
     .sp__section { margin-top: clamp(72px, 10vw, 128px); }
-    .sp__h2 { max-width: 24ch; font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; text-wrap: balance; }
+    .sp__h2 { font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; text-wrap: balance; }
     .sp__body { margin-top: 20px; color: var(--paper-soft); font-size: 1.0625rem; line-height: 1.8; }
     .sp__body > * + * { margin-top: 1em; }
     .sp__body strong { color: var(--paper); font-weight: 600; }
@@ -123,21 +116,96 @@
     .sp__frame .media__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .sp__figure figcaption { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
 
-    /* Breakpoints table */
-    .sp__table-wrap { margin-top: 24px; overflow-x: auto; }
-    .sp__table { width: 100%; min-width: 520px; border-collapse: collapse; text-align: left; }
-    .sp__table caption { padding-bottom: 12px; color: var(--paper-faint); font-size: var(--text-sm); text-align: left; }
-    .sp__table th, .sp__table td { padding: 14px 16px 14px 0; border-top: 1px solid var(--line); vertical-align: top; }
-    .sp__table tr:last-child td, .sp__table tr:last-child th { border-bottom: 1px solid var(--line); }
-    .sp__table thead th { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 600; }
-    .sp__table tbody th { color: var(--paper); font-weight: 600; }
-    .sp__table td { color: var(--paper-soft); }
-    .sp__table td:nth-child(2) { white-space: nowrap; }
+    /* Before and after: two screenshots side by side */
+    .sp__ba { display: grid; gap: 14px; }
+    @media (min-width: 640px) { .sp__ba { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .sp__ba-label { display: inline-block; margin-bottom: 10px; padding: 4px 12px; border-radius: 999px; background: var(--navy); color: #ffffff; font-size: var(--text-sm); font-weight: 600; }
+    .sp__ba-label--now { background: var(--violet); }
+
+    /* Mock-ups drawn in HTML. Everything is sized in container units, so each
+       one scales like an image. Swap for a real screenshot when there is one. */
+    .sp__frame--mock { container-type: inline-size; }
+    .mock { position: absolute; inset: 0; overflow: hidden; font-size: 1.3cqw; line-height: 1.3; }
+    .mock * { margin: 0; }
+
+    /* Whiteboard sitemap */
+    .mock--board { background: #f6f6f3 radial-gradient(circle, #d3d3cd 0.1cqw, transparent 0.12cqw) 0 0 / 2cqw 2cqw; color: #1c1c1e; }
+    .mock__lines { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: #5f5f6b; stroke-width: 2; stroke-linejoin: round; }
+    .mock__chip, .mock__tools, .mock__zoom { position: absolute; border-radius: 0.6em; background: #ffffff; box-shadow: 0 0.1em 0.5em rgba(0, 0, 0, 0.12); }
+    .mock__chip { top: 3.5%; left: 2.4%; padding: 0.6em 1em; font-weight: 700; }
+    .mock__chip span { color: #6b6b75; font-weight: 500; }
+    .mock__tools { top: 17%; left: 2.4%; display: grid; gap: 0.55em; padding: 0.55em; }
+    .mock__tools i { display: block; width: 1.7em; height: 1.7em; border-radius: 0.35em; background: #ececf0; }
+    .mock__tools i:first-child { background: #e3e0ff; }
+    .mock__zoom { right: 2.4%; bottom: 4%; display: flex; gap: 1em; padding: 0.5em 1em; color: #44444d; font-weight: 600; }
+    .mock__area { position: absolute; border-radius: 0.4em; background: #ffffff; box-shadow: 0 0 0 0.1em #dcdce2; }
+    .mock__area-label { position: absolute; bottom: 100%; left: 0; padding-bottom: 0.35em; color: #6b6b75; font-size: 0.85em; font-weight: 600; }
+    .mock__node, .mock__sticky { position: absolute; transform: translate(-50%, -50%); }
+    .mock__node { padding: 0.7em 1.1em; border: 0.12em solid #1c1c1e; border-radius: 0.5em; background: #ffffff; font-weight: 600; white-space: nowrap; }
+    .mock__node--root { border-color: var(--navy); background: var(--navy); color: #ffffff; font-size: 1.15em; }
+    .mock__node--group { border-color: var(--violet); background: var(--sp-lilac); }
+    .mock__sticky { display: flex; align-items: flex-end; width: 10.5%; aspect-ratio: 1; padding: 0.7em; background: #fff1a8; box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.14); font-weight: 500; line-height: 1.25; }
+    .mock__sticky--pink { background: #ffd6ec; }
+    .mock__sticky--blue { background: #d9ecff; }
+    .mock__cursor { position: absolute; display: flex; align-items: flex-start; gap: 0.2em; }
+    .mock__cursor svg { width: 1.3em; height: 1.3em; fill: var(--pen); stroke: #ffffff; stroke-width: 1.5; }
+    .mock__cursor span { margin-top: 1em; padding: 0.15em 0.6em; border-radius: 0.4em; background: var(--pen); color: #ffffff; font-size: 0.85em; font-weight: 600; }
+
+    /* Claude Code terminal */
+    .mock--term { display: flex; flex-direction: column; background: #1b1b1a; color: #e8e5df; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 1.7cqw; line-height: 1.55; }
+    .mock__bar { display: flex; align-items: center; gap: 0.5em; padding: 0.8em 1.1em; background: #2b2b29; color: #b3aea5; }
+    .mock__bar i { width: 0.85em; height: 0.85em; border-radius: 50%; background: #ff5f57; }
+    .mock__bar i:nth-child(2) { background: #febc2e; }
+    .mock__bar i:nth-child(3) { background: #28c840; }
+    .mock__bar span { margin-inline: auto; padding-right: 3.4em; }
+    .mock__screen { display: flex; flex: 1; flex-direction: column; gap: 0.85em; padding: 1.4em 1.8em; }
+    .mock__user { padding: 0.55em 0.9em; border-left: 0.2em solid #8a857d; background: #282826; color: #ffffff; }
+    .mock__out::before { content: "⏺ "; color: #e0896a; }
+    .mock__out b { color: #ffffff; font-weight: 700; }
+    .mock__diff { margin-top: 0.3em; padding: 0.3em 0.8em; border-radius: 0.2em; background: rgba(77, 160, 90, 0.18); color: #a6dcae; }
+    .mock__dim { color: #b3aea5; }
+    .mock__input { margin-top: auto; padding: 0.6em 0.9em; border: 0.1em solid #55534f; border-radius: 0.4em; color: #b3aea5; }
+
+    /* Figma file */
+    .mock--figma { display: grid; grid-template-columns: 17% minmax(0, 1fr) 19%; grid-template-rows: 2.9em minmax(0, 1fr); background: #f5f5f5; color: #1e1e1e; font-size: 1.2cqw; }
+    .mock__top { display: flex; grid-column: 1 / -1; align-items: center; gap: 0.6em; padding: 0 1.2em; background: #2c2c2c; color: #ffffff; }
+    .mock__top i { width: 1.4em; height: 1.4em; border-radius: 0.3em; background: #4a4a4a; }
+    .mock__top i:first-child { background: #0d99ff; }
+    .mock__top span { margin-inline: auto; font-weight: 600; }
+    .mock__panel { display: grid; align-content: start; gap: 0.6em; padding: 1.1em 1em; background: #ffffff; }
+    .mock__panel--left { border-right: 0.1em solid #e3e3e3; }
+    .mock__panel--right { border-left: 0.1em solid #e3e3e3; }
+    .mock__panel-title { padding-bottom: 0.3em; font-weight: 700; }
+    .mock__layer { color: #444444; }
+    .mock__layer--in { padding-left: 1.2em; }
+    .mock__layer--on { margin-inline: -0.5em; padding-inline: 1.7em 0.5em; border-radius: 0.25em; background: #e5f4ff; }
+    .mock__var { display: flex; align-items: center; gap: 0.55em; color: #444444; }
+    .mock__var i { flex: none; width: 1.2em; height: 1.2em; border-radius: 0.25em; box-shadow: inset 0 0 0 0.08em rgba(0, 0, 0, 0.12); }
+    .mock__var span { margin-left: auto; color: #6b6b6b; }
+    .mock__canvas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: center; gap: 3em 1.8em; padding: 3em 2.2em 2em; }
+    .mock__fr { position: relative; padding: 1.3em; border-radius: 0.2em; background: #ffffff; box-shadow: 0 0 0 0.08em #e3e3e3; }
+    .mock__fr--wide { grid-column: 1 / -1; display: flex; align-items: center; gap: 2em; }
+    .mock__fr-label { position: absolute; bottom: 100%; left: 0; padding-bottom: 0.4em; color: #6b6b6b; font-size: 0.9em; }
+    .mock__swatches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9em; }
+    .mock__swatches i { display: block; height: 3.2em; border-radius: 0.4em; box-shadow: inset 0 0 0 0.08em rgba(0, 0, 0, 0.1); }
+    .mock__swatches p { margin-top: 0.35em; font-size: 0.85em; font-weight: 600; }
+    .mock__swatches span { display: block; color: #6b6b6b; font-weight: 400; }
+    .mock__type p { display: flex; align-items: baseline; gap: 0.8em; color: var(--navy); font-weight: 500; line-height: 1.15; letter-spacing: -0.02em; }
+    .mock__type p + p { margin-top: 0.35em; }
+    .mock__type span { color: #6b6b6b; font-size: 1.2cqw; font-weight: 400; letter-spacing: 0; }
+    .mock__tag { padding: 0.5em 1.2em; border: 0.08em solid #c9ccd6; border-radius: 999px; }
+    .mock__btn { position: relative; padding: 0.9em 1.6em; border-radius: 999px; background: var(--navy); color: #ffffff; font-weight: 600; }
+    .mock__btn::after { content: "Pill · 48 h"; position: absolute; top: calc(100% + 0.7em); left: 50%; transform: translateX(-50%); padding: 0.1em 0.5em; border-radius: 0.2em; background: #0d99ff; color: #ffffff; font-size: 0.8em; white-space: nowrap; }
+    .mock__btn::before { content: ""; position: absolute; inset: -0.35em; border: 0.1em solid #0d99ff; border-radius: 0.2em; }
+    .mock__card { width: 30%; margin-left: auto; overflow: hidden; border-radius: 0.6em; box-shadow: 0 0 0 0.08em #e3e3e3; }
+    .mock__card-media { display: grid; place-items: center; height: 4.5em; background: #f4f5f8 linear-gradient(#e4e6ee 0.06em, transparent 0.06em) 0 0 / 0.9em 0.9em; color: var(--navy); font-weight: 700; }
+    .mock__card-media b { color: var(--pen); }
+    .mock__card p { padding: 0.6em 0.8em; font-size: 0.85em; font-weight: 600; }
 
     /* Next case study row */
     .sp__next { display: grid; gap: 20px; align-items: center; margin-top: clamp(80px, 11vw, 140px); padding-block: clamp(36px, 5vw, 56px); border-top: 1px solid var(--line); }
     .sp__next-kicker { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 600; }
-    .sp__next-title { margin-top: 6px; max-width: 26ch; font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+    .sp__next-title { margin-top: 6px; font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
     .sp__pill { display: inline-flex; align-items: center; gap: 10px; justify-self: start; min-height: 48px; padding: 0 24px; border-radius: 999px; background: var(--navy); color: #ffffff; font-weight: 600; text-decoration: none; }
     .sp__pill svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s var(--ease-out); }
     .sp__pill:hover svg { transform: translateX(4px); }
@@ -183,43 +251,46 @@
     <div class="sp__wrap">
 
       <header>
-        <a class="sp__back" href="index.html#work"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M14 8H3M7 4 3 8l4 4"/></svg>Back to work</a>
+        <p class="crumbs"><a href="index.html#work">Selected projects</a><span aria-hidden="true">/</span><span>portfolio</span></p>
         <ul class="sp__tags" aria-label="Skills"><li>UX Design</li><li>Web</li><li>Accessibility</li><li>AI</li></ul>
         <h1 class="sp__title">The makings of my portfolio</h1>
       </header>
 
-      <section class="sp__tldr" aria-labelledby="tldr-title">
-        <h2 class="sp__label" id="tldr-title">TL;DR</h2>
-        <div class="sp__bento">
-          <p class="sp__card sp__card--lead">I designed and built ryanwalsh.uk end to end: research, structure, visual design in Figma, and a hand-built responsive site using Claude Code. The goal was a fast, accessible portfolio that gets a hiring manager from landing to case study in one click.</p>
-          <dl class="sp__card sp__card--wide"><dt>Role</dt><dd>Sole designer and builder</dd></dl>
-          <dl class="sp__card sp__card--third sp__card--lilac"><dt>Tools</dt><dd>Figma, Claude Code, VS Code, HTML/CSS, GitHub Pages</dd></dl>
-          <dl class="sp__card sp__card--third sp__card--blush"><dt>Timeline</dt><dd><mark class="ph">[e.g. 3 weeks, Sept–Oct 2026]</mark></dd></dl>
-          <dl class="sp__card sp__card--third"><dt>Standard</dt><dd>WCAG 2.2 AA <mark class="ph">[confirm]</mark></dd></dl>
-        </div>
-      </section>
+      <div class="sp__bento">
+        <p class="sp__card sp__card--lead">I designed and built ryanwalsh.uk end to end: research, structure, visual design in Figma, and a hand-built responsive site using Claude Code. The goal was a fast, accessible portfolio that gets a hiring manager from landing to case study in one click.</p>
+        <dl class="sp__card sp__card--wide sp__card--lilac"><dt>Tools</dt><dd>Figma, Claude Code, VS Code, HTML/CSS, GitHub Pages</dd></dl>
+        <dl class="sp__card sp__card--third sp__card--blush"><dt>Research</dt><dd>A Claude Research review of other designers’ portfolios</dd></dl>
+        <dl class="sp__card sp__card--third"><dt>Iteration</dt><dd>5 rounds on colour, type and the wordmark</dd></dl>
+        <dl class="sp__card sp__card--third sp__card--lilac"><dt>Shipping</dt><dd>Every change as a pull request on GitHub</dd></dl>
+      </div>
 
       <figure class="sp__figure">
-        <div class="sp__frame sp__frame--draft">
-          <p class="media__ph">Placeholder: before and after (old site vs new)</p>
-          <!-- images/portfolio-site/before-after.webp -->
-          <img class="media__img" src="images/portfolio-site/before-after.webp" alt="[Placeholder alt text: the old portfolio homepage beside the new ryanwalsh.uk homepage]" onerror="this.remove()">
+        <div class="sp__ba">
+          <div>
+            <p class="sp__ba-label">Before</p>
+            <div class="sp__frame sp__frame--16-10">
+              <img class="media__img" src="images/portfolio-site/before.jpg" width="800" height="500" alt="The homepage’s Selected projects on 26 October 2026: orbit leads, with Together and a locked TapSOS card below, and a braille-style RW wordmark." loading="lazy">
+            </div>
+          </div>
+          <div>
+            <p class="sp__ba-label sp__ba-label--now">Now</p>
+            <div class="sp__frame sp__frame--16-10">
+              <img class="media__img" src="images/portfolio-site/after.jpg" width="800" height="500" alt="The homepage’s Selected projects now: TapSOS leads with a wall of its screens, with orbit and this portfolio below, and the Ryan Walsh wordmark with a pink full stop." loading="lazy">
+            </div>
+          </div>
         </div>
-        <figcaption>Before and after: the old site and the new ryanwalsh.uk.</figcaption>
+        <figcaption>Selected projects on the homepage, on 26 October 2026 and now. <mark class="ph">[Swap “Before” for an older version if you have one]</mark></figcaption>
       </figure>
 
       <!-- The challenge -->
       <section class="sp__section" aria-labelledby="challenge-title">
         <h2 class="sp__h2" id="challenge-title">The challenge</h2>
-        <div class="sp__body sp__read">
+        <div class="sp__body">
           <p>Hiring managers spend minutes, not hours, on a portfolio. My old site <mark class="ph">[describe: e.g. was built on a template, buried case studies, wasn't fully accessible]</mark>. <span class="sp__hl">I needed a site that showed my work quickly and practised the accessibility I talk about.</span></p>
         </div>
-        <div class="sp__callout sp__read">
-          <p class="sp__callout-title">I treated myself as the client and wrote a short brief:</p>
+        <div class="sp__callout">
           <dl class="sp__facts">
-            <div><dt>Audience</dt><dd>Hiring managers, design leads and recruiters, often scanning on a phone between meetings.</dd></div>
             <div><dt>Goal</dt><dd>Get them from the homepage to a case study, my CV or my email in one step.</dd></div>
-            <div><dt>Constraint</dt><dd>Only approved materials from previous employers could be shown, so the structure had to work with limited visuals for some projects.</dd></div>
           </dl>
         </div>
       </section>
@@ -227,12 +298,12 @@
       <!-- Research and structure -->
       <section class="sp__section" aria-labelledby="research-title">
         <h2 class="sp__h2" id="research-title">Research and structure</h2>
-        <div class="sp__body sp__read">
+        <div class="sp__body">
           <p>I started with a UX audit of my old site and a competitor review of <mark class="ph">[number]</mark> product designer portfolios. The audit found <mark class="ph">[e.g. case studies three clicks deep, no visible CV link, low-contrast text]</mark>. <span class="sp__hl">The review showed the strongest portfolios lead with work, not biography.</span></p>
           <p>To find those portfolios, I used Claude Research to search for examples online and compare how other product designers structure their homepages and case studies. <mark class="ph">[Add which portfolios or patterns stood out, and what you took from them]</mark></p>
           <p>That shaped a single-page homepage with dedicated case study pages:</p>
         </div>
-        <ol class="sp__list sp__read">
+        <ol class="sp__list">
           <li><strong>Home</strong> — headline and availability status, with two calls to action: See my work, Get in touch
             <ol>
               <li><strong>Selected projects</strong> — TapSOS, orbit, this portfolio, Together (in progress), unreleased Inclutech work (available on request)</li>
@@ -245,14 +316,35 @@
           <li><strong>CV</strong> — downloadable PDF, linked from the main navigation</li>
         </ol>
         <figure class="sp__figure">
-          <div class="sp__frame sp__frame--draft">
-            <p class="media__ph">Placeholder: sitemap diagram</p>
-            <!-- images/portfolio-site/sitemap.webp -->
-            <img class="media__img" src="images/portfolio-site/sitemap.webp" alt="[Placeholder alt text: sitemap of ryanwalsh.uk, from the homepage sections to the case study pages and CV]" onerror="this.remove()">
+          <div class="sp__frame sp__frame--mock">
+            <!-- Mock-up of the Miro board. Swap for a screenshot when it exists:
+            <img class="media__img" src="images/portfolio-site/sitemap.webp" alt="Sitemap of ryanwalsh.uk on a Miro board, from the homepage sections to the case study pages and CV."> -->
+            <div class="mock mock--board" role="img" aria-label="Sitemap of ryanwalsh.uk on a whiteboard. The site splits into Home, Case studies and CV. Home holds Selected projects, About me, Recommendations and Contact. Case studies are TapSOS, orbit and The makings of my portfolio. A note says the CV sits in the main navigation because recruiters often want it first.">
+              <svg class="mock__lines" viewBox="0 0 1000 562.5" preserveAspectRatio="none" aria-hidden="true"><path d="M560 118V150M332 180V150H870V180M640 150V180M332 220V232M640 220V400M870 220V350"/></svg>
+              <p class="mock__chip">ryanwalsh.uk <span>· Sitemap</span></p>
+              <p class="mock__tools"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></p>
+              <div class="mock__area" style="left:19%;top:41.2%;width:28.5%;height:50.4%"></div>
+              <p class="mock__node mock__node--root" style="left:56%;top:16.9%">ryanwalsh.uk</p>
+              <p class="mock__sticky mock__sticky--blue" style="left:80%;top:16.9%;width:12%;font-size:0.9em">Goal: one step to a case study, CV or email</p>
+              <p class="mock__node mock__node--group" style="left:33.2%;top:35.6%">Home</p>
+              <p class="mock__node mock__node--group" style="left:64%;top:35.6%">Case studies</p>
+              <p class="mock__node mock__node--group" style="left:87%;top:35.6%">CV</p>
+              <p class="mock__sticky" style="left:26.5%;top:54.2%;width:12%;font-size:0.9em">Selected projects</p>
+              <p class="mock__sticky" style="left:40%;top:54.2%;width:12%;font-size:0.9em">About me</p>
+              <p class="mock__sticky" style="left:26.5%;top:78.2%;width:12%;font-size:0.9em">Recommen&shy;dations</p>
+              <p class="mock__sticky" style="left:40%;top:78.2%;width:12%;font-size:0.9em">Contact</p>
+              <p class="mock__node" style="left:64%;top:49.8%">TapSOS</p>
+              <p class="mock__node" style="left:64%;top:60.4%">orbit</p>
+              <p class="mock__node" style="left:64%;top:71.1%">The makings of my portfolio</p>
+              <p class="mock__node" style="left:87%;top:49.8%">PDF download</p>
+              <p class="mock__sticky mock__sticky--pink" style="left:87%;top:73.5%;width:12%;font-size:0.9em">In the main nav: recruiters often want it first</p>
+              <p class="mock__cursor" style="left:47%;top:22%"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 1.5 13.5 7 8 8.5 5.5 14z"/></svg><span>Ryan</span></p>
+              <p class="mock__zoom"><span>−</span><span>100%</span><span>+</span></p>
+            </div>
           </div>
-          <figcaption>The site structure as a diagram.</figcaption>
+          <figcaption>The site structure, mapped on a whiteboard. <mark class="ph">[Placeholder: replace with your Miro board]</mark></figcaption>
         </figure>
-        <div class="sp__body sp__read">
+        <div class="sp__body">
           <p>The CV sits in the top navigation because recruiters often want it first. Every section is reachable from the menu in one tap.</p>
         </div>
       </section>
@@ -260,26 +352,24 @@
       <!-- Building with AI -->
       <section class="sp__section" aria-labelledby="ai-title">
         <h2 class="sp__h2" id="ai-title">Building with AI</h2>
-        <div class="sp__body sp__read">
+        <div class="sp__body">
           <p>I built the site myself with Claude Code, <span class="sp__hl">treating the AI as a fast pair-programmer while I owned every design and accessibility decision.</span></p>
           <p>AI ran through the whole project, not just the code: Claude Research for the portfolio review, Claude Code for the build and the design reviews, and my own GitHub repository to ship and track every change.</p>
         </div>
 
-        <h3 class="sp__h3 sp__read">My own GitHub repository</h3>
-        <div class="sp__body sp__read">
+        <h3 class="sp__h3">My own GitHub repository</h3>
+        <div class="sp__body">
           <p>I set up a GitHub repository for the site and publish it through GitHub Pages on my own domain. Claude Code works against that repository, and every change goes through a pull request, so <span class="sp__hl">each design decision has a clear, reviewable history.</span></p>
         </div>
         <figure class="sp__figure">
-          <div class="sp__frame sp__frame--16-10 sp__frame--draft">
-            <p class="media__ph">Placeholder: the site’s pull requests on GitHub</p>
-            <!-- images/portfolio-site/github-pull-requests.webp -->
-            <img class="media__img" src="images/portfolio-site/github-pull-requests.webp" alt="[Placeholder alt text: the list of merged pull requests for ryanwalsh.uk on GitHub]" onerror="this.remove()">
+          <div class="sp__frame sp__frame--16-10">
+            <img class="media__img" src="images/portfolio-site/github-pull-requests.jpg" width="800" height="500" alt="The pull requests page for the site’s GitHub repository, filtered to merged: 18 closed pull requests, from adding the TapSOS case study to removing the password from this one." loading="lazy">
           </div>
-          <figcaption>Every change ships as a pull request.</figcaption>
+          <figcaption>Every change ships as a pull request. <mark class="ph">[Placeholder: swap for a short screen recording if you make one]</mark></figcaption>
         </figure>
 
-        <h3 class="sp__h3 sp__read">Working with Claude Code</h3>
-        <ol class="sp__steps sp__read">
+        <h3 class="sp__h3">Working with Claude Code</h3>
+        <ol class="sp__steps">
           <li><div><strong>Design first.</strong> Final layouts, components and tokens were set in Figma before any code was written.</div></li>
           <li><div><strong>Brief the AI like a developer.</strong> I keep a project file (CLAUDE.md) setting out the design tokens, component rules and accessibility requirements, so output stays on-system.</div></li>
           <li><div><strong>Build component by component.</strong> Navigation, project cards, the experience timeline and so on, each checked against the Figma design before moving on.</div></li>
@@ -287,16 +377,27 @@
           <li><div><strong>Ship and iterate.</strong> Changes, such as adding the private project card, take minutes rather than days.</div></li>
         </ol>
         <figure class="sp__figure">
-          <div class="sp__frame sp__frame--16-10 sp__frame--draft">
-            <p class="media__ph">Placeholder: Claude Code session screenshot</p>
-            <!-- images/portfolio-site/claude-code-session.webp -->
-            <img class="media__img" src="images/portfolio-site/claude-code-session.webp" alt="[Placeholder alt text: a Claude Code session building a component for ryanwalsh.uk]" onerror="this.remove()">
+          <div class="sp__frame sp__frame--16-10 sp__frame--mock">
+            <!-- Mock-up of a Claude Code session. Swap for a screenshot when it exists:
+            <img class="media__img" src="images/portfolio-site/claude-code-session.webp" alt="A Claude Code session fixing the white corners on the TapSOS phone frames."> -->
+            <div class="mock mock--term" role="img" aria-label="A Claude Code session in a terminal. I ask it to remove the slight white showing around the TapSOS screens. It explains the images have light corners outside the rounded phone frame, adds a clip-path to the stylesheet, and checks every screen. I then ask it to push the change live, and it opens and merges a pull request.">
+              <p class="mock__bar"><i></i><i></i><i></i><span>claude · portfolio-main</span></p>
+              <div class="mock__screen">
+                <p class="mock__user">&gt; Can we ensure there is no border around the screens? I can see a slight bit of white around the screen.</p>
+                <p class="mock__out">The screen images have light corners outside the rounded phone frame. I’ll clip each image just inside the frame’s curve.</p>
+                <div class="mock__out"><b>Update</b>(css/styles.css)<p class="mock__diff">+ clip-path: inset(0.5% 0.6% 0.6% 0.6% round 13.6% / 6.9%);</p></div>
+                <p class="mock__out">Checked every screen on the wall: no white corners left.</p>
+                <p class="mock__user">&gt; Push it live</p>
+                <p class="mock__out">Opened a pull request, merged it, and GitHub Pages rebuilt ryanwalsh.uk.</p>
+                <p class="mock__input">&gt; <span class="mock__dim">▌</span></p>
+              </div>
+            </div>
           </div>
-          <figcaption>A Claude Code session during the build.</figcaption>
+          <figcaption>A Claude Code session during the build. <mark class="ph">[Placeholder: replace with a real screenshot]</mark></figcaption>
         </figure>
 
-        <h3 class="sp__h3 sp__read">Rounds of iteration on colour and type</h3>
-        <div class="sp__body sp__read">
+        <h3 class="sp__h3">Rounds of iteration on colour and type</h3>
+        <div class="sp__body">
           <p>Very little landed first time. Colours and typography went through several rounds, and <span class="sp__hl">every round was checked for accessibility before it shipped.</span></p>
         </div>
         <ol class="sp__rounds">
@@ -327,7 +428,7 @@
           </li>
         </ol>
 
-        <div class="sp__body sp__read">
+        <div class="sp__body">
           <p>This gave me a working understanding of how my components map to HTML and CSS. That makes me a better partner to developers at handoff.</p>
         </div>
       </section>
@@ -335,10 +436,10 @@
       <!-- Design decisions -->
       <section class="sp__section" aria-labelledby="design-title">
         <h2 class="sp__h2" id="design-title">Design decisions</h2>
-        <div class="sp__body sp__read">
+        <div class="sp__body">
           <p>I designed the site in Figma as a small design system first, then built pages from it.</p>
         </div>
-        <ul class="sp__list sp__read">
+        <ul class="sp__list">
           <li><strong>Light, high-contrast palette.</strong> A pale grey and white base with navy text lets project imagery stand out, with violet and a pink accent used sparingly. I checked every text and accent pairing with Stark against AA.</li>
           <li><strong>Type scale.</strong> Manrope on a <mark class="ph">[ratio]</mark> scale, with large headings so the page can be scanned in seconds.</li>
           <li><strong>Components.</strong> Project cards, tags, buttons and recommendation cards built with auto layout and variables, so light and dark tokens and spacing stay consistent.</li>
@@ -346,22 +447,71 @@
           <li><strong>Microinteractions.</strong> <mark class="ph">[Describe hover and focus states and the scrolling "Coming soon" marquee, plus reduced-motion handling if you added it.]</mark></li>
         </ul>
         <figure class="sp__figure">
-          <div class="sp__frame sp__frame--draft">
-            <p class="media__ph">Placeholder: Figma components and tokens</p>
-            <!-- images/portfolio-site/figma-components.webp -->
-            <img class="media__img" src="images/portfolio-site/figma-components.webp" alt="[Placeholder alt text: Figma components for the site, including project cards, tags and buttons, with colour and spacing tokens]" onerror="this.remove()">
+          <div class="sp__frame sp__frame--mock">
+            <!-- Mock-up of the Figma file. Swap for a screenshot when it exists:
+            <img class="media__img" src="images/portfolio-site/figma-components.webp" alt="Figma components for the site, including project cards, tags and buttons, with colour and spacing tokens."> -->
+            <div class="mock mock--figma" role="img" aria-label="A Figma file for the site's design system. Colour tokens: navy, violet, pink pen, tint, and two greys for secondary text. A Manrope type scale at 56, 40, 32 and 18 pixels. Components: a tag, a 48 pixel high navy pill button that is selected, and a project card.">
+              <p class="mock__top"><i></i><i></i><i></i><span>ryanwalsh.uk · Design system</span></p>
+              <div class="mock__panel mock__panel--left">
+                <p class="mock__panel-title">Layers</p>
+                <p class="mock__layer"># Colour</p>
+                <p class="mock__layer"># Type</p>
+                <p class="mock__layer"># Components</p>
+                <p class="mock__layer mock__layer--in">◇ Project card</p>
+                <p class="mock__layer mock__layer--in">◇ Tag</p>
+                <p class="mock__layer mock__layer--in mock__layer--on">◇ Pill</p>
+                <p class="mock__layer mock__layer--in">◇ Button</p>
+              </div>
+              <div class="mock__canvas">
+                <div class="mock__fr">
+                  <p class="mock__fr-label"># Colour</p>
+                  <div class="mock__swatches">
+                    <div><i style="background:#0d173f"></i><p>navy<span>#0D173F</span></p></div>
+                    <div><i style="background:#5d51ff"></i><p>violet<span>#5D51FF</span></p></div>
+                    <div><i style="background:#ff2fad"></i><p>pen<span>#FF2FAD</span></p></div>
+                    <div><i style="background:#f4f5f8"></i><p>tint<span>#F4F5F8</span></p></div>
+                    <div><i style="background:#475472"></i><p>paper-soft<span>#475472</span></p></div>
+                    <div><i style="background:#5a6785"></i><p>paper-faint<span>#5A6785</span></p></div>
+                  </div>
+                </div>
+                <div class="mock__fr mock__type">
+                  <p class="mock__fr-label"># Type</p>
+                  <p style="font-size:3.2em">Aa <span>56 · Display</span></p>
+                  <p style="font-size:2.3em">Aa <span>40 · Heading</span></p>
+                  <p style="font-size:1.8em">Aa <span>32 · Title</span></p>
+                  <p style="font-size:1.2em">Aa <span>18 · Body</span></p>
+                </div>
+                <div class="mock__fr mock__fr--wide">
+                  <p class="mock__fr-label"># Components</p>
+                  <p class="mock__tag">UX Design</p>
+                  <p class="mock__btn">View project →</p>
+                  <div class="mock__card"><p class="mock__card-media">Ryan Walsh<b>.</b></p><p>The makings of my portfolio</p></div>
+                </div>
+              </div>
+              <div class="mock__panel mock__panel--right">
+                <p class="mock__panel-title">Variables</p>
+                <p class="mock__var"><i style="background:#0d173f"></i>navy</p>
+                <p class="mock__var"><i style="background:#5d51ff"></i>violet</p>
+                <p class="mock__var"><i style="background:#ff2fad"></i>pen</p>
+                <p class="mock__var"><i style="background:#f4f5f8"></i>tint</p>
+                <p class="mock__var"><i style="background:#475472"></i>paper-soft</p>
+                <p class="mock__var"><i style="background:#5a6785"></i>paper-faint</p>
+                <p class="mock__var">radius-media<span>16</span></p>
+                <p class="mock__var">gutter<span>20–64</span></p>
+              </div>
+            </div>
           </div>
-          <figcaption>Components and tokens in Figma.</figcaption>
+          <figcaption>Components and tokens in Figma. <mark class="ph">[Placeholder: replace with a screenshot of your Figma file]</mark></figcaption>
         </figure>
       </section>
 
       <!-- Accessibility -->
       <section class="sp__section" aria-labelledby="accessibility-title">
         <h2 class="sp__h2" id="accessibility-title">Accessibility</h2>
-        <div class="sp__body sp__read">
+        <div class="sp__body">
           <p>I built to WCAG 2.2 AA from the first wireframe, <span class="sp__hl">because a portfolio about accessible design has to be accessible itself.</span></p>
         </div>
-        <ul class="sp__list sp__read">
+        <ul class="sp__list">
           <li><strong>Skip to content link</strong> as the first focusable element, so keyboard and screen reader users can bypass the navigation.</li>
           <li><strong>Semantic structure:</strong> one H1, a logical heading order, and ordered lists for experience and education.</li>
           <li><strong>Visible focus states</strong> on every link and button, sized to meet the 2.2 focus appearance guidance <mark class="ph">[confirm]</mark>.</li>
@@ -380,50 +530,15 @@
         </figure>
       </section>
 
-      <!-- Responsive design -->
-      <section class="sp__section" aria-labelledby="responsive-title">
-        <h2 class="sp__h2" id="responsive-title">Responsive design</h2>
-        <div class="sp__body sp__read">
-          <p>I designed mobile-first, since many recruiters first open a portfolio from a LinkedIn message on their phone.</p>
+      <!-- Reflection -->
+      <section class="sp__section" aria-labelledby="reflection-title">
+        <h2 class="sp__h2" id="reflection-title">Reflection</h2>
+        <div class="sp__body">
+          <p><mark class="ph">[Your reflection: how the project went, what you’d do differently]</mark></p>
         </div>
-        <div class="sp__table-wrap sp__read" role="region" aria-label="Breakpoints table" tabindex="0">
-          <table class="sp__table">
-            <caption>Breakpoints and what changes at each</caption>
-            <thead>
-              <tr><th scope="col">Breakpoint</th><th scope="col">Width</th><th scope="col">Key changes</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Mobile</th><td>Under 640 px</td><td>Menu collapses behind a toggle; project cards stack in one column</td></tr>
-              <tr><th scope="row">Tablet</th><td>640–899 px</td><td>Project details, lists and timelines move into two columns; the menu stays behind a toggle until 860 px</td></tr>
-              <tr><th scope="row">Desktop</th><td>900 px and up</td><td>Full navigation bar, a 12-column grid with the lead project full width and the rest in pairs, and a case study index from 1120 px</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <figure class="sp__figure">
-          <div class="sp__frame sp__frame--wide sp__frame--draft">
-            <p class="media__ph">Placeholder: mobile, tablet and desktop mock-ups side by side</p>
-            <!-- images/portfolio-site/responsive-mockups.webp -->
-            <img class="media__img" src="images/portfolio-site/responsive-mockups.webp" alt="[Placeholder alt text: the ryanwalsh.uk homepage on a phone, a tablet and a desktop, side by side]" onerror="this.remove()">
-          </div>
-          <figcaption>The homepage on mobile, tablet and desktop.</figcaption>
-        </figure>
-        <div class="sp__body sp__read">
-          <p>The layout respects phone safe areas, so content isn’t hidden under notches or home indicators. Share cards and meta descriptions are set, so links look clean when pasted into LinkedIn, Slack or email.</p>
-        </div>
-      </section>
-
-      <!-- Outcome and what's next -->
-      <section class="sp__section" aria-labelledby="outcome-title">
-        <h2 class="sp__h2" id="outcome-title">Outcome and what’s next</h2>
-        <div class="sp__body sp__read">
-          <p>The site is live at <a href="https://ryanwalsh.uk/">ryanwalsh.uk</a> and has become my main tool for applications. <mark class="ph">[Add real results if you have them: Lighthouse accessibility score, page load time, interviews or recruiter messages since launch.]</mark></p>
-        </div>
-        <div class="sp__callout sp__read">
+        <div class="sp__callout">
           <p class="sp__callout-title">What I learned</p>
           <p>Designing and building it myself made me faster at spotting where a design will be hard to build, and more precise in my specs.</p>
-        </div>
-        <div class="sp__body sp__read">
-          <p>Next, I plan to add the Together case study and <mark class="ph">[e.g. run a quick usability test with two or three hiring managers]</mark>.</p>
         </div>
       </section>
 

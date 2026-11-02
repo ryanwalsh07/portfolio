@@ -1566,12 +1566,11 @@ button { font: inherit; }
 
   /* Work: TapSOS runs the full width, orbit and Together share the row below. */
   .project--feature { grid-column: 1 / -1; }
+  /* TapSOS runs the full width; the other four sit in two pairs below it. */
   .project--second,
-  .project--third { grid-column: span 6; }
-  /* The locked card closes the grid at full width, in the lead card's wide
-     shape, so it matches the height of the pair above it. */
-  .project--fourth { grid-column: 1 / -1; }
-  .project--fourth .project__media { aspect-ratio: 32 / 11; }
+  .project--site,
+  .project--third,
+  .project--fourth { grid-column: span 6; }
   /* Exactly double the base 16/11: at double the width (full row vs. half),
      this keeps the lead card the same height as the two cards below it. */
   .project--feature .project__media { aspect-ratio: 32 / 11; }
@@ -1775,6 +1774,22 @@ button { font: inherit; }
 
 /* ---------- Together placeholder: branded indigo mark behind the banner ---------- */
 .media--together { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }
+
+/* ---------- ryanwalsh.uk card: the site's own wordmark on its hero ground ---------- */
+.media--site { background: #f3f3f2; }
+.site-mark {
+  display: grid;
+  place-items: center;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 4cqw 4cqw;
+  color: var(--navy);
+  font-size: 9cqw;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.site-mark__stop { color: var(--pen); }
 
 /* ---------- Locked card: work shown on request, no imagery ---------- */
 /* A muted, flat ground with a single padlock, so it reads as private rather

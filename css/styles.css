@@ -1785,21 +1785,59 @@ button { font: inherit; }
 /* ---------- Together placeholder: branded indigo mark behind the banner ---------- */
 .media--together { background: linear-gradient(135deg, #eef0fc 0%, #dde2fa 100%); }
 
-/* ---------- ryanwalsh.uk card: the site's own wordmark on its hero ground ---------- */
-.media--site { background: #f3f3f2; }
-.site-mark {
-  display: grid;
-  place-items: center;
+/* ---------- ryanwalsh.uk card: the site itself, in a window, on its hero grid ---------- */
+.media--site {
+  background-color: #f3f3f2;
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
   background-size: 4cqw 4cqw;
-  color: var(--navy);
-  font-size: 9cqw;
-  font-weight: 700;
-  letter-spacing: -0.03em;
 }
-.site-mark__stop { color: var(--pen); }
+/* A dark window with the three window dots, matching the Claude Code mock-up on
+   the case study. Sized in container units so it scales with the card; it sits
+   low enough to clear the badge. */
+.site-window {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  padding-top: 13cqw;
+}
+.site-window__frame {
+  width: 76cqw;
+  overflow: hidden;
+  border-radius: 1.6cqw;
+  background: #1b1b1a;
+  box-shadow: 0 2cqw 4cqw rgba(13, 23, 63, 0.18);
+}
+.site-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.9cqw;
+  height: 4.6cqw;
+  margin: 0;
+  padding: 0 1.8cqw;
+  background: #2b2b29;
+  color: #b3aea5;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1.5cqw;
+  line-height: 1;
+}
+.site-window__bar i { flex: none; width: 1.2cqw; height: 1.2cqw; border-radius: 50%; background: #ff5f57; }
+.site-window__bar i:nth-child(2) { background: #febc2e; }
+.site-window__bar i:nth-child(3) { background: #28c840; }
+/* Offset by the dots so the title sits in the true centre of the bar */
+.site-window__bar span { margin-inline: auto; padding-right: 5.4cqw; }
+.site-window__screen { aspect-ratio: 16 / 9; overflow: hidden; background: #ffffff; }
+.site-window__screen img { display: block; width: 100%; height: auto; }
+/* On narrow cards the badge keeps its size while the window shrinks, so the
+   window drops lower and narrows to stay clear of it. */
+@container (max-width: 480px) {
+  .site-window { padding-top: 19cqw; }
+  .site-window__frame { width: 70cqw; }
+}
+/* The white screen lets the overlay tint through, so it's darkened (as on the
+   locked card) to keep the overlay text above 4.5:1. */
+.project--site .project__overlay { background: rgba(13, 23, 63, 0.74); }
 
 /* ---------- Locked card: work shown on request, no imagery ---------- */
 /* A muted, flat ground with a single padlock, so it reads as private rather

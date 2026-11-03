@@ -12,6 +12,7 @@ Ryan owns every design and content decision. Claude Code builds and checks; it d
 | `tapsos.html` | TapSOS case study (shipped work at Inclutech) |
 | `orbit.html` | orbit case study (final-year university project) |
 | `portfolio-site.html` | "The makings of my portfolio" case study, a password-locked draft (see below) |
+| `medicool.html` | Medicool case study (Catalyst Co-Founders 2023, semi-finalists): branding and app UX/UI. Visuals from the team’s Figma file only, never the third-party references in it |
 | `404.html` | Page not found |
 | `css/styles.css` | All shared styles; tokens at the top |
 | `js/main.js` | Menu, reveal-on-scroll, pen marks, reading progress; exposes `window.RW_initPage` |

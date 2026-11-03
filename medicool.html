@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Medicool: branding and app design, Ryan Walsh</title>
+  <meta name="description" content="Ryan Walsh's case study of Medicool, a smart medication case and app from Catalyst Co-Founders 2023: branding, research and a lo-fi app prototype. The team reached the semi-finals.">
+  <meta name="theme-color" content="#131313">
+  <!-- Draft: the reflection still has placeholders. Remove this once it is finished. -->
+  <meta name="robots" content="noindex">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Branding and designing the app for Medicool, a smart medication case">
+  <meta property="og:description" content="A case study by Ryan Walsh, product designer in Belfast.">
+  <meta property="og:url" content="https://ryanwalsh.uk/medicool">
+  <meta property="og:image" content="https://ryanwalsh.uk/images/share-card.png?v=2">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
+  <link rel="stylesheet" href="css/styles.css?v=20261103g">
+  <script src="js/main.js?v=20261029a" defer></script>
+  <!-- Same side-project layout as the portfolio case study (one column, pastel
+       callouts), tinted with Medicool's own greens. Scoped to .sp. -->
+  <style>
+    .sp {
+      --sp-col: 1032px;
+      --sp-mint: #e3f8f0;
+      --sp-sage: #edf3f1;
+      --sp-lavender: #eef0fc;
+      --sp-radius: 16px;
+      --mc-green: #01453a;
+      --mc-mint: #16d89d;
+    }
+    .sp__wrap { width: min(100% - 2 * max(20px, env(safe-area-inset-left), env(safe-area-inset-right)), var(--sp-col)); margin-inline: auto; }
+
+    /* Top: breadcrumb, headline, then the app on Medicool green */
+    .sp__title { margin-top: 24px; font-size: clamp(2rem, 1.2rem + 3.2vw, 3.5rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
+    .sp__hero { padding-block: clamp(48px, 8vw, 104px) clamp(48px, 6vw, 80px); background: linear-gradient(to bottom, #f3f3f2 70%, var(--ground)); }
+    .sp__hero + .sp__wrap > .sp__section:first-child { margin-top: clamp(24px, 3vw, 40px); }
+    .mc-hero { position: relative; overflow: hidden; margin-top: clamp(32px, 4vw, 56px); aspect-ratio: 16 / 9; border-radius: var(--sp-radius); background: var(--mc-green); container-type: inline-size; }
+    .mc-hero__phones { position: absolute; inset: 9cqw 0 auto; display: flex; justify-content: center; gap: 4cqw; }
+    .mc-hero__phones img { width: 22cqw; box-shadow: none; }
+    .mc-hero__phones img:nth-child(2) { margin-top: -5cqw; }
+
+    /* Phone screens: the Figma frames have no device, so round them like one */
+    .mc-screen { display: block; height: auto; border-radius: 9% / 4.2%; box-shadow: 0 0 0 1px rgba(13, 23, 63, 0.08), 0 18px 40px rgba(13, 23, 63, 0.18); }
+
+    /* Key facts: four small tiles */
+    .sp__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: clamp(28px, 3.5vw, 40px); }
+    .sp__stat { padding: clamp(20px, 2.4vw, 28px); border-radius: var(--sp-radius); background: var(--sp-mint); color: var(--paper-soft); line-height: 1.5; }
+    .sp__stat--sage { background: var(--sp-sage); }
+    .sp__stat-label { font-size: var(--text-sm); }
+    .sp__stat-value { margin-top: 4px; color: var(--paper); font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
+    @media (min-width: 900px) { .sp__stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
+
+    /* Story sections */
+    .sp__section { margin-top: clamp(72px, 10vw, 128px); }
+    .sp__h2 { font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; text-wrap: balance; }
+    .sp__h3 { margin-top: clamp(40px, 5vw, 56px); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+    .sp__body { margin-top: 20px; color: var(--paper-soft); font-size: 1.0625rem; line-height: 1.8; }
+    .sp__h3 + .sp__body, .sp__h3 + .sp__list, .sp__h3 + .sp__steps { margin-top: 12px; }
+    .sp__body > * + * { margin-top: 1em; }
+    .sp__body strong { color: var(--paper); font-weight: 600; }
+
+    /* Pastel callout box */
+    .sp__callout { margin-top: 28px; padding: clamp(24px, 3.5vw, 40px); border-radius: var(--sp-radius); background: var(--sp-mint); }
+    .sp__callout--spaced { margin-top: clamp(40px, 5vw, 56px); }
+    .sp__facts dt { color: var(--paper); font-weight: 600; }
+    .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
+
+    /* Lists inside the reading column */
+    .sp__list { margin-top: 20px; }
+    .sp__list > li { position: relative; padding: 14px 0 14px 28px; border-top: 1px solid var(--line); color: var(--paper-soft); line-height: 1.65; }
+    .sp__list > li:last-child { border-bottom: 1px solid var(--line); }
+    .sp__list > li::before { content: ""; position: absolute; left: 4px; top: 1.45em; width: 8px; height: 8px; border-radius: 50%; background: var(--mc-mint); }
+    .sp__list strong { color: var(--paper); font-weight: 600; }
+    .sp__steps { margin-top: 20px; counter-reset: step; }
+    .sp__steps > li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 2px 12px; padding-block: 16px; border-top: 1px solid var(--line); counter-increment: step; color: var(--paper-soft); line-height: 1.65; }
+    .sp__steps > li:last-child { border-bottom: 1px solid var(--line); }
+    .sp__steps > li::before { content: counter(step, decimal-leading-zero); color: var(--mc-green); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .sp__steps strong { color: var(--paper); font-weight: 600; }
+
+    /* Images */
+    .sp__figure { margin-top: clamp(32px, 4vw, 48px); }
+    .sp__frame { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--sp-radius); background: #ffffff; }
+    .sp__frame img { display: block; width: 100%; height: auto; }
+    .sp__frame--green { border: 0; background: var(--mc-green); }
+    .sp__frame--green img { width: 72%; margin: 9% auto; }
+    .sp__figure figcaption { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
+    .sp__pair { display: grid; gap: 14px; }
+    @media (min-width: 640px) { .sp__pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .sp__pair .sp__frame img { width: 80%; margin: 10% auto; }
+
+    /* App screens: a row of phones on a soft tint, each with a short label */
+    .mc-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 16px; padding: clamp(24px, 4vw, 48px); border-radius: var(--sp-radius); background: var(--sp-sage); }
+    @media (min-width: 760px) { .mc-screens { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .mc-screens figcaption { margin-top: 12px; color: var(--paper-soft); font-size: var(--text-sm); line-height: 1.45; }
+    .mc-screens strong { display: block; color: var(--paper); font-weight: 600; }
+
+    /* Details still to come from Ryan */
+    .ph { padding: 1px 4px; border-radius: 4px; background: #fff3a8; color: var(--paper); }
+
+    .sp { padding-bottom: clamp(80px, 11vw, 140px); }
+  </style>
+</head>
+<body id="top">
+
+<div class="reading-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header site-header--light">
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="index.html">Ryan Walsh<span class="wordmark__stop" aria-hidden="true">.</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__open">Menu</span><span class="nav-toggle__close">Close</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="index.html">Home</a></li>
+        <li><a class="nav__link" href="index.html#work" aria-current="page">Work</a></li>
+        <li><a class="nav__link" href="index.html#about">About me</a></li>
+        <li><a class="nav__link" href="index.html#recommendations">Recommendations</a></li>
+        <li><a class="nav__link" href="index.html#contact">Contact</a></li>
+        <li><a class="nav__link" href="cv/ryanwalsh-2026-cv.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <article class="sp">
+    <!-- ============ Hero ============ -->
+    <div class="sp__hero">
+      <div class="sp__wrap">
+        <header>
+          <p class="crumbs"><a href="index.html#work">Selected projects</a><span aria-hidden="true">/</span><span>Medicool</span></p>
+          <h1 class="sp__title">Branding and designing the app for Medicool, a smart medication case</h1>
+        </header>
+        <div class="mc-hero" role="img" aria-label="Three Medicool app wireframes on the brand’s dark green: dose reminders, the medical card, and the dispenser lock.">
+          <div class="mc-hero__phones" aria-hidden="true">
+            <img class="mc-screen" src="images/medicool/screen-reminders.png" alt="" width="786" height="1704">
+            <img class="mc-screen" src="images/medicool/screen-medical-card.png" alt="" width="786" height="1704">
+            <img class="mc-screen" src="images/medicool/screen-dispenser.png" alt="" width="786" height="1704">
+          </div>
+        </div>
+        <ul class="sp__stats" aria-label="The project at a glance">
+          <li class="sp__stat"><p class="sp__stat-label">Programme</p><p class="sp__stat-value">Catalyst Co-Founders 2023</p></li>
+          <li class="sp__stat sp__stat--sage"><p class="sp__stat-label">Outcome</p><p class="sp__stat-value">Semi-finalists</p></li>
+          <li class="sp__stat"><p class="sp__stat-label">My role</p><p class="sp__stat-value">Branding and app UX/UI</p></li>
+          <li class="sp__stat sp__stat--sage"><p class="sp__stat-label">Team</p><p class="sp__stat-value">Four or more co-founders</p></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sp__wrap">
+
+      <!-- The challenge -->
+      <section class="sp__section" aria-labelledby="challenge-title">
+        <h2 class="sp__h2" id="challenge-title">The challenge</h2>
+        <div class="sp__body">
+          <p>Medicool started at Catalyst’s Co-Founders programme in 2023, where we formed a team around one idea. People who rely on medication still need it when they’re away from home, but keeping it stored properly and remembering every dose gets harder on the move.</p>
+        </div>
+        <div class="sp__callout">
+          <dl class="sp__facts">
+            <div><dt>The idea</dt><dd>A physical case that stores medication on the go, and an app that talks to it to regulate the temperature, remind you about doses and more.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section class="sp__section" aria-labelledby="research-title">
+        <h2 class="sp__h2" id="research-title">Who it’s for</h2>
+        <div class="sp__body">
+          <p>We ran a target audience exercise as a team to agree who Medicool was for and what they needed from it.</p>
+        </div>
+        <ul class="sp__list">
+          <li><strong>What they value:</strong> a reliable, trustworthy product they can understand and use easily.</li>
+          <li><strong>What gets in the way:</strong> keeping track of their medication, on top of storing it properly.</li>
+          <li><strong>What would win them over:</strong> simplicity and effectiveness. Engaging, but never overwhelming.</li>
+          <li><strong>Need or want:</strong> both. It takes away the worry of whether a dose was taken and whether the medication was stored well.</li>
+          <li><strong>Who else it could help:</strong> small businesses, hotels and Airbnbs, offering cooled storage to guests, with app reminders for people travelling abroad.</li>
+        </ul>
+        <h3 class="sp__h3">What was already out there</h3>
+        <div class="sp__body">
+          <p>We looked at existing medication products and services, from automatic pill dispensers with alarms and lockable lids to pharmacy services that pre-pack each dose.</p>
+        </div>
+        <div class="sp__callout sp__callout--spaced">
+          <dl class="sp__facts">
+            <div><dt>Takeaway</dt><dd>Most of what we found was designed for use at home. Medicool’s angle was medication on the move.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Brand -->
+      <section class="sp__section" aria-labelledby="brand-title">
+        <h2 class="sp__h2" id="brand-title">The brand</h2>
+        <div class="sp__body">
+          <p>I designed the Medicool identity: a mark of three rounded strokes beside a bold wordmark, in a deep green with a bright mint accent. It had to feel calm and trustworthy, the qualities our audience said they valued most.</p>
+        </div>
+        <figure class="sp__figure">
+          <div class="sp__frame sp__frame--green">
+            <img src="images/medicool/logo-green.png" width="1600" height="297" alt="The Medicool logo in mint green on dark green: three rounded diagonal strokes and the word Medicool." loading="lazy">
+          </div>
+        </figure>
+        <figure class="sp__figure">
+          <div class="sp__frame">
+            <img src="images/medicool/brand-variants.png" width="2400" height="800" alt="The Medicool logo in three colourways: white on black, black on white, and dark grey on light grey." loading="lazy" style="margin: 0">
+          </div>
+          <figcaption>The logo in mint on Medicool green, and in three neutral colourways.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Product -->
+      <section class="sp__section" aria-labelledby="product-title">
+        <h2 class="sp__h2" id="product-title">The case</h2>
+        <div class="sp__body">
+          <p>Alongside the app, the team worked through what the physical product needed to be. It had to be compact, easy to carry, and usable by people with reduced dexterity, without giving up security. Every bit of automation added cost, bulk and weight, so we weighed three versions.</p>
+        </div>
+        <ol class="sp__steps">
+          <li><div><strong>Manual.</strong> Loaded by hand, with the medication schedule set in the app. You dispense each dose when the app prompts you, with an optional lock.</div></li>
+          <li><div><strong>Semi-automatic.</strong> Still loaded by hand, but each dose is dispensed and recorded automatically, with an automatic lock.</div></li>
+          <li><div><strong>Fully automatic.</strong> Loading and dispensing both handled by the case. Not feasible at the time.</div></li>
+        </ol>
+        <figure class="sp__figure">
+          <div class="sp__pair">
+            <div class="sp__frame"><img src="images/medicool/dispenser-rotary.jpg" width="1200" height="1160" alt="A drawing of a cylindrical rotary pill dispenser with seven rings labelled Sunday to Saturday." loading="lazy"></div>
+            <div class="sp__frame"><img src="images/medicool/dispenser-braille.jpg" width="1200" height="1087" alt="A second drawing of the rotary dispenser, with braille dots beside each day label." loading="lazy"></div>
+          </div>
+          <figcaption>Drawings of a seven-day rotary dispenser. The second adds braille beside each day.</figcaption>
+        </figure>
+        <h3 class="sp__h3">What the case needed to sense</h3>
+        <ul class="sp__list">
+          <li><strong>Its position:</strong> tilt switches to tell upright from upside down, and an accelerometer to know when it’s in transit.</li>
+          <li><strong>The dose:</strong> a load cell to confirm a pill is in the delivery pod.</li>
+          <li><strong>Its status at a glance:</strong> a red or green light, orange while busy, flashing white when a dose is ready, and blue when it’s connected to the app.</li>
+        </ul>
+      </section>
+
+      <!-- App -->
+      <section class="sp__section" aria-labelledby="app-title">
+        <h2 class="sp__h2" id="app-title">The app</h2>
+        <div class="sp__body">
+          <p>I designed a lo-fi prototype of the app, the case’s control panel, to show how what we learned about our audience shaped the product.</p>
+        </div>
+        <figure class="sp__figure">
+          <div class="mc-screens">
+            <figure><img class="mc-screen" src="images/medicool/screen-home.png" width="786" height="1704" alt="Home screen wireframe with a search bar and three shortcuts: Reminders, Medication and Dispenser, then a Medical Card panel." loading="lazy"><figcaption><strong>Home</strong>Three shortcuts and nothing more, to keep it simple.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/screen-reminders.png" width="786" height="1704" alt="Reminders wireframe: a card for each medication time, with the medication, dosage, a comment such as dissolve in water, and progress through the doses." loading="lazy"><figcaption><strong>Reminders</strong>Each dose with its time, amount, notes and progress.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/screen-medical-card.png" width="786" height="1704" alt="Medical card wireframe showing height, weight, blood type, allergies, conditions and intolerances, then yesterday's medications with a trend line." loading="lazy"><figcaption><strong>Medical card</strong>Key health details in one place, with recent doses.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/screen-dispenser.png" width="786" height="1704" alt="Dispenser wireframe with a large padlock icon and Unlock and Lock buttons." loading="lazy"><figcaption><strong>Dispenser</strong>Lock or unlock the case from your phone.</figcaption></figure>
+          </div>
+        </figure>
+        <ul class="sp__list">
+          <li><strong>Simple by default.</strong> The audience wanted something effective but not overwhelming, so the home screen leads with three clear actions.</li>
+          <li><strong>Keeping track.</strong> Reminders show exactly what to take, when, and how far through a course you are.</li>
+          <li><strong>Trust.</strong> The medical card keeps allergies, conditions and intolerances together, ready when they’re needed.</li>
+          <li><strong>Light and dark.</strong> The home screen was designed in both modes, in the Medicool greens.</li>
+        </ul>
+        <figure class="sp__figure">
+          <div class="sp__pair">
+            <div class="sp__frame" style="background: var(--sp-sage)"><img class="mc-screen" src="images/medicool/screen-onboarding.png" width="786" height="1704" alt="Onboarding screen on Medicool green with the logo mark, the heading Making your journey stress free, and Keeping your medication cooled to your desired needs." loading="lazy" style="width: 52%; margin: 9% auto"></div>
+            <div class="sp__frame" style="background: var(--sp-sage)"><img class="mc-screen" src="images/medicool/screen-location.png" width="786" height="1704" alt="Location permission wireframe: Allow Medicool to access your location while you are using the app? Your location will be used to show nearby recommendations." loading="lazy" style="width: 52%; margin: 9% auto"></div>
+          </div>
+          <figcaption>Onboarding in the brand colours, and a location request for nearby recommendations.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Outcome -->
+      <section class="sp__section" aria-labelledby="outcome-title">
+        <h2 class="sp__h2" id="outcome-title">Outcome</h2>
+        <div class="sp__body">
+          <p>Medicool reached the semi-finals of Catalyst Co-Founders 2023.</p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="sp__section" aria-labelledby="reflection-title">
+        <h2 class="sp__h2" id="reflection-title">Reflection</h2>
+        <div class="sp__body">
+          <p><span class="ph">[Your reflection on Medicool, in your own words]</span></p>
+        </div>
+        <div class="sp__callout">
+          <p class="sp__facts"><strong style="color: var(--paper)">What I learned</strong></p>
+          <p style="margin-top: 10px"><span class="ph">[One line on what you took from the project]</span></p>
+        </div>
+      </section>
+
+    </div>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__inner">
+      <p>© <span data-year>2026</span> Ryan Walsh · Belfast</p>
+      <ul class="site-footer__links" aria-label="Contact">
+        <li><a href="https://www.linkedin.com/in/ryanwalshh/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:ryanjameswalsh@hotmail.com">Email</a></li>
+        <li><a href="cv/ryanwalsh-2026-cv.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

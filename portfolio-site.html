@@ -115,8 +115,6 @@
     .sp__figure figcaption { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
 
     /* Before and after: two screenshots side by side */
-    .sp__ba { display: grid; gap: 14px; }
-    @media (min-width: 640px) { .sp__ba { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
     /* Mock-ups drawn in HTML. Everything is sized in container units, so each
        one scales like an image. Swap for a real screenshot when there is one. */
@@ -202,27 +200,15 @@
         <dl class="sp__card sp__card--third sp__card--lilac"><dt>Shipping</dt><dd>Every change as a pull request on GitHub</dd></dl>
       </div>
 
-      <figure class="sp__figure">
-        <div class="sp__ba">
-          <div class="sp__frame sp__frame--16-10">
-            <img class="media__img" src="images/portfolio-site/before.jpg" width="800" height="500" alt="My previous portfolio, rynwlsh, on a dark Framer template: a large gradient “Ryan Walsh” title, the line “UX Designer specialising in intuitive, user-focused products”, a lime View More button and a scrolling row of project logos." loading="lazy">
-          </div>
-          <div class="sp__frame sp__frame--16-10">
-            <img class="media__img" src="images/portfolio-site/after.jpg" width="800" height="500" alt="ryanwalsh.uk now: a light grid-paper homepage with the headline “I’m a product designer focused on accessible digital products, built for everyone”, the word everyone circled in pink, See my work and Get in touch buttons, and the Ryan Walsh wordmark with a pink full stop." loading="lazy">
-          </div>
-        </div>
-        <figcaption>My previous portfolio, built on a Framer template, and ryanwalsh.uk as it is now.</figcaption>
-      </figure>
-
       <!-- The challenge -->
       <section class="sp__section" aria-labelledby="challenge-title">
         <h2 class="sp__h2" id="challenge-title">The challenge</h2>
         <div class="sp__body">
-          <p>Hiring managers spend minutes, not hours, on a portfolio. My old site <mark class="ph">[describe: e.g. was built on a template, buried case studies, wasn't fully accessible]</mark>. <span class="sp__hl">I needed a site that showed my work quickly and practised the accessibility I talk about.</span></p>
+          <p>Every good design starts somewhere. Mine started with a Framer template, plenty of inspiration and a rabbit hole of other designers’ portfolios. I found some brilliant ideas, but also plenty of inaccessible experiences and case studies that left me wanting more. Rather than keep tweaking a template, I saw an opportunity to start fresh: create a portfolio that was more considered, easier to explore and, most importantly, unmistakably mine.</p>
         </div>
         <div class="sp__callout">
           <dl class="sp__facts">
-            <div><dt>Goal</dt><dd>Get them from the homepage to a case study, my CV or my email in one step.</dd></div>
+            <div><dt>Goal</dt><dd>Design a portfolio that feels intuitive, engaging and distinctly mine. From the first interaction to the final case study, every detail should have a purpose, making it effortless for visitors to explore, discover and connect with my work.</dd></div>
           </dl>
         </div>
       </section>
@@ -259,10 +245,10 @@
           <p>I set up a GitHub repository for the site and publish it through GitHub Pages on my own domain. Claude Code works against that repository, and every change goes through a pull request, so <span class="sp__hl">each design decision has a clear, reviewable history.</span></p>
         </div>
         <figure class="sp__figure">
-          <div class="sp__frame" style="aspect-ratio: 2000 / 1074">
-            <img class="media__img" src="images/portfolio-site/github-pull-requests.webp" width="2000" height="1074" alt="The pull requests page for the site’s GitHub repository: 19 closed pull requests, all merged, newest first: reworking this case study, removing its password, adding the draft, the locked Inclutech card, the new wordmark and earlier TapSOS changes." loading="lazy">
+          <div class="sp__frame" style="aspect-ratio: 1920 / 1028">
+            <video class="media__img" src="images/portfolio-site/github-pull-requests.mp4" poster="images/portfolio-site/github-pull-requests-poster.jpg" width="1920" height="1028" controls muted loop playsinline preload="metadata" data-autoplay aria-label="GitHub pull requests recording, no sound" aria-describedby="github-caption"></video>
           </div>
-          <figcaption>Every change ships as a pull request. <mark class="ph">[Placeholder: swap for a short screen recording if you make one]</mark></figcaption>
+          <figcaption id="github-caption">Every change ships as a pull request: scrolling through the site’s merged pull requests on GitHub, newest first, from the window frame on the homepage card back to the early TapSOS changes.</figcaption>
         </figure>
 
         <h3 class="sp__h3">Working with Claude Code</h3>
@@ -377,7 +363,7 @@
       <section class="sp__section" aria-labelledby="reflection-title">
         <h2 class="sp__h2" id="reflection-title">Reflection</h2>
         <div class="sp__body">
-          <p><mark class="ph">[Your reflection: how the project went, what you’d do differently]</mark></p>
+          <p>A portfolio is never really finished, and that’s perhaps the biggest takeaway from this project. There’s always another interaction to refine, another idea to explore or a better way to tell a story. This experience helped me appreciate the balance between creative expression and purposeful design. It’s not just about making something look good; it’s about making sure every decision has a reason behind it.</p>
         </div>
         <div class="sp__callout">
           <p class="sp__callout-title">What I learned</p>
@@ -422,26 +408,35 @@
 </footer>
 
 <script>
-  // Play the keyboard recording while it's on screen, muted and looping.
-  // Skipped for reduced motion; once someone pauses it, it stays paused.
+  // Play each screen recording while it's on screen, muted and looping.
+  // Skipped for reduced motion; once someone pauses one, it stays paused.
   (function () {
-    var video = document.querySelector("video[data-autoplay]");
-    if (!video || !("IntersectionObserver" in window)) return;
+    if (!("IntersectionObserver" in window)) return;
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    var ours = false, userPaused = false;
-    // The pause event arrives after pause() returns, so clear the flag here.
-    video.addEventListener("pause", function () {
-      if (ours) { ours = false; return; }
-      userPaused = true;
+    document.querySelectorAll("video[data-autoplay]").forEach(function (video) {
+      var ours = false, userPaused = false;
+      // The pause event arrives after pause() returns, so clear the flag here.
+      // Pauses while the tab is hidden come from the browser, not the visitor.
+      video.addEventListener("pause", function () {
+        if (ours) { ours = false; return; }
+        if (document.hidden) return;
+        userPaused = true;
+      });
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden && !userPaused && !reduce.matches &&
+            video.getBoundingClientRect().top < innerHeight && video.getBoundingClientRect().bottom > 0) {
+          video.play().catch(function () {});
+        }
+      });
+      new IntersectionObserver(function (entries) {
+        if (reduce.matches || userPaused) return;
+        if (entries[0].isIntersecting) {
+          video.play().catch(function () {});
+        } else if (!video.paused) {
+          ours = true; video.pause();
+        }
+      }, { threshold: 0.5 }).observe(video);
     });
-    new IntersectionObserver(function (entries) {
-      if (reduce.matches || userPaused) return;
-      if (entries[0].isIntersecting) {
-        video.play().catch(function () {});
-      } else if (!video.paused) {
-        ours = true; video.pause();
-      }
-    }, { threshold: 0.5 }).observe(video);
   })();
 </script>
 </body>

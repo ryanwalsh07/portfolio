@@ -1742,6 +1742,15 @@ button { font: inherit; }
   .pending__track { animation: none; }
 }
 
+/* ---------- AI-assisted marker: shows where AI played a part ---------- */
+.ai-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 8px; border-radius: 999px; background: #ecebff; color: #4637d6; font-size: var(--text-sm); font-weight: 600; line-height: 1.3; white-space: nowrap; }
+.ai-chip svg { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ai-chip--human { padding-left: 12px; background: #ffffff; color: var(--paper-soft); box-shadow: inset 0 0 0 1px var(--line); }
+/* On a project card: top right, opposite the name badge, hidden with it on hover */
+.ai-chip--card { position: absolute; top: 16px; right: 16px; z-index: 4; background: #ffffff; box-shadow: 0 2px 10px rgba(13, 23, 63, 0.16); transition: opacity 0.2s; }
+.project__link:hover .ai-chip--card,
+.project__link:focus-visible .ai-chip--card { opacity: 0; }
+
 /* ---------- Medicool placeholder: its own logo slide, band set low to keep the logo clear ---------- */
 .media--medicool { background: #01453a; }
 .medicool__logo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

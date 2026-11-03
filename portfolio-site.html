@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20261103b">
+  <link rel="stylesheet" href="css/styles.css?v=20261103c">
   <script src="js/main.js?v=20261029a" defer></script>
   <!-- Side-project case study layout: one full-width column, a bento of key
        facts up top, pastel callouts and highlighted key lines. Scoped to .sp. -->
@@ -52,6 +52,18 @@
       .sp__glance { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .sp__glance li + li { padding-left: 16px; border-left: 1px solid var(--line); }
     }
+
+    /* Where AI was used: five stages, AI-assisted ones marked */
+    .sp__aimap { display: grid; gap: 10px; margin-top: 28px; counter-reset: none; }
+    .sp__aistep { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: clamp(20px, 2.4vw, 26px); border-radius: var(--sp-radius); background: var(--tint); }
+    .sp__aistep--ai { background: var(--sp-lavender); }
+    .sp__aistep-name { display: flex; align-items: baseline; gap: 8px; color: var(--paper); font-size: 1.125rem; font-weight: 600; }
+    .sp__aistep-num { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .sp__aistep-text { color: var(--paper-soft); line-height: 1.55; }
+    @media (min-width: 640px) { .sp__aimap { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1000px) { .sp__aimap { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+    .ai-chip-row { margin-bottom: 12px; }
+    .ai-chip--round { margin-top: 10px; }
 
     /* Story sections */
     .sp__section { margin-top: clamp(72px, 10vw, 128px); }
@@ -214,6 +226,41 @@
 
     <div class="sp__wrap">
 
+      <!-- Where AI was used -->
+      <section class="sp__section" aria-labelledby="aimap-title">
+        <h2 class="sp__h2" id="aimap-title">Where AI was used</h2>
+        <div class="sp__body">
+          <p>AI did part of the work at four of the five stages, and every design decision stayed mine. Sections marked AI-assisted show where it came in.</p>
+        </div>
+        <ol class="sp__aimap">
+          <li class="sp__aistep sp__aistep--ai">
+            <p class="sp__aistep-name"><span class="sp__aistep-num">01</span>Research</p>
+            <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-text">Claude Research found and compared 15+ portfolios. I chose what to take from them.</p>
+          </li>
+          <li class="sp__aistep">
+            <p class="sp__aistep-name"><span class="sp__aistep-num">02</span>Design</p>
+            <span class="ai-chip ai-chip--human">By me</span>
+            <p class="sp__aistep-text">The sitemap in Miro, then layouts, components and tokens in Figma.</p>
+          </li>
+          <li class="sp__aistep sp__aistep--ai">
+            <p class="sp__aistep-name"><span class="sp__aistep-num">03</span>Build</p>
+            <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-text">Claude Code wrote the HTML and CSS from my designs and a project brief.</p>
+          </li>
+          <li class="sp__aistep sp__aistep--ai">
+            <p class="sp__aistep-name"><span class="sp__aistep-num">04</span>Review</p>
+            <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-text">An AI design critique against Nielsen’s heuristics, alongside my own checks. I decided what changed.</p>
+          </li>
+          <li class="sp__aistep sp__aistep--ai">
+            <p class="sp__aistep-name"><span class="sp__aistep-num">05</span>Ship</p>
+            <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-text">Claude Code opened every change as a GitHub pull request for me to approve.</p>
+          </li>
+        </ol>
+      </section>
+
       <!-- The challenge -->
       <section class="sp__section" aria-labelledby="challenge-title">
         <h2 class="sp__h2" id="challenge-title">The challenge</h2>
@@ -229,6 +276,7 @@
 
       <!-- Research and structure -->
       <section class="sp__section" aria-labelledby="research-title">
+        <p class="ai-chip-row"><span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span></p>
         <h2 class="sp__h2" id="research-title">Research and structure</h2>
         <div class="sp__body">
           <p>I started by auditing my old site, a Framer template I’d adapted rather than designed. The numbers were hard to ignore:</p>
@@ -271,6 +319,7 @@
 
       <!-- Building with AI -->
       <section class="sp__section" aria-labelledby="ai-title">
+        <p class="ai-chip-row"><span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span></p>
         <h2 class="sp__h2" id="ai-title">Building with AI</h2>
         <div class="sp__body">
           <p>I built the site myself with Claude Code, treating the AI as a fast pair-programmer while I owned every design and accessibility decision.</p>
@@ -343,6 +392,7 @@
           </li>
           <li class="sp__round sp__round--lilac">
             <p class="sp__round-num">Round 5</p>
+            <span class="ai-chip ai-chip--round"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
             <h4 class="sp__round-title">Design review</h4>
             <p>I ran an AI-assisted design critique against Nielsen’s usability heuristics, and used its findings to decide what to change next.</p>
           </li>

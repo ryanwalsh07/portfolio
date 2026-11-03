@@ -75,6 +75,26 @@
     .sp__facts dt { color: var(--paper); font-weight: 600; }
     .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
 
+    /* Audit findings: big numbers on pastel tiles */
+    .sp__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
+    .sp__stat { padding: clamp(22px, 2.6vw, 30px); border-radius: var(--sp-radius); background: var(--sp-lavender); color: var(--paper-soft); line-height: 1.5; }
+    .sp__stat--lilac { background: var(--sp-lilac); }
+    .sp__stat--blush { background: var(--sp-blush); }
+    .sp__stat-num { margin-bottom: 6px; color: var(--paper); font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+    @media (min-width: 900px) { .sp__stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
+
+    /* Portfolios that stood out: linked thumbnails */
+    .sp__inspo { display: grid; gap: 24px 14px; }
+    @media (min-width: 640px) { .sp__inspo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .sp__inspo a { display: block; color: var(--paper); text-decoration: none; }
+    .sp__inspo .sp__frame { display: block; }
+    .sp__inspo .media__img { object-position: top; transition: transform 0.6s var(--ease-out); }
+    .sp__inspo a:hover .media__img, .sp__inspo a:focus-visible .media__img { transform: scale(1.03); }
+    .sp__inspo-name { display: inline-block; margin-top: 10px; font-weight: 600; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+    .sp__inspo a:hover .sp__inspo-name { text-decoration-color: currentColor; }
+    .sp__inspo-note { margin-top: 4px; color: var(--paper-soft); line-height: 1.55; }
+    @media (prefers-reduced-motion: reduce) { .sp__inspo .media__img { transition: none; } .sp__inspo a:hover .media__img, .sp__inspo a:focus-visible .media__img { transform: none; } }
+
     /* Lists inside the reading column */
     .sp__list { margin-top: 20px; }
     .sp__list > li { position: relative; padding: 14px 0 14px 28px; border-top: 1px solid var(--line); color: var(--paper-soft); line-height: 1.65; }
@@ -217,9 +237,28 @@
       <section class="sp__section" aria-labelledby="research-title">
         <h2 class="sp__h2" id="research-title">Research and structure</h2>
         <div class="sp__body">
-          <p>I started with a UX audit of my old site and a competitor review of <mark class="ph">[number]</mark> product designer portfolios. The audit found <mark class="ph">[e.g. case studies three clicks deep, no visible CV link, low-contrast text]</mark>. <span class="sp__hl">The review showed the strongest portfolios lead with work, not biography.</span></p>
-          <p>To find those portfolios, I used Claude Research to search for examples online and compare how other product designers structure their homepages and case studies. <mark class="ph">[Add which portfolios or patterns stood out, and what you took from them]</mark></p>
-          <p>That shaped a single-page homepage with dedicated case study pages:</p>
+          <p>I started by auditing my old site, a Framer template I’d adapted rather than designed. The numbers were hard to ignore:</p>
+        </div>
+        <ul class="sp__stats" aria-label="What the audit of my old site found">
+          <li class="sp__stat"><p class="sp__stat-num">2.8</p><p>screens to scroll before reaching any work</p></li>
+          <li class="sp__stat sp__stat--lilac"><p class="sp__stat-num">16 of 18</p><p>images with no alt text</p></li>
+          <li class="sp__stat sp__stat--blush"><p class="sp__stat-num">4.2:1</p><p>contrast on project text, below the 4.5:1 AA minimum</p></li>
+          <li class="sp__stat"><p class="sp__stat-num">“Atomic”</p><p>the template’s name, still in the page title</p></li>
+        </ul>
+        <div class="sp__body">
+          <p>To see what good looked like, I used Claude Research to review more than 15 product designer portfolios. Four stood out for the same reason: calm, intentional design that showed who the designer was, what they’d done and the story behind their work.</p>
+        </div>
+        <figure class="sp__figure">
+          <ul class="sp__inspo">
+            <li><a href="https://devayanigadgil.com/hirello"><span class="sp__frame sp__frame--16-10"><img class="media__img" src="images/portfolio-site/inspiration-devayani-gadgil.jpg" width="800" height="500" alt="" loading="lazy"></span><span class="sp__inspo-name">Devayani Gadgil</span></a><p class="sp__inspo-note">Case studies that open with a short summary of the key facts.</p></li>
+            <li><a href="https://www.anuragdommeti.com/claims-fnol"><span class="sp__frame sp__frame--16-10"><img class="media__img" src="images/portfolio-site/inspiration-anurag-dommeti.jpg" width="800" height="500" alt="" loading="lazy"></span><span class="sp__inspo-name">Anurag Dommeti</span></a><p class="sp__inspo-note">Case studies told as a story, from the problem to the outcome.</p></li>
+            <li><a href="https://byvivianlu.com/"><span class="sp__frame sp__frame--16-10"><img class="media__img" src="images/portfolio-site/inspiration-vivian-lu.jpg" width="800" height="497" alt="" loading="lazy"></span><span class="sp__inspo-name">Vivian Lu</span></a><p class="sp__inspo-note">Selected work straight after a short introduction.</p></li>
+            <li><a href="https://janahalfarova.com/"><span class="sp__frame sp__frame--16-10"><img class="media__img" src="images/portfolio-site/inspiration-jana-halfarova.jpg" width="800" height="500" alt="" loading="lazy"></span><span class="sp__inspo-name">Jana Halfarova</span></a><p class="sp__inspo-note">Recent work up front, each project tagged by platform.</p></li>
+          </ul>
+          <figcaption>The four portfolios that stood out, with what I noticed in each. Each links to the designer’s site.</figcaption>
+        </figure>
+        <div class="sp__body">
+          <p><span class="sp__hl">The strongest portfolios lead with work, not biography.</span> That shaped a single-page homepage with dedicated case study pages:</p>
         </div>
         <figure class="sp__figure">
           <div class="sp__frame" style="aspect-ratio: 2000 / 900">

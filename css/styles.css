@@ -267,7 +267,9 @@ button { font: inherit; }
 .nav__link {
   position: relative;
   display: inline-block;
+  min-width: 24px; /* WCAG 2.5.8: short labels like "CV" still get a 24px target */
   padding: 6px 0;
+  text-align: center;
   color: var(--paper-soft);
   font-size: 0.9375rem;
   text-decoration: none;
@@ -1144,7 +1146,8 @@ button { font: inherit; }
 
 .cs-hero { padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(40px, 5vw, 72px); }
 .crumbs { display: flex; gap: 0.5em; color: var(--paper-faint); font-size: var(--text-sm); }
-.crumbs a { color: var(--paper-soft); }
+.crumbs a { display: inline-block; padding-block: 1px; color: var(--paper-soft); } /* 24px tall target */
+.about__cv .text-link { display: inline-block; padding-block: 1px; } /* 24px tall target */
 .cs-hero__heading { margin-top: clamp(28px, 4vw, 48px); }
 .cs-hero__name {
   display: block;

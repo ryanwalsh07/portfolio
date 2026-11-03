@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=20261102h">
+  <link rel="stylesheet" href="css/styles.css?v=20261103a">
   <script src="js/main.js?v=20261029a" defer></script>
   <!-- Side-project case study layout: one full-width column, a bento of key
        facts up top, pastel callouts and highlighted key lines. Scoped to .sp. -->
@@ -69,6 +69,8 @@
     .sp__callout-title { color: var(--paper); font-size: 0.9375rem; font-weight: 700; }
     .sp__callout > p:not(.sp__callout-title) { color: var(--paper); font-size: 1.0625rem; line-height: 1.75; }
     .sp__callout-title + * { margin-top: 14px; }
+    /* Keep the What I learned line on one line once the column is at full width. */
+    @media (min-width: 1080px) { .sp__callout--learned > p:not(.sp__callout-title) { font-size: 1.03125rem; white-space: nowrap; } }
     .sp__facts > div + div { margin-top: 14px; }
     .sp__facts dt { color: var(--paper); font-weight: 600; }
     .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
@@ -132,6 +134,10 @@
     .sp__frame--16-10 { aspect-ratio: 16 / 10; }
     .sp__frame--wide { aspect-ratio: 21 / 9; }
     .sp__frame .media__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    /* Screen recordings: scale up a touch to crop the dark edge pixels, keep any gap white,
+       and make Safari clip the video to the rounded corners. */
+    .sp__frame:has(video) { -webkit-mask-image: -webkit-radial-gradient(white, black); }
+    .sp__frame video.media__img { background: #ffffff; transform: scale(1.008); }
     .sp__figure figcaption { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
 
     /* Before and after: two screenshots side by side */
@@ -283,19 +289,19 @@
       <section class="sp__section" aria-labelledby="ai-title">
         <h2 class="sp__h2" id="ai-title">Building with AI</h2>
         <div class="sp__body">
-          <p>I built the site myself with Claude Code, <span class="sp__hl">treating the AI as a fast pair-programmer while I owned every design and accessibility decision.</span></p>
+          <p>I built the site myself with Claude Code, treating the AI as a fast pair-programmer while I owned every design and accessibility decision.</p>
           <p>AI ran through the whole project, not just the code: Claude Research for the portfolio review, Claude Code for the build and the design reviews, and my own GitHub repository to ship and track every change.</p>
         </div>
 
         <h3 class="sp__h3">My own GitHub repository</h3>
         <div class="sp__body">
-          <p>I set up a GitHub repository for the site and publish it through GitHub Pages on my own domain. Claude Code works against that repository, and every change goes through a pull request, so <span class="sp__hl">each design decision has a clear, reviewable history.</span></p>
+          <p>I set up a GitHub repository for the site and publish it through GitHub Pages on my own domain. Claude Code works against that repository, and every change goes through a pull request, so each design decision has a clear, reviewable history.</p>
         </div>
         <figure class="sp__figure">
           <div class="sp__frame" style="aspect-ratio: 1920 / 1028">
             <video class="media__img" src="images/portfolio-site/github-pull-requests.mp4" poster="images/portfolio-site/github-pull-requests-poster.jpg" width="1920" height="1028" controls muted loop playsinline preload="metadata" data-autoplay aria-label="GitHub pull requests recording, no sound" aria-describedby="github-caption"></video>
           </div>
-          <figcaption id="github-caption">Every change ships as a pull request: scrolling through the site’s merged pull requests on GitHub, newest first, from the window frame on the homepage card back to the early TapSOS changes.</figcaption>
+          <figcaption id="github-caption">Merged pull requests on GitHub.</figcaption>
         </figure>
 
         <h3 class="sp__h3">Working with Claude Code</h3>
@@ -323,12 +329,12 @@
               </div>
             </div>
           </div>
-          <figcaption>A Claude Code session during the build. <mark class="ph">[Placeholder: replace with a real screenshot]</mark></figcaption>
+          <figcaption>A Claude Code session during the build.</figcaption>
         </figure>
 
         <h3 class="sp__h3">Rounds of iteration on colour and type</h3>
         <div class="sp__body">
-          <p>Very little landed first time. Colours and typography went through several rounds, and <span class="sp__hl">every round was checked for accessibility before it shipped.</span></p>
+          <p>Very little landed first time. Colours and typography went through several rounds, and every round was checked for accessibility before it shipped.</p>
         </div>
         <ol class="sp__rounds">
           <li class="sp__round">
@@ -359,7 +365,7 @@
         </ol>
 
         <div class="sp__body">
-          <p>This gave me a working understanding of how my components map to HTML and CSS. That makes me a better partner to developers at handoff.</p>
+          <p>This gave me a working understanding of how my components map to HTML and CSS.</p>
         </div>
       </section>
 
@@ -371,10 +377,10 @@
         </div>
         <ul class="sp__list">
           <li><strong>Light, high-contrast palette.</strong> A pale grey and white base with navy text lets project imagery stand out, with violet and a pink accent used sparingly. I checked every text and accent pairing with Stark against AA.</li>
-          <li><strong>Type scale.</strong> Manrope on a <mark class="ph">[ratio]</mark> scale, with large headings so the page can be scanned in seconds.</li>
+          <li><strong>Type scale.</strong> Manrope throughout, with headings at 32, 40 and 56px over 17px body text, so the page can be scanned in seconds.</li>
           <li><strong>Components.</strong> Project cards, tags, buttons and recommendation cards built with auto layout and variables, so light and dark tokens and spacing stay consistent.</li>
           <li><strong>Project card states.</strong> Live case study, in progress, and private (available on request). Each state has its own visual treatment, so status is clear without reading the small print.</li>
-          <li><strong>Microinteractions.</strong> <mark class="ph">[Describe hover and focus states and the scrolling "Coming soon" marquee, plus reduced-motion handling if you added it.]</mark></li>
+          <li><strong>Microinteractions.</strong> Hovering over or tabbing to a project card zooms its image and fades in a short summary with a “View case study” link, so mouse and keyboard users get the same preview. Every link and button shows a pink focus ring. The “Coming soon” band on the Together card scrolls on a slow loop. With reduced motion turned on, the band stops, the pen marks appear already drawn, and images and videos stay still.</li>
         </ul>
         <figure class="sp__figure">
           <div class="sp__frame" style="aspect-ratio: 2000 / 1506">
@@ -388,21 +394,21 @@
       <section class="sp__section" aria-labelledby="accessibility-title">
         <h2 class="sp__h2" id="accessibility-title">Accessibility</h2>
         <div class="sp__body">
-          <p>I built to WCAG 2.2 AA from the first wireframe, <span class="sp__hl">because a portfolio about accessible design has to be accessible itself.</span></p>
+          <p>Accessibility was built in from the start rather than checked at the end, but it isn’t the whole story. Some details, like the scrolling “Coming soon” band, are there purely for character, and they step aside for anyone who has reduced motion turned on.</p>
         </div>
         <ul class="sp__list">
           <li><strong>Skip to content link</strong> as the first focusable element, so keyboard and screen reader users can bypass the navigation.</li>
           <li><strong>Semantic structure:</strong> one H1, a logical heading order, and ordered lists for experience and education.</li>
-          <li><strong>Visible focus states</strong> on every link and button, sized to meet the 2.2 focus appearance guidance <mark class="ph">[confirm]</mark>.</li>
-          <li><strong>Target size:</strong> tap targets of at least 24×24 px (WCAG 2.2, 2.5.8) <mark class="ph">[confirm actual size]</mark>.</li>
+          <li><strong>Visible focus states</strong> on every link and button: a 2px pink outline with at least 3:1 contrast against the page, which meets the WCAG 2.2 focus appearance guidance.</li>
+          <li><strong>Target size:</strong> every link and button is at least 24×24 px (WCAG 2.2, 2.5.8), measured on phone and desktop. Main buttons are 44 to 48 px tall.</li>
           <li><strong>Descriptive links:</strong> project cards announce the project name and “View case study”, not just “Read more”.</li>
-          <li><strong>Tested with</strong> <mark class="ph">[VoiceOver on iOS and macOS, keyboard-only navigation, Stark, Lighthouse or axe — add your scores]</mark>.</li>
+          <li><strong>Tested with</strong> keyboard-only navigation.</li>
         </ul>
         <figure class="sp__figure">
-          <div class="sp__frame" style="aspect-ratio: 1280 / 688">
-            <video class="media__img" src="images/portfolio-site/keyboard-navigation.mp4" poster="images/portfolio-site/keyboard-navigation-poster.jpg" width="1280" height="688" controls muted loop playsinline preload="metadata" data-autoplay aria-label="Keyboard navigation recording, no sound" aria-describedby="keyboard-caption"></video>
+          <div class="sp__frame" style="aspect-ratio: 1920 / 1028">
+            <video class="media__img" src="images/portfolio-site/keyboard-navigation.mp4" poster="images/portfolio-site/keyboard-navigation-poster.jpg" width="1920" height="1028" controls muted loop playsinline preload="metadata" data-autoplay aria-label="Keyboard navigation recording, no sound" aria-describedby="keyboard-caption"></video>
           </div>
-          <figcaption id="keyboard-caption">Keyboard only, no mouse: tabbing from the homepage buttons through the project cards and the About section, then pressing Return to open the TapSOS case study. Each key press shows in the bottom-left corner.</figcaption>
+          <figcaption id="keyboard-caption">Keyboard only, no mouse: tabbing from the homepage buttons through the project cards and the About section. Each key press shows in the bottom-left corner.</figcaption>
         </figure>
       </section>
 
@@ -412,7 +418,7 @@
         <div class="sp__body">
           <p>A portfolio is never really finished, and that’s perhaps the biggest takeaway from this project. There’s always another interaction to refine, another idea to explore or a better way to tell a story. This experience helped me appreciate the balance between creative expression and purposeful design. It’s not just about making something look good; it’s about making sure every decision has a reason behind it.</p>
         </div>
-        <div class="sp__callout">
+        <div class="sp__callout sp__callout--learned">
           <p class="sp__callout-title">What I learned</p>
           <p>Designing and building it myself made me faster at spotting where a design will be hard to build, and more precise in my specs.</p>
         </div>

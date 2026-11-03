@@ -1080,54 +1080,36 @@ button { font: inherit; }
 .rec__role { color: var(--paper-faint); }
 #recommendations { background: linear-gradient(var(--tint) 20%, var(--ground)); }
 
-/* ---------- Contact ---------- */
-.section--contact {
-  padding-bottom: clamp(104px, 13vw, 184px);
-  background:
-    radial-gradient(circle at 24% 0, rgba(93, 81, 255, 0.7), rgba(93, 81, 255, 0) 42%),
-    radial-gradient(circle at 85% 0, rgba(255, 47, 173, 0.6), rgba(255, 47, 173, 0) 28%),
-    var(--navy);
-}
-/* Same type as the home hero heading: 32 / 40 / 56px, regular weight. */
-.contact__title {
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-wrap: balance;
-}
-@media (min-width: 769px) {
-  .contact__title { max-width: min(776px, 66%); font-size: 40px; line-height: 1.17; }
-}
-@media (min-width: 1025px) {
-  .contact__title { font-size: 56px; line-height: 1.07; }
-}
-.contact__body { margin-top: clamp(44px, 6vw, 88px); }
-.contact__lead { color: var(--paper-soft); }
-.contact__email-row { position: relative; margin-top: 6px; }
-.contact__email {
-  font-size: min(var(--text-lg), 5.5vw);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  text-decoration: none;
-  overflow-wrap: break-word;
-  border-bottom: 1px solid var(--line-strong);
-  transition: border-color 0.2s;
-}
-.contact__email:hover { border-color: var(--accent); }
-.pen--arrow { display: none; }
-.contact__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-
-/* ---------- Footer ---------- */
+/* ---------- Footer: one quiet line, name and place left, contact links right ---------- */
 .site-footer {
-  padding-block: 28px;
   /* Leave room for the home indicator at the very bottom of the page. */
-  padding-bottom: calc(28px + env(safe-area-inset-bottom));
-  border-top: 1px solid var(--line);
+  padding-bottom: calc(clamp(28px, 3vw, 40px) + env(safe-area-inset-bottom));
   color: var(--paper-faint);
   font-size: var(--text-sm);
 }
-.site-footer__inner { text-align: center; }
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding-top: clamp(20px, 2.4vw, 28px);
+  border-top: 1px solid var(--line);
+}
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 0 28px; }
+/* 24px tall targets */
+.site-footer__links a {
+  display: inline-block;
+  padding-block: 4px;
+  color: var(--paper);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color 0.2s;
+}
+.site-footer__links a:hover { text-decoration-color: var(--accent); }
 
 /* ==========================================================================
    Case study
@@ -1290,7 +1272,6 @@ button { font: inherit; }
 .stats--pair .stat { padding-top: 24px; border-top: 1px solid var(--line); }
 .statement {
   max-width: 30ch;
-  margin-top: clamp(56px, 7vw, 104px);
   font-size: var(--text-lg);
   font-weight: 300;
   line-height: 1.3;
@@ -1608,19 +1589,6 @@ button { font: inherit; }
   .rec--lead { grid-column: 4 / span 8; }
   .rec--a { grid-column: 1 / span 6; }
   .rec--b { grid-column: 7 / span 6; }
-
-  /* Contact */
-  .contact__title { grid-column: 1 / -1; }
-  .contact__body { grid-column: 4 / span 9; }
-  .pen--arrow {
-    display: block;
-    top: 50%;
-    right: 100%;
-    width: clamp(72px, 7vw, 112px);
-    height: auto;
-    margin-right: 18px;
-    transform: translateY(-62%);
-  }
 
   /* Case study hero */
   .crumbs { grid-column: 1 / -1; }

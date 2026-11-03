@@ -40,10 +40,45 @@
     .sp__title { margin-top: 24px; font-size: clamp(2rem, 1.2rem + 3.2vw, 3.5rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
     .sp__hero { padding-block: clamp(48px, 8vw, 104px) clamp(48px, 6vw, 80px); background: linear-gradient(to bottom, #f3f3f2 70%, var(--ground)); }
     .sp__hero + .sp__wrap > .sp__section:first-child { margin-top: clamp(24px, 3vw, 40px); }
-    .mc-hero { position: relative; overflow: hidden; margin-top: clamp(32px, 4vw, 56px); aspect-ratio: 16 / 9; border-radius: var(--sp-radius); background: var(--mc-green); container-type: inline-size; }
-    .mc-hero__phones { position: absolute; inset: 9cqw 0 auto; display: flex; justify-content: center; gap: 4cqw; }
-    .mc-hero__phones img { width: 22cqw; box-shadow: none; }
-    .mc-hero__phones img:nth-child(2) { margin-top: -5cqw; }
+    /* Hero: the app being designed in Figma, drawn in HTML and sized in container
+       units so it scales like one image. Same dark window as the portfolio hero. */
+    .mc-hero { margin-top: clamp(32px, 4vw, 56px); container-type: inline-size; }
+    .fg { overflow: hidden; border-radius: 1.6cqw; background: #1b1b1a; box-shadow: 0 2cqw 4cqw rgba(13, 23, 63, 0.18); font-size: 0.95cqw; line-height: 1.3; color: #1e1e1e; }
+    .fg * { margin: 0; }
+    .fg__bar { display: flex; align-items: center; gap: 0.9cqw; height: 4.6cqw; padding: 0 1.8cqw; background: #2b2b29; color: #b3aea5; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 1.5cqw; }
+    .fg__bar i { flex: none; width: 1.2cqw; height: 1.2cqw; border-radius: 50%; background: #ff5f57; }
+    .fg__bar i:nth-child(2) { background: #febc2e; }
+    .fg__bar i:nth-child(3) { background: #28c840; }
+    .fg__bar span { margin-inline: auto; padding-right: 5.4cqw; }
+    .fg__ui { display: grid; grid-template-columns: 17cqw minmax(0, 1fr) 17cqw; grid-template-rows: 3.6cqw 38cqw; background: #ffffff; }
+    .fg__top { grid-column: 1 / -1; display: flex; align-items: center; gap: 1.6cqw; padding: 0 1.4cqw; border-bottom: 0.1cqw solid #e6e6e6; }
+    .fg__tool { width: 1.5cqw; height: 1.5cqw; border-radius: 0.3cqw; background: #e6e6e6; }
+    .fg__tool--on { background: #0d99ff; }
+    .fg__file { margin-inline: auto; color: #6b6b6b; }
+    .fg__file b { color: #1e1e1e; font-weight: 600; }
+    .fg__share { padding: 0.5cqw 1.2cqw; border-radius: 0.5cqw; background: #0d99ff; color: #ffffff; font-weight: 600; }
+    .fg__panel { padding: 1.2cqw 1.2cqw; border-right: 0.1cqw solid #e6e6e6; overflow: hidden; }
+    .fg__panel--right { border-right: 0; border-left: 0.1cqw solid #e6e6e6; }
+    .fg__head { margin-bottom: 0.8cqw; color: #1e1e1e; font-weight: 600; }
+    .fg__head + .fg__head, .fg__list + .fg__head { margin-top: 1.6cqw; }
+    .fg__list li { display: flex; align-items: center; gap: 0.7cqw; padding: 0.45cqw 0.6cqw; border-radius: 0.4cqw; color: #4b4b4b; white-space: nowrap; }
+    .fg__list li::before { content: "#"; color: #9a9a9a; }
+    .fg__pages li::before { content: none; }
+    .fg__list .fg__sub { padding-left: 1.8cqw; }
+    .fg__list .is-on { background: #e5f4ff; color: #1e1e1e; }
+    .fg__canvas { position: relative; overflow: hidden; background: #f0f0f0; }
+    .fg__frames { position: absolute; left: 2.6cqw; top: 3.6cqw; display: flex; gap: 2.2cqw; }
+    .fg__frame { position: relative; flex: none; width: 13.4cqw; }
+    .fg__frame p { position: absolute; bottom: 100%; left: 0; padding-bottom: 0.4cqw; color: #7a7a7a; font-size: 0.85cqw; white-space: nowrap; }
+    .fg__frame img { display: block; width: 100%; height: auto; }
+    .fg__frame--on img { outline: 0.15cqw solid #0d99ff; }
+    .fg__frame--on p { color: #0d99ff; }
+    .fg__size { position: absolute; top: 100%; left: 50%; margin-top: 0.6cqw; padding: 0.2cqw 0.5cqw; border-radius: 0.3cqw; background: #0d99ff; color: #ffffff; font-size: 0.85cqw; transform: translateX(-50%); white-space: nowrap; }
+    .fg__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6cqw; margin-bottom: 0.6cqw; }
+    .fg__field { padding: 0.45cqw 0.6cqw; border-radius: 0.4cqw; background: #f5f5f5; color: #4b4b4b; }
+    .fg__field b { margin-right: 0.5cqw; color: #9a9a9a; font-weight: 400; }
+    .fg__swatch { display: flex; align-items: center; gap: 0.6cqw; padding: 0.45cqw 0.6cqw; border-radius: 0.4cqw; background: #f5f5f5; color: #4b4b4b; margin-bottom: 0.6cqw; }
+    .fg__swatch i { width: 1.2cqw; height: 1.2cqw; border-radius: 0.25cqw; box-shadow: inset 0 0 0 0.1cqw rgba(0, 0, 0, 0.12); }
 
     /* Phone screens: the Figma frames have no device, so round them like one */
     .mc-screen { display: block; height: auto; border-radius: 9% / 4.2%; box-shadow: 0 0 0 1px rgba(13, 23, 63, 0.08), 0 18px 40px rgba(13, 23, 63, 0.18); }
@@ -140,11 +175,39 @@
           <p class="crumbs"><a href="index.html#work">Selected projects</a><span aria-hidden="true">/</span><span>Medicool</span></p>
           <h1 class="sp__title">Branding and designing the app for Medicool, a smart medication case</h1>
         </header>
-        <div class="mc-hero" role="img" aria-label="Three Medicool app wireframes on the brand’s dark green: dose reminders, the medical card, and the dispenser lock.">
-          <div class="mc-hero__phones" aria-hidden="true">
-            <img class="mc-screen" src="images/medicool/screen-reminders.png" alt="" width="786" height="1704">
-            <img class="mc-screen" src="images/medicool/screen-medical-card.png" alt="" width="786" height="1704">
-            <img class="mc-screen" src="images/medicool/screen-dispenser.png" alt="" width="786" height="1704">
+        <div class="mc-hero" role="img" aria-label="The Medicool app in Figma: the Medicool lo-fi screens page open, with the onboarding, home, reminders, medical card and case screens on the canvas and the medical card frame selected.">
+          <div class="fg" aria-hidden="true">
+            <p class="fg__bar"><i></i><i></i><i></i><span>Medicool – Figma</span></p>
+            <div class="fg__ui">
+              <div class="fg__top"><span class="fg__tool fg__tool--on"></span><span class="fg__tool"></span><span class="fg__tool"></span><span class="fg__tool"></span><p class="fg__file">Medicool / <b>Medicool: lo-fi screens</b></p><p class="fg__share">Share</p></div>
+              <div class="fg__panel">
+                <p class="fg__head">Pages</p>
+                <ul class="fg__list fg__pages"><li>Ideation &amp; Development</li><li>Product Hardware Ideation</li><li>Lo-fi Prototype</li><li class="is-on">Medicool: lo-fi screens</li></ul>
+                <p class="fg__head">Layers</p>
+                <ul class="fg__list"><li>1 · Onboarding</li><li>2 · Home</li><li>3 · Reminders and medical card</li><li class="fg__sub">08 · Reminders</li><li class="fg__sub is-on">09 · Medical card</li><li>4 · The case</li></ul>
+              </div>
+              <div class="fg__canvas">
+                <div class="fg__frames">
+                  <div class="fg__frame"><p>02 · Onboarding 1 of 3</p><img src="images/medicool/lofi-02-onboarding.png" alt="" width="786" height="1704"></div>
+                  <div class="fg__frame"><p>06 · Home</p><img src="images/medicool/lofi-06-home.png" alt="" width="786" height="1704"></div>
+                  <div class="fg__frame"><p>08 · Reminders</p><img src="images/medicool/lofi-08-reminders.png" alt="" width="786" height="1704"></div>
+                  <div class="fg__frame fg__frame--on"><p>09 · Medical card</p><img src="images/medicool/lofi-09-medical-card.png" alt="" width="786" height="1704"><span class="fg__size">393 × 852</span></div>
+                  <div class="fg__frame"><p>10 · Case</p><img src="images/medicool/lofi-10-case.png" alt="" width="786" height="1704"></div>
+                </div>
+              </div>
+              <div class="fg__panel fg__panel--right">
+                <p class="fg__head">Frame</p>
+                <div class="fg__row"><p class="fg__field"><b>X</b>513</p><p class="fg__field"><b>Y</b>2864</p></div>
+                <div class="fg__row"><p class="fg__field"><b>W</b>393</p><p class="fg__field"><b>H</b>852</p></div>
+                <p class="fg__head">Fill</p>
+                <p class="fg__swatch"><i style="background:#f5f6f8"></i>F5F6F8</p>
+                <p class="fg__head">Colours</p>
+                <p class="fg__swatch"><i style="background:#01453a"></i>01453A</p>
+                <p class="fg__swatch"><i style="background:#16d89d"></i>16D89D</p>
+                <p class="fg__head">Export</p>
+                <p class="fg__field">PNG · 2x</p>
+              </div>
+            </div>
           </div>
         </div>
         <ul class="sp__stats" aria-label="The project at a glance">
@@ -246,27 +309,30 @@
         <h2 class="sp__h2" id="app-title">The app</h2>
         <div class="sp__body">
           <p>I designed a lo-fi prototype of the app, the case’s control panel, to show how what we learned about our audience shaped the product.</p>
+          <p>The screens below are rebuilt from that 2023 prototype, keeping its flows and content, in the same lo-fi style as my other case studies.</p>
         </div>
         <figure class="sp__figure">
           <div class="mc-screens">
-            <figure><img class="mc-screen" src="images/medicool/screen-home.png" width="786" height="1704" alt="Home screen wireframe with a search bar and three shortcuts: Reminders, Medication and Dispenser, then a Medical Card panel." loading="lazy"><figcaption><strong>Home</strong>Three shortcuts and nothing more, to keep it simple.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/medicool/screen-reminders.png" width="786" height="1704" alt="Reminders wireframe: a card for each medication time, with the medication, dosage, a comment such as dissolve in water, and progress through the doses." loading="lazy"><figcaption><strong>Reminders</strong>Each dose with its time, amount, notes and progress.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/medicool/screen-medical-card.png" width="786" height="1704" alt="Medical card wireframe showing height, weight, blood type, allergies, conditions and intolerances, then yesterday's medications with a trend line." loading="lazy"><figcaption><strong>Medical card</strong>Key health details in one place, with recent doses.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/medicool/screen-dispenser.png" width="786" height="1704" alt="Dispenser wireframe with a large padlock icon and Unlock and Lock buttons." loading="lazy"><figcaption><strong>Dispenser</strong>Lock or unlock the case from your phone.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/lofi-06-home.png" width="786" height="1704" alt="Home screen: Good morning, Peter, then a green card showing the case is connected and keeping medication cool, the next dose at 2:30pm with progress, and quick actions." loading="lazy"><figcaption><strong>Home</strong>The case’s status and your next dose, first.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/lofi-08-reminders.png" width="786" height="1704" alt="Reminders screen: today’s doses, each with its time, medication, amount, a note such as dissolve in water, and progress through the course." loading="lazy"><figcaption><strong>Reminders</strong>Each dose with its time, amount, notes and progress.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/lofi-09-medical-card.png" width="786" height="1704" alt="Medical card screen: height, weight and blood type, allergies, conditions and intolerances, then yesterday’s medications marked as taken." loading="lazy"><figcaption><strong>Medical card</strong>Key health details in one place, with recent doses.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/lofi-10-case.png" width="786" height="1704" alt="Case screen: a large padlock showing the case is locked, an Unlock case button, and status rows for connection, temperature and the next dose." loading="lazy"><figcaption><strong>The case</strong>Lock or unlock it, and check it’s working.</figcaption></figure>
           </div>
         </figure>
         <ul class="sp__list">
-          <li><strong>Simple by default.</strong> The audience wanted something effective but not overwhelming, so the home screen leads with three clear actions.</li>
+          <li><strong>Simple by default.</strong> The audience wanted something effective but not overwhelming, so the home screen leads with the case’s status and the next dose.</li>
           <li><strong>Keeping track.</strong> Reminders show exactly what to take, when, and how far through a course you are.</li>
           <li><strong>Trust.</strong> The medical card keeps allergies, conditions and intolerances together, ready when they’re needed.</li>
-          <li><strong>Light and dark.</strong> The home screen was designed in both modes, in the Medicool greens.</li>
+          <li><strong>When things go wrong.</strong> If the case can’t be reached, the app says so plainly and reminders keep working.</li>
         </ul>
         <figure class="sp__figure">
-          <div class="sp__pair">
-            <div class="sp__frame" style="background: var(--sp-sage)"><img class="mc-screen" src="images/medicool/screen-onboarding.png" width="786" height="1704" alt="Onboarding screen on Medicool green with the logo mark, the heading Making your journey stress free, and Keeping your medication cooled to your desired needs." loading="lazy" style="width: 52%; margin: 9% auto"></div>
-            <div class="sp__frame" style="background: var(--sp-sage)"><img class="mc-screen" src="images/medicool/screen-location.png" width="786" height="1704" alt="Location permission wireframe: Allow Medicool to access your location while you are using the app? Your location will be used to show nearby recommendations." loading="lazy" style="width: 52%; margin: 9% auto"></div>
+          <div class="mc-screens">
+            <figure><img class="mc-screen" src="images/medicool/lofi-02-onboarding.png" width="786" height="1704" alt="Onboarding screen: the Medicool mark on green, the heading Making your journey stress free, and Keeping your medication cooled to your desired needs." loading="lazy"><figcaption><strong>Onboarding</strong>Making your journey stress free.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/lofi-05-location.png" width="786" height="1704" alt="Location permission: Allow Medicool to access your location while you are using the app? Your location will be used to show nearby recommendations." loading="lazy"><figcaption><strong>Location</strong>Used to show nearby recommendations.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/lofi-07-not-connected.png" width="786" height="1704" alt="Error state: We can’t reach your case. Check Bluetooth is on and the case is nearby. Your reminders will still work. A Try again button." loading="lazy"><figcaption><strong>Case not connected</strong>A clear next step, and reminders still work.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/medicool/lofi-11-dose-ready.png" width="786" height="1704" alt="Dose ready: Prednisolone 7.5mg is in the delivery pod. The light on the case flashes white until it’s taken. Buttons for I’ve taken it and remind me in 10 minutes." loading="lazy"><figcaption><strong>Dose ready</strong>The app and the case’s light agree.</figcaption></figure>
           </div>
-          <figcaption>Onboarding in the brand colours, and a location request for nearby recommendations.</figcaption>
+          <figcaption>Onboarding, permissions, an error state and the moment a dose is ready.</figcaption>
         </figure>
       </section>
 

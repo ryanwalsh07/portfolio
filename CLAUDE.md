@@ -8,7 +8,7 @@ Ryan owns every design and content decision. Claude Code builds and checks; it d
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Home: hero, Selected projects, About me, Recommendations; every page ends with a one-line footer (name, place, LinkedIn, Email, CV) that is the `#contact` target |
+| `index.html` | Home: hero, Selected projects, About me, Recommendations, Contact (centred label and Email, LinkedIn, CV icons). Every page ends with a one-line footer (name, place, LinkedIn, Email, CV) |
 | `tapsos.html` | TapSOS case study (shipped work at Inclutech) |
 | `orbit.html` | orbit case study (final-year university project) |
 | `portfolio-site.html` | "The makings of my portfolio" case study, a password-locked draft (see below) |

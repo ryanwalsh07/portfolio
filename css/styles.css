@@ -1080,6 +1080,24 @@ button { font: inherit; }
 .rec__role { color: var(--paper-faint); }
 #recommendations { background: linear-gradient(var(--tint) 20%, var(--ground)); }
 
+/* ---------- Contact (home only): the label and three icon links, centred ---------- */
+.contact { padding-block: clamp(72px, 9vw, 128px); text-align: center; }
+.contact .contact__title { margin-bottom: 10px; padding-top: 0; }
+.contact__status { margin-bottom: 28px; color: var(--paper-soft); }
+.contact__icons { display: flex; justify-content: center; gap: 16px; }
+.contact__icons a {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--paper);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+.contact__icons svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.contact__icons a:hover { border-color: var(--accent); background-color: var(--tint); color: var(--accent); }
+
 /* ---------- Footer: one quiet line, name and place left, contact links right ---------- */
 .site-footer {
   /* Leave room for the home indicator at the very bottom of the page. */

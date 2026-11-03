@@ -31,7 +31,6 @@
       --sp-lilac: #e6e3ff;
       --sp-blush: #ffe4f2;
       --sp-radius: 16px;
-      padding-top: clamp(48px, 8vw, 104px);
     }
     /* Clear of the notch in landscape, like the site's own .wrap. */
     .sp__wrap { width: min(100% - 2 * max(20px, env(safe-area-inset-left), env(safe-area-inset-right)), var(--sp-col)); margin-inline: auto; }
@@ -42,19 +41,18 @@
     /* One line at every width: the size follows the viewport, capped at the homepage's 56px. */
     .sp__title { margin-top: 24px; font-size: min(7vw, 3.5rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; white-space: nowrap; }
 
-    /* A small bento of the key facts */
-    .sp__bento { display: grid; gap: 14px; margin-top: clamp(40px, 6vw, 72px); }
-    .sp__card { padding: clamp(24px, 3vw, 34px); border-radius: var(--sp-radius); background: var(--sp-lavender); color: var(--paper); line-height: 1.55; }
-    .sp__card dt { color: var(--paper-soft); font-size: var(--text-sm); font-weight: 600; }
-    .sp__card dd { margin-top: 6px; font-size: 1.0625rem; }
-    .sp__card--lead { background: var(--violet); color: #ffffff; font-size: 1.0625rem; }
-    .sp__card--blush { background: var(--sp-blush); }
-    .sp__card--lilac { background: var(--sp-lilac); }
-    @media (min-width: 760px) {
-      .sp__bento { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-      .sp__card--lead { grid-column: span 4; }
-      .sp__card--wide { grid-column: span 2; }
-      .sp__card--third { grid-column: span 2; }
+    /* Intro: the homepage hero grid paper, a pen circle on the title, and pen-ticked facts */
+    .sp__hero { position: relative; isolation: isolate; padding-block: clamp(48px, 8vw, 104px) clamp(48px, 6vw, 80px); background: linear-gradient(to bottom, #f3f3f2 70%, var(--ground)); }
+    .sp__hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px); background-size: 40px 40px; -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent); mask-image: linear-gradient(to bottom, #000 60%, transparent); pointer-events: none; }
+    .sp__title .circled { margin-left: 0.15em; }
+    .sp__hero + .sp__wrap > .sp__section:first-child { margin-top: clamp(24px, 3vw, 40px); }
+    .sp__lead { max-width: 60ch; margin-top: clamp(20px, 3vw, 32px); color: var(--paper-soft); font-size: var(--text-md); line-height: 1.6; }
+    .sp__glance { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(28px, 4vw, 44px); border-top: 1px solid var(--line); }
+    .sp__glance li { display: flex; align-items: flex-start; gap: 10px; padding: 16px 16px 0 0; color: var(--paper); font-weight: 500; line-height: 1.45; }
+    .sp__glance .pen--tick { position: static; flex: none; width: 22px; height: 18px; margin-top: 0.1em; }
+    @media (min-width: 900px) {
+      .sp__glance { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .sp__glance li + li { padding-left: 16px; border-left: 1px solid var(--line); }
     }
 
     /* Story sections */
@@ -204,21 +202,25 @@
 
   <!-- ============ Hero ============ -->
   <article class="sp">
-    <div class="sp__wrap">
-
-      <header>
-        <p class="crumbs"><a href="index.html#work">Selected projects</a><span aria-hidden="true">/</span><span>portfolio</span></p>
-        <ul class="sp__tags" aria-label="Skills"><li>UX Design</li><li>Web</li><li>Accessibility</li><li>AI</li></ul>
-        <h1 class="sp__title">The makings of my portfolio</h1>
-      </header>
-
-      <div class="sp__bento">
-        <p class="sp__card sp__card--lead">I designed and built ryanwalsh.uk end to end: research, structure, visual design in Figma, and a hand-built responsive site using Claude Code. The goal was a fast, accessible portfolio that gets a hiring manager from landing to case study in one click.</p>
-        <dl class="sp__card sp__card--wide sp__card--lilac"><dt>Tools</dt><dd>Figma, Claude Code, VS Code, HTML/CSS, GitHub Pages</dd></dl>
-        <dl class="sp__card sp__card--third sp__card--blush"><dt>Research</dt><dd>A Claude Research review of other designers’ portfolios</dd></dl>
-        <dl class="sp__card sp__card--third"><dt>Iteration</dt><dd>5 rounds on colour, type and the wordmark</dd></dl>
-        <dl class="sp__card sp__card--third sp__card--lilac"><dt>Shipping</dt><dd>Every change as a pull request on GitHub</dd></dl>
+    <!-- Intro on the homepage's grid paper, marked up with the pink pen -->
+    <div class="sp__hero">
+      <div class="sp__wrap">
+        <header>
+          <p class="crumbs"><a href="index.html#work">Selected projects</a><span aria-hidden="true">/</span><span>portfolio</span></p>
+          <ul class="sp__tags" aria-label="Skills"><li>UX Design</li><li>Web</li><li>Accessibility</li><li>AI</li></ul>
+          <h1 class="sp__title">The makings of my <span class="circled">portfolio<svg class="pen pen--loop" data-draw="load" style="--delay: 0.5s" viewBox="0 0 400 120" aria-hidden="true" focusable="false"><path pathLength="1" d="M58 30C120 8 300 4 360 26c40 16 36 58-20 74-70 18-230 18-294-2C2 84 6 44 64 26c46-14 106-16 150-14"/></svg></span></h1>
+        </header>
+        <p class="sp__lead">I designed and built ryanwalsh.uk end to end: research, structure, visual design in Figma, and a hand-built responsive site using Claude Code. The goal was a fast, accessible portfolio that gets a hiring manager from landing to case study in one click.</p>
+        <ul class="sp__glance" aria-label="The project at a glance">
+          <li><svg class="pen pen--tick" data-draw style="--delay: 0s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 5 8.5 9C15 14 21 7 30 2"/></svg>15+ portfolios reviewed</li>
+          <li><svg class="pen pen--tick" data-draw style="--delay: 0.15s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 13c3 3 5 6 8 10 4-9 10-15 19-21"/></svg>5 rounds on colour and type</li>
+          <li><svg class="pen pen--tick" data-draw style="--delay: 0.3s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 14c3 2 6 5 8.5 9C15 14 21 7 30 2"/></svg>29 pull requests merged</li>
+          <li><svg class="pen pen--tick" data-draw style="--delay: 0.45s" viewBox="0 0 32 26" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 13c3 3 5 6 8 10 4-9 10-15 19-21"/></svg>Designed in Figma, built with Claude Code</li>
+        </ul>
       </div>
+    </div>
+
+    <div class="sp__wrap">
 
       <!-- The challenge -->
       <section class="sp__section" aria-labelledby="challenge-title">

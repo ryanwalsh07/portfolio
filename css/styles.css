@@ -1579,11 +1579,14 @@ button { font: inherit; }
 
   /* Work: TapSOS runs the full width, orbit and Together share the row below. */
   .project--feature { grid-column: 1 / -1; }
-  /* TapSOS runs the full width; the other four sit in two pairs below it. */
+  /* TapSOS runs the full width; orbit and ryanwalsh.uk, then Together and Medicool,
+     sit in pairs; the locked Inclutech card closes the grid at full width. */
   .project--second,
   .project--site,
   .project--third,
-  .project--fourth { grid-column: span 6; }
+  .project--medicool { grid-column: span 6; }
+  .project--fourth { grid-column: 1 / -1; }
+  .project--fourth .project__media { aspect-ratio: 32 / 11; }
   /* Exactly double the base 16/11: at double the width (full row vs. half),
      this keeps the lead card the same height as the two cards below it. */
   .project--feature .project__media { aspect-ratio: 32 / 11; }
@@ -1738,6 +1741,13 @@ button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .pending__track { animation: none; }
 }
+
+/* ---------- Medicool placeholder: its own logo slide, band set low to keep the logo clear ---------- */
+.media--medicool { background: #01453a; }
+.medicool__logo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.media--medicool .pending__band { align-self: end; margin-bottom: 9%; background: #16d89d; border-color: #01453a; }
+.media--medicool .pending__set span,
+.media--medicool .pending__set span::after { color: #01453a; }
 
 /* ---------- orbit ---------- */
 .media--orbit { background: radial-gradient(120% 90% at 50% 0%, #1b2a6b 0%, #0d173f 60%, #0a1233 100%); }

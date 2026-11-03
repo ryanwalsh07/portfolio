@@ -1751,6 +1751,21 @@ button { font: inherit; }
 .project__link:hover .ai-chip--card,
 .project__link:focus-visible .ai-chip--card { opacity: 0; }
 
+/* Where AI was used: one segmented bar of stages. Sized to its own column, so it
+   stacks in narrow columns and runs five across once there is room. */
+.ai-map-wrap { container-type: inline-size; }
+.ai-map { display: grid; margin-top: clamp(28px, 3.5vw, 48px); overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-media); background: #ffffff; }
+.ai-map__step { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: clamp(18px, 2.2vw, 24px); background: #ffffff; }
+.ai-map__step + .ai-map__step { border-top: 1px solid var(--line); }
+.ai-map__step--ai { background: #eef0fc; }
+.ai-map__name { display: flex; align-items: baseline; gap: 8px; color: var(--paper); font-size: 1.0625rem; font-weight: 600; }
+.ai-map__name span { color: var(--paper-faint); font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+.ai-map__text { color: var(--paper-soft); font-size: var(--text-sm); line-height: 1.5; }
+@container (min-width: 620px) {
+  .ai-map { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .ai-map__step + .ai-map__step { border-top: 0; border-left: 1px solid var(--line); }
+}
+
 /* ---------- Medicool placeholder: its own logo slide, band set low to keep the logo clear ---------- */
 .media--medicool { background: #01453a; }
 .medicool__logo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

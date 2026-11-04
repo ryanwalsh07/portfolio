@@ -64,8 +64,8 @@
 
     /* Pastel callout box */
     .sp__callout { margin-top: 28px; padding: clamp(24px, 3.5vw, 40px); border-radius: var(--sp-radius); background: var(--sp-lavender); }
-    .sp__callout--lilac, .mc-screens.mc-screens--lilac { background: var(--sp-lilac); }
-    .sp__callout--blush, .mc-screens.mc-screens--blush { background: var(--sp-blush); }
+    .sp__callout--lilac { background: var(--sp-lilac); }
+    .sp__callout--blush { background: var(--sp-blush); }
     .sp__callout--spaced { margin-top: clamp(40px, 5vw, 56px); }
     .sp__facts dt { color: var(--paper); font-weight: 600; }
     .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
@@ -109,9 +109,9 @@
     .sp__pair .sp__frame img { width: 80%; margin: 10% auto; }
 
     /* App screens: a row of phones on a soft tint, each with a short label */
-    .mc-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 16px; padding: clamp(24px, 4vw, 48px); border-radius: var(--sp-radius); background: var(--sp-lavender); }
+    .mc-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 4vw, 48px) clamp(16px, 2vw, 24px); }
     @media (min-width: 760px) { .mc-screens { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    .mc-screens figcaption { margin-top: 12px; color: var(--paper-soft); font-size: var(--text-sm); line-height: 1.45; }
+    .mc-screens figcaption { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--paper-soft); font-size: var(--text-sm); line-height: 1.45; }
     .mc-screens strong { display: block; color: var(--paper); font-weight: 600; }
 
     /* Details still to come from Ryan */
@@ -294,7 +294,7 @@
           <p>The screens below are rebuilt from that 2023 prototype, keeping its flows and content, now designed in high fidelity with the Medicool brand.</p>
         </div>
         <figure class="sp__figure">
-          <div class="mc-screens mc-screens--lilac">
+          <div class="mc-screens">
             <figure><img class="mc-screen" src="images/medicool/hifi-06-home.png" width="786" height="1704" alt="Home screen: Good morning, Peter, then a green card showing the case is connected and keeping medication cool, the next dose at 2:30pm with progress, and quick actions." loading="lazy"><figcaption><strong>Home</strong>The case’s status and your next dose, first.</figcaption></figure>
             <figure><img class="mc-screen" src="images/medicool/hifi-08-reminders.png" width="786" height="1704" alt="Reminders screen: today’s doses, each with its time, medication, amount, a note such as dissolve in water, and progress through the course." loading="lazy"><figcaption><strong>Reminders</strong>Each dose with its time, amount, notes and progress.</figcaption></figure>
             <figure><img class="mc-screen" src="images/medicool/hifi-09-medical-card.png" width="786" height="1704" alt="Medical card screen: height, weight and blood type, allergies, conditions and intolerances, then yesterday’s medications marked as taken." loading="lazy"><figcaption><strong>Medical card</strong>Key health details in one place, with recent doses.</figcaption></figure>

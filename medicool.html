@@ -27,9 +27,9 @@
   <style>
     .sp {
       --sp-col: 1032px;
-      --sp-mint: #e3f8f0;
-      --sp-sage: #edf3f1;
       --sp-lavender: #eef0fc;
+      --sp-lilac: #e6e3ff;
+      --sp-blush: #ffe4f2;
       --sp-radius: 16px;
       --mc-green: #01453a;
       --mc-mint: #16d89d;
@@ -55,14 +55,6 @@
     /* Phone screens: the Figma frames have no device, so round them like one */
     .mc-screen { display: block; height: auto; border-radius: 9% / 4.2%; box-shadow: 0 0 0 1px rgba(13, 23, 63, 0.08), 0 18px 40px rgba(13, 23, 63, 0.18); }
 
-    /* Key facts: four small tiles */
-    .sp__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: clamp(28px, 3.5vw, 40px); }
-    .sp__stat { padding: clamp(20px, 2.4vw, 28px); border-radius: var(--sp-radius); background: var(--sp-mint); color: var(--paper-soft); line-height: 1.5; }
-    .sp__stat--sage { background: var(--sp-sage); }
-    .sp__stat-label { font-size: var(--text-sm); }
-    .sp__stat-value { margin-top: 4px; color: var(--paper); font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
-    @media (min-width: 900px) { .sp__stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
-
     /* Story sections */
     .sp__section { margin-top: clamp(72px, 10vw, 128px); }
     .sp__h2 { font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; text-wrap: balance; }
@@ -73,7 +65,9 @@
     .sp__body strong { color: var(--paper); font-weight: 600; }
 
     /* Pastel callout box */
-    .sp__callout { margin-top: 28px; padding: clamp(24px, 3.5vw, 40px); border-radius: var(--sp-radius); background: var(--sp-mint); }
+    .sp__callout { margin-top: 28px; padding: clamp(24px, 3.5vw, 40px); border-radius: var(--sp-radius); background: var(--sp-lavender); }
+    .sp__callout--lilac, .mc-screens.mc-screens--lilac { background: var(--sp-lilac); }
+    .sp__callout--blush, .mc-screens.mc-screens--blush { background: var(--sp-blush); }
     .sp__callout--spaced { margin-top: clamp(40px, 5vw, 56px); }
     .sp__facts dt { color: var(--paper); font-weight: 600; }
     .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
@@ -102,7 +96,7 @@
     .sp__pair .sp__frame img { width: 80%; margin: 10% auto; }
 
     /* App screens: a row of phones on a soft tint, each with a short label */
-    .mc-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 16px; padding: clamp(24px, 4vw, 48px); border-radius: var(--sp-radius); background: var(--sp-sage); }
+    .mc-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 16px; padding: clamp(24px, 4vw, 48px); border-radius: var(--sp-radius); background: var(--sp-lavender); }
     @media (min-width: 760px) { .mc-screens { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
     .mc-screens figcaption { margin-top: 12px; color: var(--paper-soft); font-size: var(--text-sm); line-height: 1.45; }
     .mc-screens strong { display: block; color: var(--paper); font-weight: 600; }
@@ -153,12 +147,6 @@
             <img class="fg__shot" src="images/medicool/figma-hifi-screens.png" alt="" width="3599" height="2032">
           </div>
         </div>
-        <ul class="sp__stats" aria-label="The project at a glance">
-          <li class="sp__stat"><p class="sp__stat-label">Programme</p><p class="sp__stat-value">Catalyst Co-Founders 2023</p></li>
-          <li class="sp__stat sp__stat--sage"><p class="sp__stat-label">Outcome</p><p class="sp__stat-value">Selected for a £10k grant</p></li>
-          <li class="sp__stat"><p class="sp__stat-label">My role</p><p class="sp__stat-value">Branding and app UX/UI</p></li>
-          <li class="sp__stat sp__stat--sage"><p class="sp__stat-label">Team</p><p class="sp__stat-value">Four co-founders</p></li>
-        </ul>
       </div>
     </div>
 
@@ -195,7 +183,7 @@
         <div class="sp__body">
           <p>We looked at existing medication products and services, from automatic pill dispensers with alarms and lockable lids to pharmacy services that pre-pack each dose.</p>
         </div>
-        <div class="sp__callout sp__callout--spaced">
+        <div class="sp__callout sp__callout--spaced sp__callout--blush">
           <dl class="sp__facts">
             <div><dt>Takeaway</dt><dd>Most of what we found was designed for use at home. Medicool’s angle was medication on the move.</dd></div>
           </dl>
@@ -255,7 +243,7 @@
           <p>The screens below are rebuilt from that 2023 prototype, keeping its flows and content, now designed in high fidelity with the Medicool brand.</p>
         </div>
         <figure class="sp__figure">
-          <div class="mc-screens">
+          <div class="mc-screens mc-screens--lilac">
             <figure><img class="mc-screen" src="images/medicool/hifi-06-home.png" width="786" height="1704" alt="Home screen: Good morning, Peter, then a green card showing the case is connected and keeping medication cool, the next dose at 2:30pm with progress, and quick actions." loading="lazy"><figcaption><strong>Home</strong>The case’s status and your next dose, first.</figcaption></figure>
             <figure><img class="mc-screen" src="images/medicool/hifi-08-reminders.png" width="786" height="1704" alt="Reminders screen: today’s doses, each with its time, medication, amount, a note such as dissolve in water, and progress through the course." loading="lazy"><figcaption><strong>Reminders</strong>Each dose with its time, amount, notes and progress.</figcaption></figure>
             <figure><img class="mc-screen" src="images/medicool/hifi-09-medical-card.png" width="786" height="1704" alt="Medical card screen: height, weight and blood type, allergies, conditions and intolerances, then yesterday’s medications marked as taken." loading="lazy"><figcaption><strong>Medical card</strong>Key health details in one place, with recent doses.</figcaption></figure>
@@ -293,7 +281,7 @@
         <div class="sp__body">
           <p><span class="ph">[Your reflection on Medicool, in your own words]</span></p>
         </div>
-        <div class="sp__callout">
+        <div class="sp__callout sp__callout--lilac">
           <p class="sp__facts"><strong style="color: var(--paper)">What I learned</strong></p>
           <p style="margin-top: 10px"><span class="ph">[One line on what you took from the project]</span></p>
         </div>

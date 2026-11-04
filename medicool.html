@@ -87,9 +87,9 @@
 
     /* Lists inside the reading column */
     .sp__list { margin-top: 20px; }
-    .sp__list > li { position: relative; padding: 14px 0 14px 28px; border-top: 1px solid var(--line); color: var(--paper-soft); line-height: 1.65; }
+    .sp__list > li { position: relative; padding: 20px 0 20px 28px; border-top: 1px solid var(--line); color: var(--paper-soft); line-height: 1.65; }
     .sp__list > li:last-child { border-bottom: 1px solid var(--line); }
-    .sp__list > li::before { content: ""; position: absolute; left: 4px; top: 1.45em; width: 8px; height: 8px; border-radius: 50%; background: var(--mc-mint); }
+    .sp__list > li::before { content: ""; position: absolute; left: 4px; top: calc(20px + 0.825em - 4px); width: 8px; height: 8px; border-radius: 50%; background: var(--mc-mint); }
     .sp__list strong { color: var(--paper); font-weight: 600; }
     .sp__steps { margin-top: 20px; counter-reset: step; }
     .sp__steps > li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 2px 12px; padding-block: 16px; border-top: 1px solid var(--line); counter-increment: step; color: var(--paper-soft); line-height: 1.65; }
@@ -99,6 +99,8 @@
 
     /* Images */
     .sp__figure { margin-top: clamp(32px, 4vw, 48px); }
+    .sp__figure + .sp__list { margin-top: clamp(40px, 5vw, 64px); }
+    .sp__list + .sp__figure { margin-top: clamp(56px, 7vw, 96px); }
     .sp__frame { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--sp-radius); background: #ffffff; }
     .sp__frame img { display: block; width: 100%; height: auto; }
     .sp__frame--green { border: 0; background: var(--mc-green); }

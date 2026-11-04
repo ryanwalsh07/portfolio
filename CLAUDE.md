@@ -11,12 +11,12 @@ Ryan owns every design and content decision. Claude Code builds and checks; it d
 | `index.html` | Home: hero, Selected projects, About me, Recommendations, Contact (centred label and Email, LinkedIn, CV icons). Every page ends with a one-line footer (name, place, LinkedIn, Email, CV) |
 | `tapsos.html` | TapSOS case study (shipped work at Inclutech) |
 | `orbit.html` | orbit case study (final-year university project) |
-| `portfolio-site.html` | "The makings of my portfolio" case study, a password-locked draft (see below) |
+| `portfolio-site.html` | "The makings of my portfolio" case study: designing and building this site with AI, from template to live site |
 | `medicool.html` | Medicool case study (Catalyst Co-Founders 2023; selected for a £10k grant, then withdrew): branding and app UX/UI. Visuals from the team’s Figma file only, never the third-party references in it |
 | `404.html` | Page not found |
 | `css/styles.css` | All shared styles; tokens at the top |
 | `js/main.js` | Menu, reveal-on-scroll, pen marks, reading progress; exposes `window.RW_initPage` |
-| `js/case-study-gate.js` | Password gate that decrypts a locked case study in the browser |
+| `js/case-study-gate.js` | Password gate for locking a draft case study in the browser. No page uses it now; kept for future drafts |
 
 ## Design tokens (from `:root` in `css/styles.css`)
 

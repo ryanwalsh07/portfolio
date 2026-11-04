@@ -72,6 +72,21 @@
     .sp__facts dt { color: var(--paper); font-weight: 600; }
     .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
 
+    /* Competitor cards: pastel grid like the portfolio rounds */
+    .mc-comps { display: grid; gap: 14px; margin-top: 24px; }
+    .mc-comp { padding: clamp(22px, 2.6vw, 30px); border-radius: var(--sp-radius); background: var(--sp-lavender); }
+    .mc-comp--lilac { background: var(--sp-lilac); }
+    .mc-comp--blush { background: var(--sp-blush); }
+    .mc-comp__kind { color: #4637d6; font-size: var(--text-sm); font-weight: 700; }
+    .mc-comp__names { margin-top: 4px; color: var(--paper); font-size: 1.125rem; font-weight: 600; }
+    .mc-comp__row { margin-top: 10px; color: var(--paper-soft); line-height: 1.6; }
+    .mc-comp__row strong { display: block; color: var(--paper); font-weight: 600; }
+    @media (min-width: 900px) {
+      .mc-comps { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .mc-comp { grid-column: span 2; }
+      .mc-comp:nth-child(4), .mc-comp:nth-child(5) { grid-column: span 3; }
+    }
+
     /* Lists inside the reading column */
     .sp__list { margin-top: 20px; }
     .sp__list > li { position: relative; padding: 14px 0 14px 28px; border-top: 1px solid var(--line); color: var(--paper-soft); line-height: 1.65; }
@@ -181,8 +196,47 @@
         </ul>
         <h3 class="sp__h3">What was already out there</h3>
         <div class="sp__body">
-          <p>We looked at existing medication products and services, from automatic pill dispensers with alarms and lockable lids to pharmacy services that pre-pack each dose.</p>
+          <p>We looked at what people already used to manage their medication, from pharmacy services that pre-pack each dose to automatic dispensers with alarms and lockable lids. Since then, I’ve also looked at cooling wallets and temperature sensors, the products closest to Medicool’s idea, and at what customers say about all of them in public reviews.</p>
         </div>
+        <ul class="mc-comps" aria-label="Existing products and what customers say about them">
+          <li class="mc-comp">
+            <p class="mc-comp__kind">Pre-packed pouches</p>
+            <p class="mc-comp__names">PillTime</p>
+            <p class="mc-comp__row"><strong>Liked</strong>Each dose sorted into a dated pouch, which makes travelling with medication easier.</p>
+            <p class="mc-comp__row"><strong>Disliked</strong>Missing items, wrong dates and slow customer service. A pouch can’t remind you or keep anything cool.</p>
+          </li>
+          <li class="mc-comp mc-comp--lilac">
+            <p class="mc-comp__kind">Automatic dispensers</p>
+            <p class="mc-comp__names">Pivotell, Medelert</p>
+            <p class="mc-comp__row"><strong>Liked</strong>Loud, persistent alarms and locked compartments, trusted by carers of people with memory problems.</p>
+            <p class="mc-comp__row"><strong>Disliked</strong>Fiddly to set up and refill, alarms that can be hard to hear, and built to sit on a table at home.</p>
+          </li>
+          <li class="mc-comp mc-comp--blush">
+            <p class="mc-comp__kind">Reminder pill boxes</p>
+            <p class="mc-comp__names">TabTime</p>
+            <p class="mc-comp__row"><strong>Liked</strong>Small enough to carry, with simple alarms and vibration.</p>
+            <p class="mc-comp__row"><strong>Disliked</strong>Reminders only: some buyers didn’t trust them, and they can’t tell whether a dose was taken.</p>
+          </li>
+          <li class="mc-comp mc-comp--lilac">
+            <p class="mc-comp__kind">Cooling wallets</p>
+            <p class="mc-comp__names">FRIO</p>
+            <p class="mc-comp__row"><strong>Liked</strong>Keeps medication cooler for days with no power or ice, so it’s popular for travel.</p>
+            <p class="mc-comp__row"><strong>Disliked</strong>Not as cold as a fridge, weaker in heat and humidity, a tight fit, and no way to check the temperature.</p>
+          </li>
+          <li class="mc-comp">
+            <p class="mc-comp__kind">Temperature sensors</p>
+            <p class="mc-comp__names">MedAngel</p>
+            <p class="mc-comp__row"><strong>Liked</strong>Alerts when medication gets too hot or too cold.</p>
+            <p class="mc-comp__row"><strong>Disliked</strong>Dropped connections and gaps in the data, and it’s one more thing to carry alongside the medication.</p>
+          </li>
+        </ul>
+        <h3 class="sp__h3">Where Medicool fits</h3>
+        <ul class="sp__list">
+          <li><strong>Storage and reminders in one.</strong> Each product did one job. Medicool set out to keep medication cool and remind you to take it, in one case.</li>
+          <li><strong>Made to carry.</strong> Dispensers stay at home. Medicool was designed for medication on the move.</li>
+          <li><strong>Knowing, not guessing.</strong> Wallets can’t show the temperature, and timers don’t know what’s in the box. Medicool’s app shows the case’s temperature, and the case confirms when a dose is in its delivery pod.</li>
+          <li><strong>Simple to live with.</strong> Fiddly setup came up again and again, and our audience asked for simplicity, so the app leads with the case’s status and the next dose.</li>
+        </ul>
         <div class="sp__callout sp__callout--spaced sp__callout--blush">
           <dl class="sp__facts">
             <div><dt>Takeaway</dt><dd>Most of what we found was designed for use at home. Medicool’s angle was medication on the move.</dd></div>

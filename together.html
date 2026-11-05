@@ -111,11 +111,25 @@
     .tg-video__t { font-weight: 600; }
     .tg-video__steps .ai-chip { display: none; }
     .tg-video__player { display: block; width: min(100%, 362px); height: auto; } /* phone inside = 328px, the same as the static screens */
-    .tg-video__side { display: grid; gap: 12px; justify-items: center; width: 100%; max-width: 560px; }
-    .tg-video__label { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 600; }
-    .tg-video__ai { display: grid; gap: 10px; justify-items: center; width: 100%; padding: 18px 20px; border-radius: var(--radius-control); background: #fff; text-align: center; }
-    .tg-video__ai p { color: var(--paper); line-height: 1.55; }
-    .tg-video__toggle { min-height: 44px; padding: 0 20px; border: 1px solid rgba(13, 23, 63, 0.24); border-radius: var(--radius-control); background: transparent; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+    .tg-video__stage { grid-template-areas: "steps" "video" "side"; }
+    .tg-video__steps { grid-area: steps; }
+    .tg-video__player { grid-area: video; }
+    .tg-video__side { grid-area: side; position: relative; display: grid; gap: 14px; justify-items: start; width: 100%; max-width: 420px; padding-top: 36px; }
+    .tg-video__ai { width: 100%; padding: clamp(22px, 2.6vw, 30px); border-radius: var(--sp-radius); background: #fff; }
+    .tg-video__title { margin-top: 14px; color: var(--paper); font-size: 1.125rem; font-weight: 600; }
+    .tg-video__note { margin-top: 8px; color: var(--paper-soft); line-height: 1.6; }
+    .tg-video__count { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
+    /* Hand-drawn arrow from the card to the phone: points up when stacked, left when side by side. */
+    .tg-video__arrow { position: absolute; top: -10px; left: 50%; width: 56px; height: auto; margin-left: -28px; overflow: visible; fill: none; stroke: var(--pen); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transform: rotate(90deg); animation: tg-nudge-up 1.6s ease-in-out infinite; }
+    @keyframes tg-nudge-up { 0%, 100% { transform: rotate(90deg); } 50% { transform: translateY(-5px) rotate(90deg); } }
+    @keyframes tg-nudge-left { 50% { transform: translateX(-7px); } }
+    @media (min-width: 900px) {
+      .tg-video__stage { grid-template-columns: minmax(0, 1fr) 362px minmax(0, 476px) minmax(0, 1fr); grid-template-areas: "steps steps steps steps" ". video side ."; align-items: center; column-gap: 0; }
+      .tg-video__side { max-width: none; padding: 0 0 0 96px; }
+      .tg-video__arrow { top: 50%; left: 10px; width: 76px; margin: -48px 0 0; transform: none; animation-name: tg-nudge-left; }
+    }
+    @media (prefers-reduced-motion: reduce) { .tg-video__arrow { animation: none; } }
+    .tg-video__toggle { justify-self: start; min-height: 44px; padding: 0 20px; border: 1px solid rgba(13, 23, 63, 0.24); border-radius: var(--radius-control); background: transparent; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
     .tg-video__toggle:hover { background: rgba(255, 255, 255, 0.6); }
     .tg-video__toggle[hidden] { display: none; }
   </style>
@@ -363,8 +377,13 @@
             </ol>
             <video class="tg-video__player" src="images/together/gp-flow.mp4" poster="images/together/gp-flow-poster.jpg" width="860" height="1792" muted loop playsinline preload="none" aria-label="Prototype video of the GP request flow: contact your GP, a fixed safety check, describing the problem with AI prompts, checking the summary for the GP, a callback window, and a heads-up before the call."></video>
             <div class="tg-video__side">
-              <p class="tg-video__label">AI in this step</p>
-              <div class="tg-video__ai"><span class="ai-chip ai-chip--human">No AI</span><p>Requests are open, so nobody has to ring at 8am.</p></div>
+              <svg class="tg-video__arrow" viewBox="0 0 72 40" aria-hidden="true" focusable="false"><path d="M68 24c-14 9-38 10-58-4"/><path d="M19 11l-10 9 13 4"/></svg>
+              <div class="tg-video__ai">
+                <div class="tg-video__chip"><span class="ai-chip ai-chip--human">No AI</span></div>
+                <p class="tg-video__title">Contact your GP</p>
+                <p class="tg-video__note">Requests are open, so nobody has to ring at 8am.</p>
+                <p class="tg-video__count">Step 1 of 6</p>
+              </div>
               <button class="tg-video__toggle" type="button" hidden>Play video</button>
             </div>
           </div>
@@ -424,8 +443,13 @@
             </ol>
             <video class="tg-video__player" src="images/together/letter-flow.mp4" poster="images/together/letter-flow-poster.jpg" width="860" height="1792" muted loop playsinline preload="none" aria-label="Prototype video of adding an appointment from a letter: choosing to scan, Together reading the letter, checking every detail with its source, then saving it to the timeline."></video>
             <div class="tg-video__side">
-              <p class="tg-video__label">AI in this step</p>
-              <div class="tg-video__ai"><span class="ai-chip ai-chip--human">No AI</span><p>Scanning is optional. “Fill it in yourself” is always there.</p></div>
+              <svg class="tg-video__arrow" viewBox="0 0 72 40" aria-hidden="true" focusable="false"><path d="M68 24c-14 9-38 10-58-4"/><path d="M19 11l-10 9 13 4"/></svg>
+              <div class="tg-video__ai">
+                <div class="tg-video__chip"><span class="ai-chip ai-chip--human">No AI</span></div>
+                <p class="tg-video__title">Choose how</p>
+                <p class="tg-video__note">Scanning is optional. “Fill it in yourself” is always there.</p>
+                <p class="tg-video__count">Step 1 of 4</p>
+              </div>
               <button class="tg-video__toggle" type="button" hidden>Play video</button>
             </div>
           </div>
@@ -554,8 +578,10 @@
       function show(i) {
         if (i === current) return;
         steps[current].classList.remove("is-current"); steps[i].classList.add("is-current"); current = i;
-        ai.innerHTML = steps[i].querySelector(".ai-chip").outerHTML + "<p></p>";
-        ai.querySelector("p").textContent = steps[i].dataset.note;
+        ai.querySelector(".tg-video__chip").innerHTML = steps[i].querySelector(".ai-chip").outerHTML;
+        ai.querySelector(".tg-video__title").textContent = steps[i].querySelector(".tg-video__t").textContent;
+        ai.querySelector(".tg-video__note").textContent = steps[i].dataset.note;
+        ai.querySelector(".tg-video__count").textContent = "Step " + (i + 1) + " of " + steps.length;
       }
       function sync() { var t = v.currentTime, i = 0; steps.forEach(function (s, j) { if (t >= +s.dataset.t) i = j; }); show(i); }
       b.hidden = false;

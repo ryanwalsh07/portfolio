@@ -44,7 +44,7 @@
     .sp__facts > div + div { margin-top: 14px; }
     .sp__facts dt { color: var(--paper); font-weight: 600; }
     .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
-    @media (min-width: 760px) { .sp__facts--grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } .sp__facts--grid > div + div { margin-top: 0; } }
+    @media (min-width: 760px) { .sp__facts--grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; } .sp__facts--grid > div + div { margin-top: 0; } }
 
     .sp__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
     .sp__stat { padding: clamp(22px, 2.6vw, 30px); border-radius: var(--sp-radius); background: var(--sp-lavender); color: var(--paper-soft); line-height: 1.5; }
@@ -197,6 +197,7 @@
             <div><dt>Tools</dt><dd>Miro, Figma, Claude</dd></div>
             <div><dt>Platform</dt><dd>Mobile app, plus a desktop staff dashboard</dd></div>
             <div><dt>Status</dt><dd>In progress, concept</dd></div>
+            <div><dt>Timeline</dt><dd>September 2026 to now</dd></div>
           </dl>
         </div>
         <h3 class="sp__h3">My role and responsibilities</h3>
@@ -218,7 +219,7 @@
         <h2 class="sp__h2" id="m1-title">Research and synthesis</h2>
         <h3 class="sp__h3">Why</h3>
         <div class="sp__body">
-          <p>The project started from my own first-hand experience of managing care. Before designing anything, I needed to know whether that experience matched the evidence.</p>
+          <p>Like many people in Northern Ireland, I’ve rung my GP at 8am, waited for a callback with no idea when it would come, and kept track of hospital letters myself. Before designing anything, I needed to know whether that experience matched the evidence.</p>
         </div>
         <ul class="sp__stats" aria-label="What the research found">
           <li class="sp__stat"><p class="sp__stat-num">504,537</p><p>people in NI waiting for a first hospital outpatient appointment in June 2026</p></li>
@@ -530,7 +531,11 @@
 
       <!-- Reflection -->
       <section class="sp__section" aria-labelledby="reflection-title">
-        <h2 class="sp__h2" id="reflection-title">Looking ahead</h2>
+        <h2 class="sp__h2" id="reflection-title">Reflection</h2>
+        <div class="sp__body">
+          <p>Writing the context before writing a single prompt changed how the model behaved. With the guardrails, tone and people set out up front, most of my feedback was about edge cases, not basics. It’s the same approach I now use for everything I build with AI.</p>
+        </div>
+        <h3 class="sp__h3">Looking ahead</h3>
         <ul class="sp__list">
           <li><strong>Test with real people,</strong> starting with the letter flow, before claiming it works for them.</li>
           <li><strong>Talk to practice staff</strong> before taking the worklist any further.</li>

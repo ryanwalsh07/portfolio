@@ -101,6 +101,11 @@
     .sp__file-bar span { margin-left: 8px; }
     .sp__file pre { margin: 0; padding: clamp(18px, 2.6vw, 28px); color: #e8e5df; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: clamp(0.8125rem, 1.1vw, 0.9375rem); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
     .sp__file-h { color: #b9b3ff; font-weight: 700; }
+    .tg-video { max-width: 460px; margin-inline: auto; }
+    .tg-video__player { display: block; width: 100%; height: auto; border-radius: var(--sp-radius); background: #eceafe; }
+    .tg-video__toggle { display: block; min-height: 44px; margin: 14px auto 0; padding: 0 20px; border: 1px solid var(--line); border-radius: var(--radius-control); background: #fff; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+    .tg-video__toggle:hover { border-color: var(--paper-faint); }
+    .tg-video__toggle[hidden] { display: none; }
   </style>
 </head>
 <body id="top">
@@ -312,15 +317,53 @@
             <span class="ai-chip ai-chip--human">No AI</span>
             <h4>Deciding how urgent it is</h4>
             <p>Telling someone to wait for a callback, go to A&amp;E or call 999 is clinical triage. A fixed safety check, agreed with clinicians, comes first instead.</p>
-            <p class="tg-hmw">Mini case study 05</p>
+            <p class="tg-hmw">Mini case study 04</p>
           </div>
         </div>
       </section>
 
-      <!-- Mini 4: AI feature -->
+      <!-- Mini 4: GP access -->
       <section class="sp__section" aria-labelledby="m4-title">
         <p class="tg-kicker">Mini case study 04</p>
-        <h2 class="sp__h2" id="m4-title">Adding an appointment from a letter</h2>
+        <h2 class="sp__h2" id="m4-title">Getting past the 8am phone queue</h2>
+        <h3 class="sp__h3">Why</h3>
+        <div class="sp__body">
+          <p>In Northern Ireland, people are expected to ring their GP at a set time: 8:00am at some practices, 8:30am at others. So many people ring at once that the line is often busy, and missing it by even a minute means a long queue while the appointments fill up.</p>
+          <p>Getting through doesn’t end the wait. You’re told to expect a call back from the GP, with <span class="sp__hl">no idea when it will come</span>: sometimes it’s quick, sometimes it takes hours.</p>
+          <p>The first idea was an AI symptom checker that would tell people whether to wait for a callback, go to A&amp;E or call 999. Deciding how urgent something is, though, is clinical triage: out of scope for Together, and exactly where a confident but wrong answer turns into harm. So the idea was reframed around the two real problems, getting through and waiting blind.</p>
+        </div>
+        <h3 class="sp__h3">How</h3>
+        <ul class="sp__list">
+          <li><strong>Request ahead, instead of ringing at 8am.</strong> People describe what’s wrong whenever suits them, and the practice reviews requests in order.</li>
+          <li><strong>A fixed safety check first.</strong> Set questions, the same for everyone and agreed with clinicians, send anyone with an emergency sign to 999. AI isn’t used here.</li>
+          <li><strong>AI helps people describe it, not diagnose it.</strong> It suggests what the GP may want to know, then puts the person’s own words in order for the GP. It never gives advice back.</li>
+          <li><strong>No more waiting blind.</strong> The practice sets a callback window, and people are told when their GP is about to call.</li>
+        </ul>
+        <figure class="sp__figure tg-video">
+          <video class="tg-video__player" src="images/together/gp-flow.mp4" poster="images/together/gp-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of the GP request flow: contact your GP, a fixed safety check, describing the problem with AI prompts, checking the summary for the GP, a callback window, and a heads-up before the call."></video>
+          <button class="tg-video__toggle" type="button" hidden>Play video</button>
+          <figcaption>The flow in motion, from asking for help to the GP’s call (silent).</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="mc-screens mc-screens--3">
+            <figure><img class="mc-screen" src="images/together/gp-51.jpg" width="786" height="1704" alt="Contact your GP: Brookfield Surgery's requests are open now and reviewed in order from 8:00am, so there's no need to ring. Options for something's wrong, a prescription question or something else, and an In an emergency, call 999 banner." loading="lazy"><figcaption><strong>Contact your GP</strong>Requests are open, so there’s no need to ring.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/together/gp-52.jpg" width="786" height="1704" alt="Safety check: do you have any of these right now? Chest pain or pressure, struggling to breathe, face drooping or slurred speech, heavy bleeding, sudden confusion or fainting. A note says these are set questions agreed with clinicians and AI isn't used. A red call 999 button and None of these." loading="lazy"><figcaption><strong>Safety check</strong>Fixed questions first. No AI.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/together/gp-53.jpg" width="786" height="1704" alt="What's wrong: the person's own words about a sore throat, with an option to talk instead, and AI prompts for what the GP may also want to know, labelled as not a diagnosis." loading="lazy"><figcaption><strong>Describe it</strong>AI suggests what to add, not what it is.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/together/gp-54.jpg" width="786" height="1704" alt="Check your request, summarised by AI: a banner saying it's for the GP, not advice, then the person's words in order (what's wrong, how long, what they've tried, medicines from Together), each showing where it came from." loading="lazy"><figcaption><strong>For your GP</strong>Their words, in order, with nothing added.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/together/gp-55.jpg" width="786" height="1704" alt="Your GP will call you: a callback window of today, 10:00am to 12:00pm, with Dr A. Moore, progress steps for request sent and read by the practice, a button saying I can't talk until 1:00pm, and a reminder to call 999 if things get worse." loading="lazy"><figcaption><strong>Callback window</strong>A time to expect the call, not hours of waiting.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/together/gp-56.jpg" width="786" height="1704" alt="Your GP is calling soon: Dr A. Moore has marked you as next, expect a call in about 10 minutes from a withheld number, with OK, I'm ready and I can't talk right now buttons." loading="lazy"><figcaption><strong>Calling soon</strong>A heads-up before the phone rings.</figcaption></figure>
+          </div>
+        </figure>
+        <h3 class="sp__h3">Outcome</h3>
+        <div class="sp__body">
+          <p>A concept for the patient side, linked to the practice worklist, where requests and callback windows would land. The safety-check wording would need to be written and signed off by clinicians before anyone used it.</p>
+        </div>
+      </section>
+
+      <!-- Mini 5: AI feature -->
+      <section class="sp__section" aria-labelledby="m5-title">
+        <p class="tg-kicker">Mini case study 05</p>
+        <h2 class="sp__h2" id="m5-title">Adding an appointment from a letter</h2>
         <h3 class="sp__h3">Why</h3>
         <div class="sp__body">
           <p>Patients are the link between systems, and appointment letters are where that work starts. In the lo-fi design, adding an appointment meant retyping everything from the letter. Reading it for them saves effort, but only if they can trust what it reads.</p>
@@ -344,6 +387,11 @@
         <figure class="sp__figure">
           <div class="sp__frame"><img src="images/together/figma-ai-board.jpg" width="2340" height="990" alt="The AI screens board in Figma: a row of reusable components (buttons, an AI chip, found and needs-checking fields, info and health-information banners, a worklist row), then the four mobile screens of the letter flow and the desktop staff worklist." loading="lazy"></div>
           <figcaption>I built the flow in Figma from reusable components bound to the kit’s tokens: an AI-filled field, a needs-checking field and a health-information warning.</figcaption>
+        </figure>
+        <figure class="sp__figure tg-video">
+          <video class="tg-video__player" src="images/together/letter-flow.mp4" poster="images/together/letter-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of adding an appointment from a letter: choosing to scan, Together reading the letter, checking every detail with its source, then saving it to the timeline."></video>
+          <button class="tg-video__toggle" type="button" hidden>Play video</button>
+          <figcaption>The flow in motion, from scanning a letter to saving it (silent).</figcaption>
         </figure>
         <figure class="sp__figure">
           <div class="mc-screens mc-screens--3">
@@ -420,61 +468,6 @@
         </div>
       </section>
 
-      <!-- Mini 5: GP access -->
-      <section class="sp__section" aria-labelledby="m6-title">
-        <p class="tg-kicker">Mini case study 05</p>
-        <h2 class="sp__h2" id="m6-title">Getting past the 8am phone queue</h2>
-        <h3 class="sp__h3">Why</h3>
-        <div class="sp__body">
-          <p>In Northern Ireland, people are expected to ring their GP at a set time: 8:00am at some practices, 8:30am at others. So many people ring at once that the line is often busy, and missing it by even a minute means a long queue while the appointments fill up.</p>
-          <p>Getting through doesn’t end the wait. You’re told to expect a call back from the GP, with <span class="sp__hl">no idea when it will come</span>: sometimes it’s quick, sometimes it takes hours.</p>
-          <p>The first idea was an AI symptom checker that would tell people whether to wait for a callback, go to A&amp;E or call 999. Deciding how urgent something is, though, is clinical triage: out of scope for Together, and exactly where a confident but wrong answer turns into harm. So the idea was reframed around the two real problems, getting through and waiting blind.</p>
-        </div>
-        <h3 class="sp__h3">How</h3>
-        <ul class="sp__list">
-          <li><strong>Request ahead, instead of ringing at 8am.</strong> People describe what’s wrong whenever suits them, and the practice reviews requests in order.</li>
-          <li><strong>A fixed safety check first.</strong> Set questions, the same for everyone and agreed with clinicians, send anyone with an emergency sign to 999. AI isn’t used here.</li>
-          <li><strong>AI helps people describe it, not diagnose it.</strong> It suggests what the GP may want to know, then puts the person’s own words in order for the GP. It never gives advice back.</li>
-          <li><strong>No more waiting blind.</strong> The practice sets a callback window, and people are told when their GP is about to call.</li>
-        </ul>
-        <figure class="sp__figure">
-          <div class="mc-screens mc-screens--3">
-            <figure><img class="mc-screen" src="images/together/gp-51.jpg" width="786" height="1704" alt="Contact your GP: Brookfield Surgery's requests are open now and reviewed in order from 8:00am, so there's no need to ring. Options for something's wrong, a prescription question or something else, and an In an emergency, call 999 banner." loading="lazy"><figcaption><strong>Contact your GP</strong>Requests are open, so there’s no need to ring.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-52.jpg" width="786" height="1704" alt="Safety check: do you have any of these right now? Chest pain or pressure, struggling to breathe, face drooping or slurred speech, heavy bleeding, sudden confusion or fainting. A note says these are set questions agreed with clinicians and AI isn't used. A red call 999 button and None of these." loading="lazy"><figcaption><strong>Safety check</strong>Fixed questions first. No AI.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-53.jpg" width="786" height="1704" alt="What's wrong: the person's own words about a sore throat, with an option to talk instead, and AI prompts for what the GP may also want to know, labelled as not a diagnosis." loading="lazy"><figcaption><strong>Describe it</strong>AI suggests what to add, not what it is.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-54.jpg" width="786" height="1704" alt="Check your request, summarised by AI: a banner saying it's for the GP, not advice, then the person's words in order (what's wrong, how long, what they've tried, medicines from Together), each showing where it came from." loading="lazy"><figcaption><strong>For your GP</strong>Their words, in order, with nothing added.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-55.jpg" width="786" height="1704" alt="Your GP will call you: a callback window of today, 10:00am to 12:00pm, with Dr A. Moore, progress steps for request sent and read by the practice, a button saying I can't talk until 1:00pm, and a reminder to call 999 if things get worse." loading="lazy"><figcaption><strong>Callback window</strong>A time to expect the call, not hours of waiting.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-56.jpg" width="786" height="1704" alt="Your GP is calling soon: Dr A. Moore has marked you as next, expect a call in about 10 minutes from a withheld number, with OK, I'm ready and I can't talk right now buttons." loading="lazy"><figcaption><strong>Calling soon</strong>A heads-up before the phone rings.</figcaption></figure>
-          </div>
-        </figure>
-        <h3 class="sp__h3">Outcome</h3>
-        <div class="sp__body">
-          <p>A concept for the patient side, linked to the practice worklist, where requests and callback windows would land. The safety-check wording would need to be written and signed off by clinicians before anyone used it.</p>
-        </div>
-      </section>
-
-      <!-- Mini 5: Staff side -->
-      <section class="sp__section" aria-labelledby="m5-title">
-        <p class="tg-kicker">Mini case study 06</p>
-        <h2 class="sp__h2" id="m5-title">The practice side: an exploration</h2>
-        <h3 class="sp__h3">Why</h3>
-        <div class="sp__body">
-          <p>As a service, Together would also be used by GP practices, where reception and admin staff work through requests around a busy day.</p>
-        </div>
-        <h3 class="sp__h3">How</h3>
-        <div class="sp__body">
-          <p>I explored a worklist in Figma that ranks tasks by admin need and fits them into the gaps in a working day. It’s an exploration: I haven’t spoken to practice staff yet.</p>
-        </div>
-        <h3 class="sp__h3">Outcome</h3>
-        <ul class="sp__list">
-          <li><strong>Ranked by admin need, never by medical need.</strong> A repeat request that runs out on Friday rises; symptoms never decide the order.</li>
-          <li><strong>Sized to the day.</strong> A strip shows free slots between phones and clinic admin, and which tasks fit the next one.</li>
-          <li><strong>Every reason shows its source.</strong> The AI writes one line on why each task is there, linked to the patient’s own words.</li>
-          <li><strong>Drafts, not sends.</strong> The AI drafts the message to the patient; nothing goes until staff check it.</li>
-          <li><strong>People stay in charge.</strong> “Move down the list” and “This needs a clinician” are always one tap away.</li>
-        </ul>
-      </section>
-
       <!-- Reflection -->
       <section class="sp__section" aria-labelledby="reflection-title">
         <h2 class="sp__h2" id="reflection-title">Looking ahead</h2>
@@ -509,5 +502,24 @@
     </div>
   </div>
 </footer>
+<script>
+  // Prototype videos: play while on screen, unless reduced motion is on. The button always pauses or plays.
+  (function () {
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll(".tg-video").forEach(function (fig) {
+      var v = fig.querySelector("video"), b = fig.querySelector(".tg-video__toggle");
+      var userPaused = reduce;
+      function label() { b.textContent = v.paused ? "Play video" : "Pause video"; }
+      function play() { v.preload = "auto"; var p = v.play(); if (p) p.catch(function () {}); }
+      b.hidden = false;
+      b.addEventListener("click", function () { if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); } });
+      v.addEventListener("play", label); v.addEventListener("pause", label);
+      if (reduce || !("IntersectionObserver" in window)) return;
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { if (!userPaused) play(); } else if (!v.paused) v.pause(); });
+      }, { threshold: 0.5 }).observe(v);
+    });
+  })();
+</script>
 </body>
 </html>

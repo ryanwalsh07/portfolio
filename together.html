@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Together: joined-up care, with AI that knows where to stop, Ryan Walsh</title>
+  <meta name="description" content="An in-progress case study by Ryan Walsh: a concept that joins up GP, hospital and pharmacy care, with an AI feature that reads appointment letters and a staff worklist ranked by admin need only.">
+  <meta name="theme-color" content="#131313">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Together: joined-up care, with AI that knows where to stop">
+  <meta property="og:description" content="An in-progress case study by Ryan Walsh, product designer in Belfast.">
+  <meta property="og:url" content="https://ryanwalsh.uk/together">
+  <meta property="og:image" content="https://ryanwalsh.uk/images/share/together.png?v=1">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
+  <link rel="stylesheet" href="css/styles.css?v=20261103g">
+  <script src="js/main.js?v=20261029a" defer></script>
+  <!-- Same side-project layout as the portfolio case study, scoped to .sp,
+       plus the phone-screen grid from Medicool and a few Together pieces (.tg). -->
+  <style>
+    .sp { --sp-col: 1032px; --sp-lavender: #eef0fc; --sp-lilac: #e6e3ff; --sp-blush: #ffe4f2; --sp-radius: 16px; padding-bottom: clamp(80px, 11vw, 140px); }
+    .sp__wrap { width: min(100% - 2 * max(20px, env(safe-area-inset-left), env(safe-area-inset-right)), var(--sp-col)); margin-inline: auto; }
+    .sp__title { margin-top: 24px; font-size: clamp(2rem, 1.2rem + 3.2vw, 3.5rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
+    .sp__hero { position: relative; isolation: isolate; padding-block: clamp(48px, 8vw, 104px) clamp(48px, 6vw, 80px); background: linear-gradient(to bottom, #f3f3f2 70%, var(--ground)); }
+    .sp__hero + .sp__wrap > .sp__section:first-child { margin-top: clamp(24px, 3vw, 40px); }
+    .sp__lead { margin-top: 20px; max-width: 46rem; color: var(--paper-soft); font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem); line-height: 1.6; }
+    .tg-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+
+    .sp__section { margin-top: clamp(72px, 10vw, 128px); }
+    .sp__h2 { font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; text-wrap: balance; }
+    .sp__h3 { margin-top: clamp(40px, 5vw, 56px); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+    .sp__h3 + .sp__body, .sp__h3 + .sp__list, .sp__h3 + .sp__steps { margin-top: 12px; }
+    .sp__body { margin-top: 20px; color: var(--paper-soft); font-size: 1.0625rem; line-height: 1.8; }
+    .sp__body > * + * { margin-top: 1em; }
+    .sp__body strong { color: var(--paper); font-weight: 600; }
+    .sp__hl { padding: 1px 4px; background: var(--sp-blush); color: var(--paper); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+    .sp__callout { margin-top: 28px; padding: clamp(24px, 3.5vw, 40px); border-radius: var(--sp-radius); background: var(--sp-lavender); }
+    .sp__facts > div + div { margin-top: 14px; }
+    .sp__facts dt { color: var(--paper); font-weight: 600; }
+    .sp__facts dd { margin-top: 2px; color: var(--paper-soft); line-height: 1.6; }
+    @media (min-width: 760px) { .sp__facts--grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } .sp__facts--grid > div + div { margin-top: 0; } }
+
+    .sp__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
+    .sp__stat { padding: clamp(22px, 2.6vw, 30px); border-radius: var(--sp-radius); background: var(--sp-lavender); color: var(--paper-soft); line-height: 1.5; }
+    .sp__stat--lilac { background: var(--sp-lilac); }
+    .sp__stat--blush { background: var(--sp-blush); }
+    .sp__stat-num { margin-bottom: 6px; color: var(--paper); font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+    @media (min-width: 900px) { .sp__stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
+    .tg-sources { margin-top: 14px; color: var(--paper-faint); font-size: var(--text-sm); line-height: 1.6; }
+    .tg-sources a { color: inherit; }
+
+    .sp__list { margin-top: 20px; }
+    .sp__list > li { position: relative; padding: 14px 0 14px 28px; border-top: 1px solid var(--line); color: var(--paper-soft); line-height: 1.65; }
+    .sp__list > li:last-child { border-bottom: 1px solid var(--line); }
+    .sp__list > li::before { content: ""; position: absolute; left: 4px; top: 1.45em; width: 8px; height: 8px; border-radius: 50%; background: var(--pen); }
+    .sp__list strong { color: var(--paper); font-weight: 600; }
+    .sp__steps { margin-top: 20px; counter-reset: step; }
+    .sp__steps > li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 2px 12px; padding-block: 16px; border-top: 1px solid var(--line); counter-increment: step; color: var(--paper-soft); line-height: 1.65; }
+    .sp__steps > li:last-child { border-bottom: 1px solid var(--line); }
+    .sp__steps > li::before { content: counter(step, decimal-leading-zero); color: var(--violet); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .sp__figure { margin-top: clamp(32px, 4vw, 48px); }
+    .sp__frame { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--sp-radius); background: var(--tint); }
+    .sp__frame img { display: block; width: 100%; height: auto; }
+    .sp__figure figcaption { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
+
+    /* Phone screens, as on Medicool */
+    .mc-screen { display: block; width: 100%; height: auto; border-radius: 9% / 4.2%; box-shadow: 0 0 0 1px rgba(13, 23, 63, 0.08), 0 18px 40px rgba(13, 23, 63, 0.18); }
+    .mc-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 4vw, 48px) clamp(16px, 2vw, 24px); }
+    @media (min-width: 760px) { .mc-screens--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .mc-screens figcaption { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--paper-soft); font-size: var(--text-sm); line-height: 1.45; }
+    .mc-screens strong { display: block; color: var(--paper); font-weight: 600; }
+
+    /* Mini case study label, in the deeper violet used on the portfolio rounds (4.5:1+ on every tint) */
+    .tg-kicker { margin-bottom: 8px; color: #4637d6; font-size: var(--text-sm); font-weight: 700; }
+    /* Image slots for Miro exports: labelled until the file exists */
+    .tg-slot { border: 1px solid var(--line); border-radius: var(--sp-radius); }
+    .tg-narrow { max-width: 560px; }
+
+    /* Where AI fits: yes and no cards */
+    .tg-fits { display: grid; gap: 14px; margin-top: 24px; }
+    @media (min-width: 760px) { .tg-fits { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .tg-fit { padding: clamp(22px, 2.6vw, 30px); border-radius: var(--sp-radius); background: var(--sp-lavender); }
+    .tg-fit--no { background: #ffffff; box-shadow: inset 0 0 0 1px var(--line-strong); }
+    .tg-fit h4 { margin-top: 14px; color: var(--paper); font-size: 1.125rem; font-weight: 600; }
+    .tg-fit p { margin-top: 8px; color: var(--paper-soft); line-height: 1.6; }
+    .tg-fit .tg-hmw { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
+
+    /* Context pack excerpt, as on the portfolio case study */
+    .sp__file { overflow: hidden; border-radius: var(--sp-radius); background: #1b1b1a; }
+    .sp__file-bar { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: #2b2b29; color: #b3aea5; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.8125rem; }
+    .sp__file-bar i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+    .sp__file-bar i:nth-child(2) { background: #febc2e; }
+    .sp__file-bar i:nth-child(3) { background: #28c840; }
+    .sp__file-bar span { margin-left: 8px; }
+    .sp__file pre { margin: 0; padding: clamp(18px, 2.6vw, 28px); color: #e8e5df; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: clamp(0.8125rem, 1.1vw, 0.9375rem); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .sp__file-h { color: #b9b3ff; font-weight: 700; }
+  </style>
+</head>
+<body id="top">
+
+<div class="reading-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header site-header--light">
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="index.html">Ryan Walsh<span class="wordmark__stop" aria-hidden="true">.</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__open">Menu</span><span class="nav-toggle__close">Close</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="index.html">Home</a></li>
+        <li><a class="nav__link" href="index.html#work" aria-current="page">Work</a></li>
+        <li><a class="nav__link" href="index.html#about">About me</a></li>
+        <li><a class="nav__link" href="index.html#recommendations">Recommendations</a></li>
+        <li><a class="nav__link" href="index.html#contact">Contact</a></li>
+        <li><a class="nav__link" href="cv/ryanwalsh-2026-cv.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <article class="sp">
+    <div class="sp__hero">
+      <div class="sp__wrap">
+        <header>
+          <p class="crumbs"><a href="index.html#work">Selected projects</a><span aria-hidden="true">/</span><span>Together</span></p>
+          <h1 class="sp__title">Together: joined-up care, with AI that knows where to stop</h1>
+          <p class="sp__lead">A concept for people in Northern Ireland who manage ongoing care across their GP, hospital and pharmacy, and a service for the practices that look after them.</p>
+          <p class="tg-chips">
+            <span class="ai-chip ai-chip--human">In progress</span>
+            <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-first</span>
+          </p>
+        </header>
+        <figure class="sp__figure">
+          <div class="sp__frame"><img src="images/together/dashboard.jpg" width="2880" height="2048" alt="Together's staff worklist on desktop. A schedule strip shows the next free slot, 10:00 to 10:15, fits the top three tasks. A banner says tasks are ranked by admin need, never by medical need. Five patients are listed, each with a reason written by AI and the time it takes. The first, a repeat prescription request, is open in a side panel with the reason, a quote from the patient's request and a draft text message that isn't sent until staff check it."></div>
+          <figcaption>The staff worklist, an exploration. Every name and place is fictional.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="sp__wrap">
+
+      <!-- Overview -->
+      <section class="sp__section" aria-labelledby="overview-title">
+        <h2 class="sp__h2" id="overview-title">Overview</h2>
+        <div class="sp__body">
+          <p>People in Northern Ireland who manage ongoing care, for themselves or someone else, have to act as the link between their GP, hospital and pharmacy. Because these services are separate, slow to respond and hard to reach, <span class="sp__hl">people spend hours chasing, repeating and remembering</span>, which adds stress and can lead to missed appointments and delayed care.</p>
+          <p>Together is my concept for joining that care up, and a service for the practices that look after those patients. It’s AI-first, but every AI feature has a limit set before any prompting.</p>
+        </div>
+        <h3 class="sp__h3">Key outcomes so far</h3>
+        <ul class="sp__stats" aria-label="Key outcomes">
+          <li class="sp__stat"><p class="sp__stat-num">15</p><p>research sources, synthesised into 5 key insights</p></li>
+          <li class="sp__stat sp__stat--lilac"><p class="sp__stat-num">45</p><p>lo-fi screens across 7 flows, including a carer mode</p></li>
+          <li class="sp__stat sp__stat--blush"><p class="sp__stat-num">1</p><p>AI feature, with its limits set before any prompting</p></li>
+          <li class="sp__stat"><p class="sp__stat-num">20</p><p>fictional test letters to judge the AI against, with results to follow</p></li>
+        </ul>
+        <div class="sp__callout">
+          <dl class="sp__facts sp__facts--grid">
+            <div><dt>Role</dt><dd>Solo: research, UX, UI and AI design</dd></div>
+            <div><dt>Tools</dt><dd>Miro, Figma, Claude</dd></div>
+            <div><dt>Platform</dt><dd>Mobile app, plus a desktop staff dashboard</dd></div>
+            <div><dt>Status</dt><dd>In progress, concept</dd></div>
+          </dl>
+        </div>
+        <h3 class="sp__h3">My role and responsibilities</h3>
+        <ul class="sp__list">
+          <li><strong>Research and synthesis:</strong> desk research from 15 sources, built on my own first-hand experience, turned into insights, journeys and a problem statement in Miro.</li>
+          <li><strong>Service design:</strong> the sitemap and 45 lo-fi screens in Figma, including a carer mode with consent built in.</li>
+          <li><strong>AI experience design:</strong> deciding where AI helps and where it doesn’t, then designing one feature end to end.</li>
+          <li><strong>Context engineering and validation:</strong> writing the context the model works from, and a test set to judge its output against.</li>
+          <li><strong>Accessibility:</strong> plain language, manual routes alongside every AI step, and states that never rely on colour alone.</li>
+        </ul>
+        <div class="sp__body">
+          <p>The mini case studies below each give the context, then why, how and the outcome.</p>
+        </div>
+      </section>
+
+      <!-- Mini 1: Research -->
+      <section class="sp__section" aria-labelledby="m1-title">
+        <p class="tg-kicker">Mini case study 01</p>
+        <h2 class="sp__h2" id="m1-title">Research and synthesis</h2>
+        <h3 class="sp__h3">Why</h3>
+        <div class="sp__body">
+          <p>The project started from my own first-hand experience of managing care. Before designing anything, I needed to know whether that experience matched the evidence.</p>
+        </div>
+        <ul class="sp__stats" aria-label="What the research found">
+          <li class="sp__stat"><p class="sp__stat-num">504,537</p><p>people in NI waiting for a first hospital outpatient appointment in June 2026</p></li>
+          <li class="sp__stat sp__stat--lilac"><p class="sp__stat-num">Over half</p><p>of 15,000+ patients surveyed reported repeated failed attempts to contact their GP</p></li>
+          <li class="sp__stat sp__stat--blush"><p class="sp__stat-num">222,000</p><p>unpaid carers in NI, 12% of residents</p></li>
+          <li class="sp__stat"><p class="sp__stat-num">1 in 5</p><p>people got an appointment letter or text after the appointment date (England)</p></li>
+        </ul>
+        <p class="tg-sources">Sources: <a href="https://www.health-ni.gov.uk/news/publication-quarterly-northern-ireland-outpatient-inpatient-and-day-case-and-diagnostic-waiting-times-statistics-position-30-june-2026">Department of Health NI, June 2026</a>; <a href="https://www.newsletter.co.uk/news/politics/northern-ireland-assembly-finds-gp-services-in-crisis-and-calls-for-radical-action-5430428">NI Assembly Public Accounts Committee, via News Letter</a>; <a href="https://www.niassembly.gov.uk/globalassets/documents/raise/publications/2022-2027/2024/economy/0824.pdf">NI Assembly research, Census 2021</a>; <a href="https://www.healthwatchkingston.org.uk/news/2025-04-16/nhs-will-get-its-own-royal-mail-postage-class-help-stop-late-letters-leading-missed">Healthwatch England, 2025</a>.</p>
+        <h3 class="sp__h3">How</h3>
+        <div class="sp__body">
+          <p>I gathered 15 sources from Northern Ireland, England and the UK in Miro and tagged each one R1 to R15, so every insight, journey and decision could point back to its evidence. No interviews have taken place yet; testing with real people is the next step.</p>
+        </div>
+        <figure class="sp__figure">
+          <div class="media media--tint tg-slot" style="aspect-ratio: 2000 / 1508"><p class="media__ph">Miro export: 06 Research insights</p><img class="media__img media__img--contain" src="images/together/miro-research-insights.webp" alt="The Research insights frame in Miro: fifteen evidence cards, R1 to R15, each with a headline number, a short finding, a region tag (Northern Ireland, England or UK-wide) and its source." loading="lazy" onerror="this.remove()"></div>
+          <figcaption>I collected the evidence in Miro, one card per source, tagged by region and by whether it’s about patients or carers.</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="media media--tint tg-slot" style="aspect-ratio: 2000 / 1508"><p class="media__ph">Miro export: 07 Key insights</p><img class="media__img media__img--contain" src="images/together/miro-key-insights.webp" alt="The Key insights frame in Miro: patient and carer pain points on sticky notes, beside five insights, I1 to I5, each listing the evidence behind it." loading="lazy" onerror="this.remove()"></div>
+          <figcaption>Grouping patient and carer pain points showed five insights, each linked to its evidence.</figcaption>
+        </figure>
+        <h3 class="sp__h3">Outcome</h3>
+        <ul class="sp__list">
+          <li><strong>Getting through is the first barrier.</strong> Phone access fails people in both NI and England, and every other task starts with this hurdle.</li>
+          <li><strong>Patients are the link between systems.</strong> GP, hospital and pharmacy don’t share one view, so people with several conditions carry the information themselves.</li>
+          <li><strong>Long waits make everything harder.</strong> With waits of over a year, letters, changes and reviews are easy to lose, and late letters can mean missed appointments.</li>
+          <li><strong>Carers carry the admin at a cost.</strong> Carers coordinate someone else’s care while putting off their own.</li>
+          <li><strong>Digital only helps if everyone can get in.</strong> Proxy access, photo ID checks and low digital skills lock out the people who would benefit most.</li>
+        </ul>
+        <figure class="sp__figure">
+          <div class="media media--tint tg-slot" style="aspect-ratio: 2000 / 1508"><p class="media__ph">Miro export: 11 Problem statement</p><img class="media__img media__img--contain" src="images/together/miro-problem-statement.webp" alt="The Problem statement frame in Miro: the problem, a point of view for each persona, six How might we questions, why it matters and the success criteria." loading="lazy" onerror="this.remove()"></div>
+          <figcaption>The insights became a problem statement and six “How might we” questions to design against.</figcaption>
+        </figure>
+        <ol class="sp__steps" aria-label="How might we">
+          <li><div>Give people one view of their appointments across GP and hospital, even when the systems don’t connect?</div></li>
+          <li><div>Show where a repeat prescription is, from request to collection?</div></li>
+          <li><div>Reduce the need to repeat medical history at every appointment?</div></li>
+          <li><div>Make it easy and safe for carers to act on someone’s behalf?</div></li>
+          <li><div>Keep people informed during long waits?</div></li>
+          <li><div>Support people who prefer phone or paper, not only apps?</div></li>
+        </ol>
+      </section>
+
+      <!-- Mini 2: Service -->
+      <section class="sp__section" aria-labelledby="m2-title">
+        <p class="tg-kicker">Mini case study 02</p>
+        <h2 class="sp__h2" id="m2-title">Mapping the journey and the service</h2>
+        <h3 class="sp__h3">Why</h3>
+        <div class="sp__body">
+          <p>Before any AI, the service itself had to work: one view of care across separate systems, and a safe way for carers to help.</p>
+        </div>
+        <h3 class="sp__h3">How</h3>
+        <figure class="sp__figure">
+          <div class="media media--tint tg-slot" style="aspect-ratio: 2000 / 1078"><p class="media__ph">Miro export: 10 Journey map: Declan</p><img class="media__img media__img--contain" src="images/together/miro-journey-declan.webp" alt="Declan's journey map in Miro: the stages of managing his mum's care alongside his own, with what he does, thinks and feels at each one, and the opportunities." loading="lazy" onerror="this.remove()"></div>
+          <figcaption>I mapped each persona’s journey in Miro to find where the admin breaks down. This is Declan’s, managing his mum’s care alongside his own.</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="media media--tint tg-slot" style="aspect-ratio: 2000 / 877"><p class="media__ph">Miro export: 12b App sitemap</p><img class="media__img media__img--contain" src="images/together/miro-app-sitemap.webp" alt="The app sitemap in Miro: Together at the top, branching to seven sections (Onboarding, Home, Appointments, Prescriptions, Referrals, Profile and Carer mode), each with its pages stacked beneath. Under Appointments, Add from a letter is marked: AI reads it, you check it." loading="lazy" onerror="this.remove()"></div>
+          <figcaption>The app sitemap: seven sections and the pages under each, with the AI letter feature sitting inside Appointments rather than as a separate tool.</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="sp__frame"><img src="images/together/figma-appointments.jpg" width="3000" height="1424" alt="The Appointments flow in Figma, in lo-fi: the timeline, a filtered view, an empty state, appointment detail, adding an appointment, rescheduling in three steps, and a cancel confirmation." loading="lazy"></div>
+          <figcaption>I worked through each flow in lo-fi in Figma, including the empty, error and confirmation states. This is Appointments.</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="sp__frame"><img src="images/together/carer-lofi.jpg" width="2860" height="800" alt="Seven lo-fi screens of carer mode: adding someone you care for, waiting for Rose to confirm, Rose's own screen asking whether to allow Declan to help manage her care, Rose's home timeline viewed as her carer, an appointment Declan can reschedule on her behalf, her prescriptions in view-only mode, and her personal details, which he can see but can't edit." loading="lazy"></div>
+          <figcaption>Carer mode: consent first, then clear limits on what a carer can change.</figcaption>
+        </figure>
+        <h3 class="sp__h3">Outcome</h3>
+        <ul class="sp__list">
+          <li><strong>45 lo-fi screens across 7 flows:</strong> onboarding, home, appointments, prescriptions, referrals, profile and carer mode.</li>
+          <li><strong>Carer access only starts once the other person confirms,</strong> and a carer can reschedule an appointment but can’t order prescriptions or change personal details.</li>
+          <li><strong>A small design system:</strong> colour primitives and semantic tokens in Figma, which every hi-fi screen and component is built from.</li>
+        </ul>
+        <figure class="sp__figure">
+          <div class="sp__frame tg-narrow"><img src="images/together/figma-colours.jpg" width="1316" height="1325" alt="Colour styles in Figma: primary, secondary, neutral and feedback palettes, each swatch named and labelled with its hex value, and a note to bind the semantic tokens in designs rather than the primitives." loading="lazy"></div>
+          <figcaption>Colour primitives and semantic tokens, set up before the hi-fi work.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Mini 3: Where AI fits -->
+      <section class="sp__section" aria-labelledby="m3-title">
+        <p class="tg-kicker">Mini case study 03</p>
+        <h2 class="sp__h2" id="m3-title">Where AI fits, and where it doesn’t</h2>
+        <h3 class="sp__h3">Why</h3>
+        <div class="sp__body">
+          <p>AI only helps here if people can trust it. Clinical advice and triage were out of scope from the start, so the first question wasn’t what AI could do, but where it should stop.</p>
+        </div>
+        <h3 class="sp__h3">How</h3>
+        <div class="sp__body">
+          <p>I went back through each “How might we” and asked where AI would genuinely help, and where it would put people at risk.</p>
+        </div>
+        <h3 class="sp__h3">Outcome</h3>
+        <div class="tg-fits">
+          <div class="tg-fit">
+            <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI helps</span>
+            <h4>Reading appointment letters</h4>
+            <p>The systems don’t connect, so people add appointments themselves. AI can pull the date, time and place from a letter or text, and the person checks it.</p>
+            <p class="tg-hmw">How might we 1</p>
+          </div>
+          <div class="tg-fit">
+            <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI helps, with a limit</span>
+            <h4>Who staff should help first</h4>
+            <p>AI can rank a practice’s worklist, but only by admin need: deadlines and how long people have waited. Never by medical need, and staff can always change the order.</p>
+            <p class="tg-hmw">How might we 5, from the practice’s side</p>
+          </div>
+          <div class="tg-fit tg-fit--no">
+            <span class="ai-chip ai-chip--human">No AI</span>
+            <h4>Preparing for an appointment</h4>
+            <p>A model writing someone’s history or questions for their doctor drifts into clinical advice. “Prepare for this appointment” stays a simple checklist the person fills in.</p>
+            <p class="tg-hmw">How might we 3</p>
+          </div>
+          <div class="tg-fit tg-fit--no">
+            <span class="ai-chip ai-chip--human">No AI</span>
+            <h4>The only way in</h4>
+            <p>AI can’t become another barrier for people who prefer phone or paper. Every AI step has a manual route, such as filling in an appointment yourself.</p>
+            <p class="tg-hmw">How might we 6</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mini 4: AI feature -->
+      <section class="sp__section" aria-labelledby="m4-title">
+        <p class="tg-kicker">Mini case study 04</p>
+        <h2 class="sp__h2" id="m4-title">Adding an appointment from a letter</h2>
+        <h3 class="sp__h3">Why</h3>
+        <div class="sp__body">
+          <p>Patients are the link between systems, and appointment letters are where that work starts. In the lo-fi design, adding an appointment meant retyping everything from the letter. Reading it for them saves effort, but only if they can trust what it reads.</p>
+        </div>
+        <h3 class="sp__h3">How</h3>
+        <div class="sp__body">
+          <p>Before writing a prompt, I wrote the context the model works from: the product, the people, the guardrails, the tone of voice and the accessibility rules. It’s the same approach as the CLAUDE.md file behind this site.</p>
+        </div>
+        <figure class="sp__figure">
+          <div class="sp__file">
+            <p class="sp__file-bar" aria-hidden="true"><i></i><i></i><i></i><span>context-pack.md</span></p>
+<pre><span class="sp__file-h">## Guardrails (non-negotiable)</span>
+1. Logistics only. Extract where, when, who with, what to bring and how to get in touch. Nothing else.
+2. Never interpret clinical content. If the letter contains it, set contains_clinical_content to true and leave it out.
+3. Never guess. If a detail is missing, unclear or contradicts itself, leave the field empty and say why. A wrong date is worse than no date.
+4. Show the source. For every field, quote the exact words it came from.
+5. The person confirms. Output is a draft for the person to check, never a saved appointment.</pre>
+          </div>
+          <figcaption>An excerpt from the context pack: the guardrails every answer is judged against.</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="sp__frame"><img src="images/together/figma-ai-board.jpg" width="2340" height="990" alt="The AI screens board in Figma: a row of reusable components (buttons, an AI chip, found and needs-checking fields, info and health-information banners, a worklist row), then the four mobile screens of the letter flow and the desktop staff worklist." loading="lazy"></div>
+          <figcaption>I built the flow in Figma from reusable components bound to the kit’s tokens: an AI-filled field, a needs-checking field and a health-information warning.</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="mc-screens mc-screens--3">
+            <figure><img class="mc-screen" src="images/together/add.jpg" width="786" height="1704" alt="Add an appointment: options to scan a letter or paste a text message, a note that Together only reads appointment details and never gives medical advice, and a Fill it in yourself button." loading="lazy"><figcaption><strong>Choose how</strong>Scan, paste, or fill it in yourself.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/together/reading.jpg" width="786" height="1704" alt="Reading your letter: a letter preview with the place and the date and time highlighted, a progress list (found the place, found the date and time, looking for what to bring) and a note that anything about your health is skipped." loading="lazy"><figcaption><strong>Reading</strong>Shows what it found, and what it skips.</figcaption></figure>
+            <figure><img class="mc-screen" src="images/together/added.jpg" width="786" height="1704" alt="Added to your timeline: a success tick, a reminder the day before, and a summary card for the Diabetes Centre appointment on Monday 7 December 2026 at 11:00am, Carnmore General Hospital." loading="lazy"><figcaption><strong>Added</strong>Only after the person confirms.</figcaption></figure>
+          </div>
+        </figure>
+        <h3 class="sp__h3">Design decisions</h3>
+        <ul class="sp__list">
+          <li><strong>Every detail shows its source.</strong> Each field quotes the letter, so people can check the AI rather than trust it.</li>
+          <li><strong>Gaps are flagged, not filled.</strong> A missing address says “Needs checking” with an icon and words, never colour alone.</li>
+          <li><strong>Health information comes first, and stays out.</strong> If the letter has any, a warning sits above the fields and points to the original letter.</li>
+          <li><strong>Nothing is saved without a person.</strong> The AI writes a draft; the person saves it.</li>
+          <li><strong>There’s always another way.</strong> “Fill it in yourself” is on the first screen, and “Fill it in myself instead” sits under the save button.</li>
+        </ul>
+        <h3 class="sp__h3">Judging the output</h3>
+        <div class="sp__body">
+          <p>A model that sounds confident can still be wrong, so the feature is judged against a test set of 20 fictional letters and texts. Some are deliberately tricky:</p>
+        </div>
+        <ul class="sp__list">
+          <li><strong>A blood test result</strong> inside an appointment letter, which must stay out of every field.</li>
+          <li><strong>A weekday that doesn’t match its date,</strong> where the right answer is to leave the date empty and say why.</li>
+          <li><strong>“Next Tuesday”</strong> with nothing to count from, and a letter with no year.</li>
+          <li><strong>A letter for Rose</strong> that arrives at Declan’s address, and a letter with two appointments in it.</li>
+          <li><strong>“If your chest pain comes back, call 999”,</strong> which must be flagged, never softened or dropped.</li>
+        </ul>
+        <div class="sp__body">
+          <p>Each answer passes only if every filled field is right, nothing clinical leaks, nothing is guessed, and every field quotes its source.</p>
+        </div>
+        <h3 class="sp__h3">Outcome</h3>
+        <div class="sp__body">
+          <p>Validation is in progress. The results, including which answers I rejected and why, will be added here.</p>
+        </div>
+      </section>
+
+      <!-- Mini 5: Staff side -->
+      <section class="sp__section" aria-labelledby="m5-title">
+        <p class="tg-kicker">Mini case study 05</p>
+        <h2 class="sp__h2" id="m5-title">The practice side: an exploration</h2>
+        <h3 class="sp__h3">Why</h3>
+        <div class="sp__body">
+          <p>As a service, Together would also be used by GP practices, where reception and admin staff work through requests around a busy day.</p>
+        </div>
+        <h3 class="sp__h3">How</h3>
+        <div class="sp__body">
+          <p>I explored a worklist in Figma that ranks tasks by admin need and fits them into the gaps in a working day. It’s an exploration: I haven’t spoken to practice staff yet.</p>
+        </div>
+        <h3 class="sp__h3">Outcome</h3>
+        <ul class="sp__list">
+          <li><strong>Ranked by admin need, never by medical need.</strong> A repeat request that runs out on Friday rises; symptoms never decide the order.</li>
+          <li><strong>Sized to the day.</strong> A strip shows free slots between phones and clinic admin, and which tasks fit the next one.</li>
+          <li><strong>Every reason shows its source.</strong> The AI writes one line on why each task is there, linked to the patient’s own words.</li>
+          <li><strong>Drafts, not sends.</strong> The AI drafts the message to the patient; nothing goes until staff check it.</li>
+          <li><strong>People stay in charge.</strong> “Move down the list” and “This needs a clinician” are always one tap away.</li>
+        </ul>
+      </section>
+
+      <!-- Reflection -->
+      <section class="sp__section" aria-labelledby="reflection-title">
+        <h2 class="sp__h2" id="reflection-title">Looking ahead</h2>
+        <ul class="sp__list">
+          <li><strong>Test with real people,</strong> starting with the letter flow, before claiming it works for them.</li>
+          <li><strong>Talk to practice staff</strong> before taking the worklist any further.</li>
+          <li><strong>Prototype through instruction</strong> in Figma Make, so the flow can be tried, not just viewed.</li>
+          <li><strong>Take the rest to hi-fi:</strong> the timeline, prescriptions, referrals and carer mode.</li>
+        </ul>
+      </section>
+
+      <section class="cs-next" aria-labelledby="next-title">
+        <p class="cs-next__kicker">Next project</p>
+        <h2 class="cs-next__title" id="next-title">TapSOS</h2>
+        <p class="cs-next__status">Contact the emergency services without saying a word.</p>
+        <a class="button" href="tapsos.html">View case study</a>
+      </section>
+
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__inner">
+      <p>© <span data-year>2026</span> Ryan Walsh · Belfast</p>
+      <ul class="site-footer__links" aria-label="Contact">
+        <li><a href="https://www.linkedin.com/in/ryanwalshh/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:ryanjameswalsh@hotmail.com">Email</a></li>
+        <li><a href="cv/ryanwalsh-2026-cv.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

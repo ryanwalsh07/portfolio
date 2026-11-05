@@ -129,6 +129,16 @@
     .tg-video__toggle { justify-self: start; min-height: 44px; padding: 0 20px; border: 1px solid rgba(13, 23, 63, 0.24); border-radius: var(--radius-control); background: transparent; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
     .tg-video__toggle:hover { background: rgba(255, 255, 255, 0.6); }
     .tg-video__toggle[hidden] { display: none; }
+    /* Key outcomes: two wide cards, then three, each a short sentence */
+    .tg-bento { display: grid; gap: 14px; margin-top: 24px; }
+    .tg-bento__item { display: flex; align-items: center; padding: clamp(24px, 3.4vw, 44px); border-radius: var(--sp-radius); background: var(--sp-lavender); color: var(--paper-soft); font-size: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem); line-height: 1.55; text-wrap: pretty; }
+    .tg-bento__item--lead { background: #4637d6; color: #fff; }
+    .tg-bento__item--accent { background: var(--sp-blush); color: var(--paper); }
+    @media (min-width: 760px) {
+      .tg-bento { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+      .tg-bento__item { grid-column: span 2; min-height: 190px; }
+      .tg-bento__item--lead, .tg-bento__item--wide { grid-column: span 3; }
+    }
   </style>
 </head>
 <body id="top">
@@ -185,11 +195,12 @@
           <p>Together is my concept for joining that care up, and a service for the practices that look after those patients. It’s AI-first, but every AI feature has a limit set before any prompting.</p>
         </div>
         <h3 class="sp__h3">Key outcomes so far</h3>
-        <ul class="sp__stats" aria-label="Key outcomes">
-          <li class="sp__stat"><p class="sp__stat-num">15</p><p>research sources, synthesised into 5 key insights</p></li>
-          <li class="sp__stat sp__stat--lilac"><p class="sp__stat-num">45</p><p>lo-fi screens across 7 flows, including a carer mode</p></li>
-          <li class="sp__stat sp__stat--blush"><p class="sp__stat-num">2</p><p>AI-assisted flows, each with its limits set before any prompting</p></li>
-          <li class="sp__stat"><p class="sp__stat-num">9 of 10</p><p>fictional letters accepted on the first prompt, each judged by me</p></li>
+        <ul class="tg-bento" aria-label="Key outcomes">
+          <li class="tg-bento__item tg-bento__item--lead">Solo designer on Together, an AI-first concept that joins up GP, hospital and pharmacy care in Northern Ireland</li>
+          <li class="tg-bento__item tg-bento__item--wide">Designed two AI-assisted flows end to end, reading appointment letters and requesting a GP callback, each with its limits set before any prompting</li>
+          <li class="tg-bento__item">15 research sources synthesised into 5 key insights</li>
+          <li class="tg-bento__item tg-bento__item--accent">9 of 10 fictional letters accepted on the first prompt, each judged by me</li>
+          <li class="tg-bento__item">45 lo-fi screens across 7 flows, including a carer mode</li>
         </ul>
         <div class="sp__callout">
           <dl class="sp__facts sp__facts--grid">

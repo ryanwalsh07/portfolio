@@ -56,6 +56,8 @@
       .sp__aistep + .sp__aistep { border-top: 0; border-left: 1px solid var(--line); }
     }
     .ai-chip--round { margin-top: 10px; }
+    /* Stage strip: what the AI did and what I decided */
+    .sp__aistep-note { color: var(--paper-soft); font-size: 0.9375rem; line-height: 1.55; }
     /* CLAUDE.md excerpt: real text, wraps rather than scrolling sideways */
     .sp__file { overflow: hidden; border-radius: var(--sp-radius); background: #1b1b1a; }
     .sp__file-bar { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: #2b2b29; color: #b3aea5; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.8125rem; }
@@ -290,22 +292,27 @@
           <li class="sp__aistep sp__aistep--ai">
             <p class="sp__aistep-name"><span class="sp__aistep-num">01</span>Research</p>
             <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-note">Claude Research reviewed more than 15 portfolios. I chose the four that stood out and what to take from them.</p>
           </li>
           <li class="sp__aistep">
             <p class="sp__aistep-name"><span class="sp__aistep-num">02</span>Design</p>
             <span class="ai-chip ai-chip--human">By me</span>
+            <p class="sp__aistep-note">Layouts, components and tokens, set in Figma before any code was written.</p>
           </li>
           <li class="sp__aistep sp__aistep--ai">
             <p class="sp__aistep-name"><span class="sp__aistep-num">03</span>Build</p>
             <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-note">Claude Code wrote the code from my Figma designs and CLAUDE.md. I checked each component against the design.</p>
           </li>
           <li class="sp__aistep sp__aistep--ai">
             <p class="sp__aistep-name"><span class="sp__aistep-num">04</span>Review</p>
             <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-note">AI critiqued the site against Nielsen’s heuristics. I decided which findings to act on.</p>
           </li>
           <li class="sp__aistep sp__aistep--ai">
             <p class="sp__aistep-name"><span class="sp__aistep-num">05</span>Ship</p>
             <span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI-assisted</span>
+            <p class="sp__aistep-note">Claude Code opens and merges each pull request. Nothing goes live until I’ve seen it.</p>
           </li>
         </ol>
       </section>

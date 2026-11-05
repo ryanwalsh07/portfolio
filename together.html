@@ -161,7 +161,7 @@
           <li class="sp__stat"><p class="sp__stat-num">15</p><p>research sources, synthesised into 5 key insights</p></li>
           <li class="sp__stat sp__stat--lilac"><p class="sp__stat-num">45</p><p>lo-fi screens across 7 flows, including a carer mode</p></li>
           <li class="sp__stat sp__stat--blush"><p class="sp__stat-num">2</p><p>AI-assisted flows, each with its limits set before any prompting</p></li>
-          <li class="sp__stat"><p class="sp__stat-num">20</p><p>fictional test letters to judge the AI against, with results to follow</p></li>
+          <li class="sp__stat"><p class="sp__stat-num">9 of 10</p><p>fictional letters accepted on the first prompt, each judged by me</p></li>
         </ul>
         <div class="sp__callout">
           <dl class="sp__facts sp__facts--grid">
@@ -362,21 +362,21 @@
         </ul>
         <h3 class="sp__h3">Judging the output</h3>
         <div class="sp__body">
-          <p>A model that sounds confident can still be wrong, so the feature is judged against a test set of 20 fictional letters and texts. Some are deliberately tricky:</p>
+          <p>A model that sounds confident can still be wrong, so I judged it against 10 fictional letters and texts, each in a fresh chat so one couldn’t influence the next. Most are deliberately tricky:</p>
         </div>
         <ul class="sp__list">
           <li><strong>A blood test result</strong> inside an appointment letter, which must stay out of every field.</li>
           <li><strong>A weekday that doesn’t match its date,</strong> where the right answer is to leave the date empty and say why.</li>
-          <li><strong>“Next Tuesday”</strong> with nothing to count from, and a letter with no year.</li>
-          <li><strong>A letter for Rose</strong> that arrives at Declan’s address, and a letter with two appointments in it.</li>
-          <li><strong>“If your chest pain comes back, call 999”,</strong> which must be flagged, never softened or dropped.</li>
+          <li><strong>A letter with no time,</strong> which must be left empty, not guessed.</li>
+          <li><strong>A rescheduled and a cancelled appointment,</strong> where the old or cancelled date must not show as upcoming.</li>
+          <li><strong>A prescription text and a waiting-list letter,</strong> which aren’t appointments at all.</li>
         </ul>
         <div class="sp__body">
           <p>Each answer passes only if every filled field is right, nothing clinical leaks, nothing is guessed, and every field quotes its source.</p>
         </div>
         <h3 class="sp__h3">A dry run first</h3>
         <div class="sp__body">
-          <p>Before the real test, Claude answered all 20 letters in one chat, after it had already looked at where the prompt was weak. That isn’t a fair test, so <span class="sp__hl">none of it counts as a result</span>. It was still useful, because it showed where the prompt and the form had no room for what real letters say.</p>
+          <p>Before the real test, Claude answered the whole test set in one chat, after it had already looked at where the prompt was weak. That isn’t a fair test, so <span class="sp__hl">none of it counts as a result</span>. It was still useful, because it showed where the prompt and the form had no room for what real letters say.</p>
         </div>
         <ul class="sp__list">
           <li><strong>No field for who it’s with.</strong> “Dr A. Moore” had to go into the service name.</li>
@@ -400,8 +400,23 @@
           <p>Claude also scored its own answers, and on four letters its verdict disagreed with the answer key. In the real run, every verdict is mine.</p>
         </div>
         <h3 class="sp__h3">Outcome</h3>
+        <ul class="sp__stats" aria-label="Validation results">
+          <li class="sp__stat"><p class="sp__stat-num">10</p><p>fictional letters and texts, each in a fresh chat</p></li>
+          <li class="sp__stat sp__stat--lilac"><p class="sp__stat-num">9</p><p>accepted on the first prompt</p></li>
+          <li class="sp__stat sp__stat--blush"><p class="sp__stat-num">1</p><p>rejected: it kept a time when the date couldn’t be trusted</p></li>
+          <li class="sp__stat"><p class="sp__stat-num">0</p><p>prompt changes during the run</p></li>
+        </ul>
         <div class="sp__body">
-          <p>The dry run gave prompt version 2 its to-do list. The real run, one fresh chat per letter with my verdict on every answer, is still to come, and its results will be added here.</p>
+          <p>On the first prompt, the model kept the blood test result out, refused to guess a date or a time, and recognised the two messages that weren’t appointments. The one rejection was my call, not the answer key’s. The other 10 letters, including urgent 999 advice and a letter with two appointments, are still to be tested.</p>
+        </div>
+        <h3 class="sp__h3">Where I disagreed with the model</h3>
+        <div class="sp__callout">
+          <dl class="sp__facts">
+            <div><dt>What the model did</dt><dd>The letter said “Tuesday 18 November 2026”, but 18 November 2026 is a Wednesday. The model left the date empty and flagged the mismatch, but still filled in the time, 3:15pm.</dd></div>
+            <div><dt>Why it sounded right</dt><dd>It followed the date rule exactly, and the answer key counted it as a pass.</dd></div>
+            <div><dt>What I noticed</dt><dd>If the date can’t be trusted, the time can’t be trusted either, so it shouldn’t have been filled in.</dd></div>
+            <div><dt>What I did instead</dt><dd>I rejected it, a stricter call than the answer key. Leaving the time empty when the date is unreliable is the first change for prompt version 2.</dd></div>
+          </dl>
         </div>
       </section>
 

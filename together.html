@@ -139,6 +139,14 @@
       .tg-bento__item { grid-column: span 2; min-height: 190px; }
       .tg-bento__item--lead, .tg-bento__item--wide { grid-column: span 3; }
     }
+    /* Setting up the AI step: six numbered parts */
+    .tg-spec { display: grid; gap: 12px; margin-top: 24px; counter-reset: none; }
+    .tg-spec__item { padding: clamp(20px, 2.4vw, 26px); border-radius: var(--sp-radius); background: var(--sp-lavender); color: var(--paper-soft); line-height: 1.6; }
+    .tg-spec__item--accent { background: var(--sp-blush); }
+    .tg-spec__name { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; color: var(--paper); font-weight: 600; }
+    .tg-spec__name span { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #4637d6; color: #fff; font-size: 0.8125rem; font-weight: 700; }
+    @media (min-width: 640px) { .tg-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 900px) { .tg-spec { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
   </style>
 </head>
 <body id="top">
@@ -431,6 +439,47 @@
           </div>
           <figcaption>An excerpt from the context pack: the guardrails every answer is judged against.</figcaption>
         </figure>
+        <h3 class="sp__h3">Setting up the AI step</h3>
+        <div class="sp__body">
+          <p>Reading a letter is a single AI step, but I set it up the way you would an agent: context to work from, instructions, safeguards, a fixed output and a way to test it.</p>
+        </div>
+        <ol class="tg-spec" aria-label="How the AI step is set up">
+          <li class="tg-spec__item"><p class="tg-spec__name"><span aria-hidden="true">1</span>Input</p><p>A photo of a letter, or a text message pasted in.</p></li>
+          <li class="tg-spec__item"><p class="tg-spec__name"><span aria-hidden="true">2</span>Context</p><p>The context pack: the product, the people, the guardrails, the tone of voice and the accessibility rules.</p></li>
+          <li class="tg-spec__item"><p class="tg-spec__name"><span aria-hidden="true">3</span>Instructions</p><p>Return one fixed set of fields, and quote the exact words each one came from.</p></li>
+          <li class="tg-spec__item tg-spec__item--accent"><p class="tg-spec__name"><span aria-hidden="true">4</span>Safeguards</p><p>Logistics only. Nothing clinical, no guessing, and urgent advice is flagged for the person to read themselves.</p></li>
+          <li class="tg-spec__item"><p class="tg-spec__name"><span aria-hidden="true">5</span>Output</p><p>A draft for the form, with a source for every field and a list of what needs checking. Nothing is saved until the person confirms.</p></li>
+          <li class="tg-spec__item"><p class="tg-spec__name"><span aria-hidden="true">6</span>Evaluation</p><p>10 fictional letters with an answer key, each judged by me: 9 accepted, 1 rejected.</p></li>
+        </ol>
+        <figure class="sp__figure">
+          <div class="sp__file">
+            <p class="sp__file-bar" aria-hidden="true"><i></i><i></i><i></i><span>prompt-v1.md</span></p>
+<pre>You are helping someone add an appointment to Together from a letter or text message they’ve received. Follow the guardrails in the context pack exactly.
+
+<span class="sp__file-h">Rules:</span>
+- If a detail is missing or unclear, use null and add a reason to needs_checking. Do not guess.
+- If the weekday and date don’t match, use null for the date and say so.
+- Never include diagnoses, results, symptoms, medicines or urgency in any field.
+- If the letter is not about an appointment, set is_change to “not an appointment”.</pre>
+          </div>
+          <figcaption>An excerpt from the instructions (version 1), sent with the context pack for every letter.</figcaption>
+        </figure>
+        <figure class="sp__figure">
+          <div class="sp__file">
+            <p class="sp__file-bar" aria-hidden="true"><i></i><i></i><i></i><span>output.json</span></p>
+<pre>{
+  "date": "Weekday D Month YYYY, or null",
+  "time": "h:mmam/pm, or null",
+  "who_it_is_for": "the name as written, or null",
+  "is_change": "new | rescheduled | cancelled | not an appointment",
+  "contains_clinical_content": "true | false",
+  "needs_checking": ["one short reason per problem"],
+  "sources": { "field_name": "exact quoted words from the letter" }
+}</pre>
+          </div>
+          <figcaption>Part of the output every answer must match. An empty field with a reason is allowed; a guess isn’t.</figcaption>
+        </figure>
+        <h3 class="sp__h3">Designing the flow</h3>
         <figure class="sp__figure">
           <div class="sp__frame"><img src="images/together/figma-ai-board.jpg" width="2340" height="990" alt="The AI screens board in Figma: a row of reusable components (buttons, an AI chip, found and needs-checking fields, info and health-information banners, a worklist row), then the four mobile screens of the letter flow and the desktop staff worklist." loading="lazy"></div>
           <figcaption>I built the flow in Figma from reusable components bound to the kit’s tokens: an AI-filled field, a needs-checking field and a health-information warning.</figcaption>
@@ -487,7 +536,7 @@
         </div>
         <h3 class="sp__h3">A dry run first</h3>
         <div class="sp__body">
-          <p>Before the real test, Claude answered the whole test set in one chat, after it had already looked at where the prompt was weak. That isn’t a fair test, so <span class="sp__hl">none of it counts as a result</span>. It was still useful, because it showed where the prompt and the form had no room for what real letters say.</p>
+          <p>Before the real test, Claude answered a wider set of test letters in one chat, after it had already looked at where the prompt was weak. That isn’t a fair test, so <span class="sp__hl">none of it counts as a result</span>. It was still useful, because it showed where the prompt and the form had no room for what real letters say.</p>
         </div>
         <ul class="sp__list">
           <li><strong>No field for who it’s with.</strong> “Dr A. Moore” had to go into the service name.</li>
@@ -518,7 +567,7 @@
           <li class="sp__stat"><p class="sp__stat-num">0</p><p>prompt changes during the run</p></li>
         </ul>
         <div class="sp__body">
-          <p>On the first prompt, the model kept the blood test result out, refused to guess a date or a time, and recognised the two messages that weren’t appointments. The one rejection was my call, not the answer key’s. The other 10 letters, including urgent 999 advice and a letter with two appointments, are still to be tested.</p>
+          <p>On the first prompt, the model kept the blood test result out, refused to guess a date or a time, and recognised the two messages that weren’t appointments. The one rejection was my call, not the answer key’s.</p>
         </div>
         <h3 class="sp__h3">Where I disagreed with the model</h3>
         <div class="sp__callout">

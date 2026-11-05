@@ -13,6 +13,7 @@ Ryan owns every design and content decision. Claude Code builds and checks; it d
 | `orbit.html` | orbit case study (final-year university project) |
 | `portfolio-site.html` | "The makings of my portfolio" case study: designing and building this site with AI, from template to live site |
 | `medicool.html` | Medicool case study (Catalyst Co-Founders 2023; selected for a £10k grant, then withdrew): branding and app UX/UI. Visuals from the team’s Figma file only, never the third-party references in it |
+| `together.html` | Together case study (in progress): joined-up GP, hospital and pharmacy care, with an AI letter-reading feature and a staff worklist ranked by admin need only. All people, places and brands are fictional (Declan and Rose Quinn, Millbrook, Carnmore). Validation results are still to be added |
 | `404.html` | Page not found |
 | `css/styles.css` | All shared styles; tokens at the top |
 | `js/main.js` | Menu, reveal-on-scroll, pen marks, reading progress; exposes `window.RW_initPage` |
@@ -32,7 +33,7 @@ Use the tokens. Don't hard-code new colours or sizes when a token covers it.
 ## Components and patterns
 
 - **Project cards** (`.project`): a badge, a hover/focus overlay, a caption shown on touch screens, and the full card text in `.visually-hidden` for screen readers. TapSOS leads full width; the others sit in pairs.
-- **Card states:** live case study (links to its page), in progress (`.project--off`, not a link), private (`.project--locked`, a padlock and an email link).
+- **Card states:** live case study (links to its page), in progress (the `pending` band; a `.project--off` card is not a link, while Together links to its in-progress case study), private (`.project--locked`, a padlock and an email link).
 - **Case studies:** reuse the existing hero, details (`.facts`), sections and figure patterns. Image slots show a labelled placeholder until the real file exists (`onerror="this.remove()"` on the `<img>`).
 - **Pen marks** (`.pen`): Ryan's hand-drawn pink circle, ticks, dots and arrow. Keep them as they are unless he asks.
 - **Wordmark:** "Ryan Walsh." with the full stop in `--pen`; the full stop is `aria-hidden`.

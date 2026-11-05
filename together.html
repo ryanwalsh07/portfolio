@@ -70,12 +70,6 @@
     .sp__frame img { display: block; width: 100%; height: auto; }
     .sp__figure figcaption { margin-top: 12px; color: var(--paper-faint); font-size: var(--text-sm); }
 
-    /* Phone screens, as on Medicool */
-    .mc-screen { display: block; width: 100%; height: auto; border-radius: 9% / 4.2%; box-shadow: 0 0 0 1px rgba(13, 23, 63, 0.08), 0 18px 40px rgba(13, 23, 63, 0.18); }
-    .mc-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 4vw, 48px) clamp(16px, 2vw, 24px); }
-    @media (min-width: 760px) { .mc-screens--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    .mc-screens figcaption { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--paper-soft); font-size: var(--text-sm); line-height: 1.45; }
-    .mc-screens strong { display: block; color: var(--paper); font-weight: 600; }
 
     /* Mini case study label, in the deeper violet used on the portfolio rounds (4.5:1+ on every tint) */
     .tg-kicker { margin-bottom: 8px; color: #4637d6; font-size: var(--text-sm); font-weight: 700; }
@@ -102,7 +96,7 @@
     .sp__file pre { margin: 0; padding: clamp(18px, 2.6vw, 28px); color: #e8e5df; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: clamp(0.8125rem, 1.1vw, 0.9375rem); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
     .sp__file-h { color: #b9b3ff; font-weight: 700; }
     .tg-video__stage { display: grid; grid-template-areas: "video" "side"; justify-items: center; gap: 32px; padding: clamp(20px, 4vw, 48px) clamp(16px, 4vw, 48px); border-radius: var(--sp-radius); background: #eceafe; }
-    .tg-video__player { grid-area: video; display: block; width: min(100%, 362px); height: auto; } /* phone inside = 328px, the same as the static screens */
+    .tg-video__player { grid-area: video; display: block; width: min(100%, 362px); height: auto; } /* phone inside = 328px */
     .tg-video__side { grid-area: side; position: relative; display: grid; gap: 16px; justify-items: start; width: 100%; max-width: 420px; padding-top: 44px; }
     .tg-video__steps { display: grid; gap: 4px; width: 100%; }
     .tg-video__steps li { border-radius: var(--sp-radius); transition: background-color 0.25s, box-shadow 0.25s; }
@@ -404,16 +398,6 @@
           </div>
           <figcaption>The flow in motion, from asking for help to the GP’s call (silent).</figcaption>
         </figure>
-        <figure class="sp__figure">
-          <div class="mc-screens mc-screens--3">
-            <figure><img class="mc-screen" src="images/together/gp-51.jpg" width="786" height="1704" alt="Contact your GP: Brookfield Surgery's requests are open now and reviewed in order from 8:00am, so there's no need to ring. Options for something's wrong, a prescription question or something else, and an In an emergency, call 999 banner." loading="lazy"><figcaption><strong>Contact your GP</strong>Requests are open, so there’s no need to ring.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-52.jpg" width="786" height="1704" alt="Safety check: do you have any of these right now? Chest pain or pressure, struggling to breathe, face drooping or slurred speech, heavy bleeding, sudden confusion or fainting. A note says these are set questions agreed with clinicians and AI isn't used. A red call 999 button and None of these." loading="lazy"><figcaption><strong>Safety check</strong>Fixed questions first. No AI.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-53.jpg" width="786" height="1704" alt="What's wrong: the person's own words about a sore throat, with an option to talk instead, and AI prompts for what the GP may also want to know, labelled as not a diagnosis." loading="lazy"><figcaption><strong>Describe it</strong>AI suggests what to add, not what it is.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-54.jpg" width="786" height="1704" alt="Check your request, summarised by AI: a banner saying it's for the GP, not advice, then the person's words in order (what's wrong, how long, what they've tried, medicines from Together), each showing where it came from." loading="lazy"><figcaption><strong>For your GP</strong>Their words, in order, with nothing added.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-55.jpg" width="786" height="1704" alt="Your GP will call you: a callback window of today, 10:00am to 12:00pm, with Dr A. Moore, progress steps for request sent and read by the practice, a button saying I can't talk until 1:00pm, and a reminder to call 999 if things get worse." loading="lazy"><figcaption><strong>Callback window</strong>A time to expect the call, not hours of waiting.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/gp-56.jpg" width="786" height="1704" alt="Your GP is calling soon: Dr A. Moore has marked you as next, expect a call in about 10 minutes from a withheld number, with OK, I'm ready and I can't talk right now buttons." loading="lazy"><figcaption><strong>Calling soon</strong>A heads-up before the phone rings.</figcaption></figure>
-          </div>
-        </figure>
         <h3 class="sp__h3">Outcome</h3>
         <div class="sp__body">
           <p>A concept for the patient side, linked to the practice worklist, where requests and callback windows would land. The safety-check wording would need to be written and signed off by clinicians before anyone used it.</p>
@@ -475,13 +459,6 @@
             </div>
           </div>
           <figcaption>The flow in motion, from scanning a letter to saving it (silent).</figcaption>
-        </figure>
-        <figure class="sp__figure">
-          <div class="mc-screens mc-screens--3">
-            <figure><img class="mc-screen" src="images/together/add.jpg" width="786" height="1704" alt="Add an appointment: options to scan a letter or paste a text message, a note that Together only reads appointment details and never gives medical advice, and a Fill it in yourself button." loading="lazy"><figcaption><strong>Choose how</strong>Scan, paste, or fill it in yourself.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/reading.jpg" width="786" height="1704" alt="Reading your letter: a letter preview with the place and the date and time highlighted, a progress list (found the place, found the date and time, looking for what to bring) and a note that anything about your health is skipped." loading="lazy"><figcaption><strong>Reading</strong>Shows what it found, and what it skips.</figcaption></figure>
-            <figure><img class="mc-screen" src="images/together/added.jpg" width="786" height="1704" alt="Added to your timeline: a success tick, a reminder the day before, and a summary card for the Diabetes Centre appointment on Monday 7 December 2026 at 11:00am, Carnmore General Hospital." loading="lazy"><figcaption><strong>Added</strong>Only after the person confirms.</figcaption></figure>
-          </div>
         </figure>
         <h3 class="sp__h3">Design decisions</h3>
         <ul class="sp__list">

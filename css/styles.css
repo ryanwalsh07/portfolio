@@ -1576,9 +1576,9 @@ button { font: inherit; }
   /* A short intro that reads as one quiet line on desktop. */
   .section__intro--line { grid-column: 4 / -1; max-width: none; font-size: var(--text-md); }
 
-  /* Work: TapSOS runs the full width, orbit and Together share the row below. */
+  /* Work: TapSOS runs the full width, Together and the portfolio share the row below. */
   .project--feature { grid-column: 1 / -1; }
-  /* TapSOS runs the full width; orbit and ryanwalsh.uk, then Together and Medicool,
+  /* TapSOS runs the full width; Together and ryanwalsh.uk, then orbit and Medicool,
      sit in pairs; the locked Inclutech card closes the grid at full width. */
   .project--second,
   .project--site,
@@ -1858,9 +1858,31 @@ button { font: inherit; }
   .site-window { padding-top: 19cqw; }
   .site-window__frame { width: 70cqw; }
 }
-/* The white screen lets the overlay tint through, so it's darkened (as on the
+/* The white screen lets the overlay tint through (here and on the Together card, which shows its dashboard the same way), so it's darkened (as on the
    locked card) to keep the overlay text above 4.5:1. */
-.project--site .project__overlay { background: rgba(13, 23, 63, 0.74); }
+.project--site .project__overlay,
+.project--together .project__overlay { background: rgba(13, 23, 63, 0.74); }
+
+/* ---------- Together card: the staff dashboard in a light window, with the
+   patient app over its corner, on the Together lavender. Sized in container units
+   like the site window; it drops lower on narrow cards to clear the badge. ---------- */
+.tg-card { display: block; }
+.site-window__frame--light { background: #ffffff; }
+.site-window__frame--light .site-window__bar { background: #e8eaed; color: #4a4f58; }
+.tg-card__win { position: absolute; top: 16cqw; left: 9cqw; width: 74cqw; }
+.tg-card__phone {
+  position: absolute;
+  top: 30cqw;
+  right: 6cqw;
+  width: 21cqw;
+  height: auto;
+  border-radius: 3.6cqw;
+  box-shadow: 0 0 0 0.3cqw rgba(13, 23, 63, 0.08), 0 3cqw 6cqw rgba(13, 23, 63, 0.22);
+}
+@container (max-width: 480px) {
+  .tg-card__win { top: 21cqw; width: 70cqw; }
+  .tg-card__phone { top: 34cqw; width: 20cqw; }
+}
 
 /* ---------- Locked card: work shown on request, no imagery ---------- */
 /* A muted, flat ground with a single padlock, so it reads as private rather

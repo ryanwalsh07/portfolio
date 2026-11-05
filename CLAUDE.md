@@ -13,7 +13,7 @@ Ryan owns every design and content decision. Claude Code builds and checks; it d
 | `orbit.html` | orbit case study (final-year university project) |
 | `portfolio-site.html` | "The makings of my portfolio" case study: designing and building this site with AI, from template to live site |
 | `medicool.html` | Medicool case study (Catalyst Co-Founders 2023; selected for a £10k grant, then withdrew): branding and app UX/UI. Visuals from the team’s Figma file only, never the third-party references in it |
-| `together.html` | Together case study (in progress): joined-up GP, hospital and pharmacy care, with an AI letter-reading feature and a staff worklist ranked by admin need only. All people, places and brands are fictional (Declan and Rose Quinn, Millbrook, Carnmore). Validation results are still to be added |
+| `together.html` | Together case study (in progress): joined-up GP, hospital and pharmacy care, with an AI letter-reading feature and a staff worklist ranked by admin need only. All people, places and brands are fictional (Declan and Rose Quinn, Millbrook, Carnmore). First 10 of 20 validation letters judged (9 accepted, 1 rejected); the rest are still to be run |
 | `404.html` | Page not found |
 | `css/styles.css` | All shared styles; tokens at the top |
 | `js/main.js` | Menu, reveal-on-scroll, pen marks, reading progress; exposes `window.RW_initPage` |

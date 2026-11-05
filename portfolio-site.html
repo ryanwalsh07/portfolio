@@ -416,6 +416,19 @@
         <div class="sp__body">
           <p>This gave me a working understanding of how my components map to HTML and CSS.</p>
         </div>
+
+        <h3 class="sp__h3">Where I overruled the AI</h3>
+        <div class="sp__body">
+          <p>Some suggestions sounded right but would have failed the people the site is for. This is one I caught.</p>
+        </div>
+        <div class="sp__callout">
+          <dl class="sp__facts">
+            <div><dt>What the model suggested</dt><dd>ARIA and custom keyboard behaviour for moving through part of the site.</dd></div>
+            <div><dt>Why it sounded right</dt><dd>Claude explained the approach confidently, so it was easy to take on trust.</dd></div>
+            <div><dt>What I noticed</dt><dd>When I tested it with the keyboard myself, focus got trapped. Anyone navigating by keyboard or screen reader would have been stuck.</dd></div>
+            <div><dt>What I did instead, and the result</dt><dd>I re-prompted Claude with what I’d found: an error when using the keyboard to move through the portfolio. Claude removed the custom behaviour. I tested again, and the keyboard worked as intended: I could move through the whole portfolio easily.</dd></div>
+          </dl>
+        </div>
       </section>
 
       <!-- Design decisions -->

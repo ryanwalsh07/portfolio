@@ -101,11 +101,27 @@
     .sp__file-bar span { margin-left: 8px; }
     .sp__file pre { margin: 0; padding: clamp(18px, 2.6vw, 28px); color: #e8e5df; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: clamp(0.8125rem, 1.1vw, 0.9375rem); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
     .sp__file-h { color: #b9b3ff; font-weight: 700; }
-    .tg-video { max-width: 460px; margin-inline: auto; }
-    .tg-video__player { display: block; width: 100%; height: auto; border-radius: var(--sp-radius); background: #eceafe; }
-    .tg-video__toggle { display: block; min-height: 44px; margin: 14px auto 0; padding: 0 20px; border: 1px solid var(--line); border-radius: var(--radius-control); background: #fff; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
-    .tg-video__toggle:hover { border-color: var(--paper-faint); }
+    .tg-video__stage { display: grid; grid-template-areas: "video" "side" "steps"; gap: 20px; padding: clamp(20px, 4vw, 40px); border-radius: var(--sp-radius); background: #eceafe; }
+    .tg-video__player { grid-area: video; display: block; width: 100%; max-width: 380px; height: auto; margin-inline: auto; }
+    .tg-video__steps { grid-area: steps; display: grid; gap: 4px; }
+    .tg-video__steps button { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; width: 100%; min-height: 44px; padding: 8px 12px; border: 0; border-radius: var(--radius-control); background: none; color: var(--paper-soft); font: inherit; font-size: var(--text-sm); text-align: left; cursor: pointer; }
+    .tg-video__steps button:hover { background: rgba(255, 255, 255, 0.6); }
+    .tg-video__steps .is-current button { background: #fff; color: var(--paper); box-shadow: 0 1px 4px rgba(13, 23, 63, 0.08); }
+    .tg-video__n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(13, 23, 63, 0.08); color: var(--paper); font-weight: 700; font-size: 0.75rem; }
+    .is-current .tg-video__n { background: #4637d6; color: #fff; }
+    .tg-video__t { flex: 1; font-weight: 600; }
+    .tg-video__steps .ai-chip { padding: 4px 10px; font-size: 0.75rem; }
+    .tg-video__side { grid-area: side; display: grid; gap: 12px; align-content: center; }
+    .tg-video__label { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 600; }
+    .tg-video__ai { display: grid; gap: 10px; justify-items: start; padding: 18px; border-radius: var(--radius-control); background: #fff; }
+    .tg-video__ai p { color: var(--paper); line-height: 1.55; }
+    .tg-video__toggle { justify-self: start; min-height: 44px; padding: 0 20px; border: 1px solid rgba(13, 23, 63, 0.24); border-radius: var(--radius-control); background: transparent; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+    .tg-video__toggle:hover { background: rgba(255, 255, 255, 0.6); }
     .tg-video__toggle[hidden] { display: none; }
+    @media (min-width: 900px) {
+      .tg-video__stage { grid-template-columns: minmax(0, 1fr) 360px minmax(0, 1fr); grid-template-areas: "steps video side"; align-items: center; gap: clamp(24px, 3vw, 40px); }
+      .tg-video__steps .ai-chip { display: none; }
+    }
   </style>
 </head>
 <body id="top">
@@ -340,8 +356,22 @@
           <li><strong>No more waiting blind.</strong> The practice sets a callback window, and people are told when their GP is about to call.</li>
         </ul>
         <figure class="sp__figure tg-video">
-          <video class="tg-video__player" src="images/together/gp-flow.mp4" poster="images/together/gp-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of the GP request flow: contact your GP, a fixed safety check, describing the problem with AI prompts, checking the summary for the GP, a callback window, and a heads-up before the call."></video>
-          <button class="tg-video__toggle" type="button" hidden>Play video</button>
+          <div class="tg-video__stage">
+            <ol class="tg-video__steps" aria-label="Steps in the video">
+              <li data-t="0" data-ai="no" data-note="Requests are open, so nobody has to ring at 8am." class="is-current"><button type="button"><span class="tg-video__n" aria-hidden="true">1</span><span class="tg-video__t">Contact your GP</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
+              <li data-t="3.1" data-ai="no" data-note="Fixed questions agreed with clinicians. Deciding how urgent it is never goes to a model."><button type="button"><span class="tg-video__n" aria-hidden="true">2</span><span class="tg-video__t">Safety check</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
+              <li data-t="6.75" data-ai="ai" data-note="AI suggests what the GP may want to know. It never says what it might be."><button type="button"><span class="tg-video__n" aria-hidden="true">3</span><span class="tg-video__t">Describe it</span><span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI helps</span></button></li>
+              <li data-t="10.6" data-ai="ai" data-note="AI puts the person’s own words in order, and each line shows where it came from."><button type="button"><span class="tg-video__n" aria-hidden="true">4</span><span class="tg-video__t">For your GP</span><span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI helps</span></button></li>
+              <li data-t="15.45" data-ai="no" data-note="The practice sets the window, so people know when to expect the call."><button type="button"><span class="tg-video__n" aria-hidden="true">5</span><span class="tg-video__t">Callback window</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
+              <li data-t="19.15" data-ai="no" data-note="The GP marks them as next, and Together sends a heads-up."><button type="button"><span class="tg-video__n" aria-hidden="true">6</span><span class="tg-video__t">Calling soon</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
+            </ol>
+            <video class="tg-video__player" src="images/together/gp-flow.mp4" poster="images/together/gp-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of the GP request flow: contact your GP, a fixed safety check, describing the problem with AI prompts, checking the summary for the GP, a callback window, and a heads-up before the call."></video>
+            <div class="tg-video__side">
+              <p class="tg-video__label">AI in this step</p>
+              <div class="tg-video__ai"><span class="ai-chip ai-chip--human">No AI</span><p>Requests are open, so nobody has to ring at 8am.</p></div>
+              <button class="tg-video__toggle" type="button" hidden>Play video</button>
+            </div>
+          </div>
           <figcaption>The flow in motion, from asking for help to the GP’s call (silent).</figcaption>
         </figure>
         <figure class="sp__figure">
@@ -389,8 +419,20 @@
           <figcaption>I built the flow in Figma from reusable components bound to the kit’s tokens: an AI-filled field, a needs-checking field and a health-information warning.</figcaption>
         </figure>
         <figure class="sp__figure tg-video">
-          <video class="tg-video__player" src="images/together/letter-flow.mp4" poster="images/together/letter-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of adding an appointment from a letter: choosing to scan, Together reading the letter, checking every detail with its source, then saving it to the timeline."></video>
-          <button class="tg-video__toggle" type="button" hidden>Play video</button>
+          <div class="tg-video__stage">
+            <ol class="tg-video__steps" aria-label="Steps in the video">
+              <li data-t="0" data-ai="no" data-note="Scanning is optional. “Fill it in yourself” is always there." class="is-current"><button type="button"><span class="tg-video__n" aria-hidden="true">1</span><span class="tg-video__t">Choose how</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
+              <li data-t="3" data-ai="ai" data-note="AI picks out the logistics only. Anything about health is skipped."><button type="button"><span class="tg-video__n" aria-hidden="true">2</span><span class="tg-video__t">Reading</span><span class="ai-chip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI helps</span></button></li>
+              <li data-t="6.5" data-ai="you" data-note="Every field quotes the letter, and gaps are flagged, not guessed."><button type="button"><span class="tg-video__n" aria-hidden="true">3</span><span class="tg-video__t">Check every detail</span><span class="ai-chip ai-chip--human">Person checks</span></button></li>
+              <li data-t="12.75" data-ai="no" data-note="Nothing is saved until the person confirms."><button type="button"><span class="tg-video__n" aria-hidden="true">4</span><span class="tg-video__t">Added</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
+            </ol>
+            <video class="tg-video__player" src="images/together/letter-flow.mp4" poster="images/together/letter-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of adding an appointment from a letter: choosing to scan, Together reading the letter, checking every detail with its source, then saving it to the timeline."></video>
+            <div class="tg-video__side">
+              <p class="tg-video__label">AI in this step</p>
+              <div class="tg-video__ai"><span class="ai-chip ai-chip--human">No AI</span><p>Scanning is optional. “Fill it in yourself” is always there.</p></div>
+              <button class="tg-video__toggle" type="button" hidden>Play video</button>
+            </div>
+          </div>
           <figcaption>The flow in motion, from scanning a letter to saving it (silent).</figcaption>
         </figure>
         <figure class="sp__figure">
@@ -504,16 +546,32 @@
 </footer>
 <script>
   // Prototype videos: play while on screen, unless reduced motion is on. The button always pauses or plays.
+  // The step list follows the video, and each step can be clicked to jump to it.
   (function () {
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.querySelectorAll(".tg-video").forEach(function (fig) {
       var v = fig.querySelector("video"), b = fig.querySelector(".tg-video__toggle");
-      var userPaused = reduce;
+      var steps = Array.prototype.slice.call(fig.querySelectorAll(".tg-video__steps li"));
+      var ai = fig.querySelector(".tg-video__ai"), current = 0, userPaused = reduce;
       function label() { b.textContent = v.paused ? "Play video" : "Pause video"; }
       function play() { v.preload = "auto"; var p = v.play(); if (p) p.catch(function () {}); }
+      function show(i) {
+        if (i === current) return;
+        steps[current].classList.remove("is-current"); steps[i].classList.add("is-current"); current = i;
+        ai.innerHTML = steps[i].querySelector(".ai-chip").outerHTML + "<p></p>";
+        ai.querySelector("p").textContent = steps[i].dataset.note;
+      }
+      function sync() { var t = v.currentTime, i = 0; steps.forEach(function (s, j) { if (t >= +s.dataset.t) i = j; }); show(i); }
       b.hidden = false;
       b.addEventListener("click", function () { if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); } });
       v.addEventListener("play", label); v.addEventListener("pause", label);
+      v.addEventListener("timeupdate", sync); v.addEventListener("seeked", sync);
+      steps.forEach(function (s, j) {
+        s.querySelector("button").addEventListener("click", function () {
+          v.preload = "auto"; v.currentTime = +s.dataset.t + 0.4; show(j);
+          if (!userPaused) play();
+        });
+      });
       if (reduce || !("IntersectionObserver" in window)) return;
       new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) { if (!userPaused) play(); } else if (!v.paused) v.pause(); });

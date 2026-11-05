@@ -374,9 +374,34 @@
         <div class="sp__body">
           <p>Each answer passes only if every filled field is right, nothing clinical leaks, nothing is guessed, and every field quotes its source.</p>
         </div>
+        <h3 class="sp__h3">A dry run first</h3>
+        <div class="sp__body">
+          <p>Before the real test, Claude answered all 20 letters in one chat, after it had already looked at where the prompt was weak. That isn’t a fair test, so <span class="sp__hl">none of it counts as a result</span>. It was still useful, because it showed where the prompt and the form had no room for what real letters say.</p>
+        </div>
+        <ul class="sp__list">
+          <li><strong>No field for who it’s with.</strong> “Dr A. Moore” had to go into the service name.</li>
+          <li><strong>No place for instructions.</strong> “Don’t eat after midnight”, “don’t drive” and “wear loose clothing” were dropped, or pushed into “what to bring” or the checks.</li>
+          <li><strong>One letter, one appointment.</strong> A second appointment in the same letter became a sentence, not something the person could add.</li>
+          <li><strong>Urgent advice looked like any other health information.</strong> A letter saying to call 999 got the same warning as a routine blood test result.</li>
+          <li><strong>Service names can give a condition away.</strong> “Cardiology” and “Diabetic eye screening” are logistics, but they also say something about the person’s health.</li>
+        </ul>
+        <figure class="sp__figure">
+          <div class="sp__file">
+            <p class="sp__file-bar" aria-hidden="true"><i></i><i></i><i></i><span>dry-run.json</span></p>
+<pre><span class="sp__file-h">// Letter with a blood test result</span>
+"needs_checking": ["This letter includes information about your health. Please read the original letter."]
+
+<span class="sp__file-h">// Letter saying to call 999 if chest pain comes back</span>
+"needs_checking": ["This letter includes health advice. Please read the original letter yourself."]</pre>
+          </div>
+          <figcaption>Two warnings from the dry run. They read almost the same, so nothing tells the person that one of them is urgent.</figcaption>
+        </figure>
+        <div class="sp__body">
+          <p>Claude also scored its own answers, and on four letters its verdict disagreed with the answer key. In the real run, every verdict is mine.</p>
+        </div>
         <h3 class="sp__h3">Outcome</h3>
         <div class="sp__body">
-          <p>Validation is in progress. The results, including which answers I rejected and why, will be added here.</p>
+          <p>The dry run gave prompt version 2 its to-do list. The real run, one fresh chat per letter with my verdict on every answer, is still to come, and its results will be added here.</p>
         </div>
       </section>
 

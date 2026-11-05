@@ -101,27 +101,23 @@
     .sp__file-bar span { margin-left: 8px; }
     .sp__file pre { margin: 0; padding: clamp(18px, 2.6vw, 28px); color: #e8e5df; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: clamp(0.8125rem, 1.1vw, 0.9375rem); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
     .sp__file-h { color: #b9b3ff; font-weight: 700; }
-    .tg-video__stage { display: grid; grid-template-areas: "video" "side" "steps"; gap: 20px; padding: clamp(20px, 4vw, 40px); border-radius: var(--sp-radius); background: #eceafe; }
-    .tg-video__player { grid-area: video; display: block; width: 100%; max-width: 380px; height: auto; margin-inline: auto; }
-    .tg-video__steps { grid-area: steps; display: grid; gap: 4px; }
-    .tg-video__steps button { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; width: 100%; min-height: 44px; padding: 8px 12px; border: 0; border-radius: var(--radius-control); background: none; color: var(--paper-soft); font: inherit; font-size: var(--text-sm); text-align: left; cursor: pointer; }
+    .tg-video__stage { display: grid; justify-items: center; gap: clamp(20px, 3vw, 32px); padding: clamp(20px, 4vw, 48px) clamp(16px, 4vw, 48px); border-radius: var(--sp-radius); background: #eceafe; }
+    .tg-video__steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+    .tg-video__steps button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 14px 6px 8px; border: 0; border-radius: 999px; background: none; color: var(--paper-soft); font: inherit; font-size: var(--text-sm); text-align: left; cursor: pointer; }
     .tg-video__steps button:hover { background: rgba(255, 255, 255, 0.6); }
     .tg-video__steps .is-current button { background: #fff; color: var(--paper); box-shadow: 0 1px 4px rgba(13, 23, 63, 0.08); }
     .tg-video__n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(13, 23, 63, 0.08); color: var(--paper); font-weight: 700; font-size: 0.75rem; }
     .is-current .tg-video__n { background: #4637d6; color: #fff; }
-    .tg-video__t { flex: 1; font-weight: 600; }
-    .tg-video__steps .ai-chip { padding: 4px 10px; font-size: 0.75rem; }
-    .tg-video__side { grid-area: side; display: grid; gap: 12px; align-content: center; }
+    .tg-video__t { font-weight: 600; }
+    .tg-video__steps .ai-chip { display: none; }
+    .tg-video__player { display: block; width: min(100%, calc(min(78vh, 760px) * 860 / 1792)); height: auto; }
+    .tg-video__side { display: grid; gap: 12px; justify-items: center; width: 100%; max-width: 560px; }
     .tg-video__label { color: var(--paper-faint); font-size: var(--text-sm); font-weight: 600; }
-    .tg-video__ai { display: grid; gap: 10px; justify-items: start; padding: 18px; border-radius: var(--radius-control); background: #fff; }
+    .tg-video__ai { display: grid; gap: 10px; justify-items: center; width: 100%; padding: 18px 20px; border-radius: var(--radius-control); background: #fff; text-align: center; }
     .tg-video__ai p { color: var(--paper); line-height: 1.55; }
-    .tg-video__toggle { justify-self: start; min-height: 44px; padding: 0 20px; border: 1px solid rgba(13, 23, 63, 0.24); border-radius: var(--radius-control); background: transparent; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+    .tg-video__toggle { min-height: 44px; padding: 0 20px; border: 1px solid rgba(13, 23, 63, 0.24); border-radius: var(--radius-control); background: transparent; color: var(--paper); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
     .tg-video__toggle:hover { background: rgba(255, 255, 255, 0.6); }
     .tg-video__toggle[hidden] { display: none; }
-    @media (min-width: 900px) {
-      .tg-video__stage { grid-template-columns: minmax(0, 1fr) 360px minmax(0, 1fr); grid-template-areas: "steps video side"; align-items: center; gap: clamp(24px, 3vw, 40px); }
-      .tg-video__steps .ai-chip { display: none; }
-    }
   </style>
 </head>
 <body id="top">
@@ -365,7 +361,7 @@
               <li data-t="15.45" data-ai="no" data-note="The practice sets the window, so people know when to expect the call."><button type="button"><span class="tg-video__n" aria-hidden="true">5</span><span class="tg-video__t">Callback window</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
               <li data-t="19.15" data-ai="no" data-note="The GP marks them as next, and Together sends a heads-up."><button type="button"><span class="tg-video__n" aria-hidden="true">6</span><span class="tg-video__t">Calling soon</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
             </ol>
-            <video class="tg-video__player" src="images/together/gp-flow.mp4" poster="images/together/gp-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of the GP request flow: contact your GP, a fixed safety check, describing the problem with AI prompts, checking the summary for the GP, a callback window, and a heads-up before the call."></video>
+            <video class="tg-video__player" src="images/together/gp-flow.mp4" poster="images/together/gp-flow-poster.jpg" width="860" height="1792" muted loop playsinline preload="none" aria-label="Prototype video of the GP request flow: contact your GP, a fixed safety check, describing the problem with AI prompts, checking the summary for the GP, a callback window, and a heads-up before the call."></video>
             <div class="tg-video__side">
               <p class="tg-video__label">AI in this step</p>
               <div class="tg-video__ai"><span class="ai-chip ai-chip--human">No AI</span><p>Requests are open, so nobody has to ring at 8am.</p></div>
@@ -426,7 +422,7 @@
               <li data-t="6.5" data-ai="you" data-note="Every field quotes the letter, and gaps are flagged, not guessed."><button type="button"><span class="tg-video__n" aria-hidden="true">3</span><span class="tg-video__t">Check every detail</span><span class="ai-chip ai-chip--human">Person checks</span></button></li>
               <li data-t="12.75" data-ai="no" data-note="Nothing is saved until the person confirms."><button type="button"><span class="tg-video__n" aria-hidden="true">4</span><span class="tg-video__t">Added</span><span class="ai-chip ai-chip--human">No AI</span></button></li>
             </ol>
-            <video class="tg-video__player" src="images/together/letter-flow.mp4" poster="images/together/letter-flow-poster.jpg" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Prototype video of adding an appointment from a letter: choosing to scan, Together reading the letter, checking every detail with its source, then saving it to the timeline."></video>
+            <video class="tg-video__player" src="images/together/letter-flow.mp4" poster="images/together/letter-flow-poster.jpg" width="860" height="1792" muted loop playsinline preload="none" aria-label="Prototype video of adding an appointment from a letter: choosing to scan, Together reading the letter, checking every detail with its source, then saving it to the timeline."></video>
             <div class="tg-video__side">
               <p class="tg-video__label">AI in this step</p>
               <div class="tg-video__ai"><span class="ai-chip ai-chip--human">No AI</span><p>Scanning is optional. “Fill it in yourself” is always there.</p></div>
